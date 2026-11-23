@@ -1,0 +1,115 @@
+newmtl harl_cream
+Kd 0.914 0.890 0.827
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl slate
+Kd 0.235 0.255 0.278
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl slate_lt
+Kd 0.294 0.318 0.349
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl slate_dk
+Kd 0.180 0.200 0.220
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl string
+Kd 0.863 0.851 0.808
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl lead
+Kd 0.353 0.376 0.400
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl dress_cream
+Kd 0.804 0.792 0.745
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl harl_grey
+Kd 0.847 0.827 0.776
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl harl
+Kd 0.906 0.894 0.859
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl rubble
+Kd 0.427 0.408 0.369
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl plinth
+Kd 0.427 0.439 0.451
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl band_dark
+Kd 0.173 0.188 0.204
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl frame
+Kd 0.957 0.949 0.925
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl glass
+Kd 0.137 0.176 0.220
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl door_dark
+Kd 0.122 0.133 0.141
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl door_dark_p
+Kd 0.200 0.220 0.235
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl doorcase
+Kd 0.545 0.498 0.416
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl door_blue
+Kd 0.118 0.267 0.408
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl door_blue_p
+Kd 0.098 0.220 0.333
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl pipe
+Kd 0.114 0.122 0.129
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl chim_stone
+Kd 0.522 0.478 0.416
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl pot
+Kd 0.761 0.478 0.322
+Ka 0 0 0
+Ks 0 0 0
+
+newmtl chim_render
+Kd 0.863 0.851 0.808
+Ka 0 0 0
+Ks 0 0 0
+
