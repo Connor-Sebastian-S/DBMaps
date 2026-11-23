@@ -1,0 +1,1171 @@
+GEOJSON STATISTICS REPORT
+========================================
+
+Total features in input:    1006
+Features inside map area:   900
+Features outside area:      106
+
+MAP AREA (WGS84 BOUNDS)
+West:  -3.59687610
+South: 56.55371547
+East:  -3.56434690
+North: 56.57167653
+
+Missing model paths:        0
+Model files found:           516
+Model files not found:       384
+
+Missing notes:              0
+Valid notes:                900
+
+Missing from_year:          96
+
+Valid names:                652
+
+========================================
+FEATURES WITH MISSING MODELS
+========================================
+
+MODEL PATHS THAT DO NOT EXIST
+========================================
+- Dunkeld Community Fire Station -> models/2.glb
+- Old Police House -> models/3.glb
+- Birnam Library -> models/20.glb
+- St Columba's -> models/21.glb
+- St. Mary's Church -> models/22.glb
+- Larachmhor -> models/24.glb
+- Craigmore -> models/25.glb
+- (unnamed, ID: 26) -> models/26.glb
+- Birnam Bank Cottage -> models/27.glb
+- Elsey Cottage -> models/28.glb
+- Birnam Bank -> models/29.glb
+- Coach House -> models/30.glb
+- (unnamed, ID: 31) -> models/31.glb
+- (unnamed, ID: 32) -> models/32.glb
+- Heath Park -> models/33.glb
+- (unnamed, ID: 34) -> models/34.glb
+- Oakbank -> models/35.glb
+- Birnam Inn -> models/38.glb
+- Merryburn Hotel -> models/41.glb
+- 6,7 Water Wynd -> models/49.glb
+- (unnamed, ID: 50) -> models/50.glb
+- The Manse -> models/53.glb
+- Bakehouse Cottage -> models/56.glb
+- (unnamed, ID: 57) -> models/57.glb
+- (unnamed, ID: 60) -> models/60.glb
+- (unnamed, ID: 61) -> models/61.glb
+- 3, 6, 9 Saltire Court -> models/71.glb
+- (unnamed, ID: 72) -> models/72.glb
+- The Old Smithy -> models/75.glb
+- (unnamed, ID: 76) -> models/76.glb
+- Stables Cottage -> models/77.glb
+- Eastferry House -> models/78.glb
+- Eastwood House -> models/80.glb
+- Woodbrae -> models/82.glb
+- Craigwood -> models/83.glb
+- Sabhal Beag -> models/85.glb
+- Murray House -> models/86.glb
+- Boatbrae -> models/87.glb
+- Frochan -> models/88.glb
+- St Jerome's -> models/89.glb
+- Morvern -> models/90.glb
+- Dun Vorist -> models/92.glb
+- Deerfield -> models/93.glb
+- Yew Cottage -> models/94.glb
+- Craigrankie -> models/95.glb
+- Tayhill -> models/96.glb
+- Hillhead House -> models/97.glb
+- (unnamed, ID: 98) -> models/98.glb
+- (unnamed, ID: 108) -> models/108.glb
+- Birnam Arts -> models/109.glb
+- (unnamed, ID: 111) -> models/111.glb
+- (unnamed, ID: 112) -> models/112.glb
+- (unnamed, ID: 113) -> models/113.glb
+- (unnamed, ID: 114) -> models/114.glb
+- (unnamed, ID: 115) -> models/115.glb
+- (unnamed, ID: 116) -> models/116.glb
+- (unnamed, ID: 117) -> models/117.glb
+- Glasalt -> models/118.glb
+- Herons -> models/119.glb
+- Craig Royston -> models/121.glb
+- Brackenbank -> models/122.glb
+- Spoutwell House -> models/123.glb
+- Cottage -> models/125.glb
+- Spoutswell Cottage -> models/126.glb
+- Atholl Garden Terrace -> models/127.glb
+- (unnamed, ID: 134) -> models/134.glb
+- 1 Water Wynd -> models/135.glb
+- The White Cottage -> models/136.glb
+- Lonsdale -> models/137.glb
+- 4 - Atholl Park -> models/145.glb
+- Highfield -> models/149.glb
+- 1 Atholl Gardens -> models/150.glb
+- (unnamed, ID: 155) -> models/155.glb
+- Highland Offroad -> models/156.glb
+- Birkenbrae -> models/161.glb
+- Verinag -> models/163.glb
+- The Shieling -> models/170.glb
+- Craigie Barns -> models/172.glb
+- Strathview -> models/175.glb
+- Hillcrest -> models/179.glb
+- Duns Law -> models/182.glb
+- Rosemount -> models/184.glb
+- Glenburn -> models/185.glb
+- Sunny Corner -> models/186.glb
+- 8 Station Road -> models/187.glb
+- 10 Station Road -> models/188.glb
+- Beltane -> models/189.glb
+- Puddleduck -> models/207.glb
+- Nurses House -> models/210.glb
+- Glenfalloch -> models/214.glb
+- Gowrie Cottage -> models/228.glb
+- Lagbeag -> models/230.glb
+- Dunkeld and Birnam Golf Club -> models/252.glb
+- Servite House -> models/255.glb
+- 102-105 Perth Road -> models/261.glb
+- 100, 101 Perth Road -> models/262.glb
+- Flixton -> models/263.glb
+- The Retreat -> models/264.glb
+- Merrie Meade -> models/265.glb
+- Ladylands -> models/266.glb
+- Edal -> models/267.glb
+- 9 Burnmouth Road -> models/268.glb
+- 10 Burnmouth Road -> models/269.glb
+- 7 Burnmouth Road -> models/276.glb
+- 8 Burnmouth Road -> models/277.glb
+- Dove Cottage -> models/278.glb
+- Rhovanion -> models/279.glb
+- Bon Accord -> models/280.glb
+- Tayburn House -> models/281.glb
+- 9-12 Stell Park -> models/288.glb
+- 13-15 Stell Park -> models/289.glb
+- House - Stell Park -> models/290.glb
+- 18, 19 Stell Park -> models/291.glb
+- (unnamed, ID: 311) -> models/311.glb
+- Ard Darach -> models/314.glb
+- The Bungalow -> models/334.glb
+- Ivy Cottage -> models/335.glb
+- (unnamed, ID: 336) -> models/336.glb
+- The Old Bakery -> models/337.glb
+- Aran Bakery -> models/338.glb
+- (unnamed, ID: 339) -> models/339.glb
+- (unnamed, ID: 340) -> models/340.glb
+- St Abbas -> models/341.glb
+- Cherrytrees -> models/342.glb
+- Armoury House -> models/343.glb
+- Armoury House -> models/344.glb
+- Schoolhouse -> models/345.glb
+- Bheinne Mhor -> models/346.glb
+- (unnamed, ID: 348) -> models/348.glb
+- (unnamed, ID: 349) -> models/349.glb
+- (unnamed, ID: 350) -> models/350.glb
+- (unnamed, ID: 351) -> models/351.glb
+- (unnamed, ID: 352) -> models/352.glb
+- (unnamed, ID: 353) -> models/353.glb
+- Rectory -> models/354.glb
+- (unnamed, ID: 355) -> models/355.glb
+- Dunbraantay Laundry -> models/356.glb
+- (unnamed, ID: 357) -> models/357.glb
+- (unnamed, ID: 358) -> models/358.glb
+- (unnamed, ID: 359) -> models/359.glb
+- (unnamed, ID: 360) -> models/360.glb
+- (unnamed, ID: 361) -> models/361.glb
+- (unnamed, ID: 362) -> models/362.glb
+- (unnamed, ID: 365) -> models/365.glb
+- (unnamed, ID: 366) -> models/366.glb
+- (unnamed, ID: 367) -> models/367.glb
+- (unnamed, ID: 368) -> models/368.glb
+- (unnamed, ID: 369) -> models/369.glb
+- (unnamed, ID: 370) -> models/370.glb
+- (unnamed, ID: 372) -> models/372.glb
+- (unnamed, ID: 373) -> models/373.glb
+- (unnamed, ID: 374) -> models/374.glb
+- (unnamed, ID: 375) -> models/375.glb
+- (unnamed, ID: 376) -> models/376.glb
+- (unnamed, ID: 377) -> models/377.glb
+- (unnamed, ID: 378) -> models/378.glb
+- (unnamed, ID: 379) -> models/379.glb
+- Ladyhill House -> models/380.glb
+- (unnamed, ID: 381) -> models/381.glb
+- (unnamed, ID: 382) -> models/382.glb
+- Conival -> models/386.glb
+- Schiehallion -> models/387.glb
+- Ballinoe,Rockfield -> models/388.glb
+- Byways -> models/389.glb
+- (unnamed, ID: 390) -> models/390.glb
+- The Old Coach House -> models/393.glb
+- Erigmore Swimming Pool -> models/401.glb
+- Kennard -> models/404.glb
+- (unnamed, ID: 405) -> models/405.glb
+- (unnamed, ID: 406) -> models/406.glb
+- (unnamed, ID: 407) -> models/407.glb
+- (unnamed, ID: 408) -> models/408.glb
+- (unnamed, ID: 409) -> models/409.glb
+- (unnamed, ID: 410) -> models/410.glb
+- (unnamed, ID: 411) -> models/411.glb
+- (unnamed, ID: 412) -> models/412.glb
+- (unnamed, ID: 413) -> models/413.glb
+- (unnamed, ID: 414) -> models/414.glb
+- (unnamed, ID: 415) -> models/415.glb
+- (unnamed, ID: 416) -> models/416.glb
+- (unnamed, ID: 417) -> models/417.glb
+- (unnamed, ID: 418) -> models/418.glb
+- (unnamed, ID: 419) -> models/419.glb
+- (unnamed, ID: 420) -> models/420.glb
+- (unnamed, ID: 421) -> models/421.glb
+- (unnamed, ID: 422) -> models/422.glb
+- (unnamed, ID: 423) -> models/423.glb
+- (unnamed, ID: 424) -> models/424.glb
+- (unnamed, ID: 425) -> models/425.glb
+- Hazlebee -> models/426.glb
+- (unnamed, ID: 427) -> models/427.glb
+- (unnamed, ID: 428) -> models/428.glb
+- 3 Torlee Road -> models/429.glb
+- (unnamed, ID: 430) -> models/430.glb
+- 4,5 Torlee Road -> models/431.glb
+- The Fields -> models/432.glb
+- 6 Torlee Road -> models/433.glb
+- 7 Torlee Road -> models/434.glb
+- 8 Torlee Road -> models/435.glb
+- 9 Torlee Road -> models/436.glb
+- 10 Torlee Road -> models/437.glb
+- 11 Torlee Road -> models/438.glb
+- (unnamed, ID: 439) -> models/439.glb
+- (unnamed, ID: 440) -> models/440.glb
+- Hollybank -> models/444.glb
+- (unnamed, ID: 445) -> models/445.glb
+- Wychwood -> models/446.glb
+- (unnamed, ID: 447) -> models/447.glb
+- Dowiestone -> models/448.glb
+- Birchwood House -> models/455.glb
+- (unnamed, ID: 461) -> models/461.glb
+- (unnamed, ID: 492) -> models/492.glb
+- (unnamed, ID: 515) -> models/515.glb
+- (unnamed, ID: 516) -> models/516.glb
+- (unnamed, ID: 517) -> models/517.glb
+- (unnamed, ID: 518) -> models/518.glb
+- (unnamed, ID: 519) -> models/519.glb
+- (unnamed, ID: 520) -> models/520.glb
+- Sundial House -> models/521.glb
+- North Lodge -> models/522.glb
+- 8 Atholl Gardens -> models/523.glb
+- (unnamed, ID: 524) -> models/524.glb
+- Dunkeld Community Archive -> models/526.glb
+- The Ice House -> models/530.glb
+- (unnamed, ID: 532) -> models/532.glb
+- (unnamed, ID: 535) -> models/535.glb
+- (unnamed, ID: 536) -> models/536.glb
+- (unnamed, ID: 537) -> models/537.glb
+- Dunkeld and Birnam Bowling Club -> models/538.glb
+- (unnamed, ID: 539) -> models/539.glb
+- (unnamed, ID: 541) -> models/541.glb
+- (unnamed, ID: 543) -> models/543.glb
+- (unnamed, ID: 547) -> models/547.glb
+- Greystones -> models/548.glb
+- (unnamed, ID: 549) -> models/549.glb
+- (unnamed, ID: 551) -> models/551.glb
+- Gunpowder Store -> models/553.glb
+- Torwood House -> models/555.glb
+- (unnamed, ID: 557) -> models/557.glb
+- District Nurse -> models/560.glb
+- Ferwaldon -> models/561.glb
+- Cnocairde -> models/562.glb
+- Dunkeld Telephone Exchange -> models/563.glb
+- Tayview House -> models/564.glb
+- Tayview Cottage -> models/565.glb
+- Mansewood -> models/566.glb
+- Free Church School -> models/567.glb
+- Oronsay -> models/568.glb
+- (unnamed, ID: 569) -> models/569.glb
+- (unnamed, ID: 570) -> models/570.glb
+- (unnamed, ID: 571) -> models/571.glb
+- (unnamed, ID: 572) -> models/572.glb
+- Rivendell House -> models/573.glb
+- Allan Johnstone Court -> models/574.glb
+- The Oaks -> models/575.glb
+- 1-8Stell Park -> models/576.glb
+- The Tummel -> models/578.glb
+- Osprey House -> models/581.glb
+- (unnamed, ID: 582) -> models/582.glb
+- Inverbraan -> models/583.glb
+- Wash House -> models/584.glb
+- (unnamed, ID: 586) -> models/586.glb
+- Braan Cottage -> models/587.glb
+- (unnamed, ID: 589) -> models/589.glb
+- (unnamed, ID: 590) -> models/590.glb
+- (unnamed, ID: 593) -> models/593.glb
+- (unnamed, ID: 594) -> models/594.glb
+- Rushven -> models/595.glb
+- (unnamed, ID: 601) -> models/601.glb
+- Greenkeepers Cottage -> models/602.glb
+- (unnamed, ID: 603) -> models/603.glb
+- Fungarth Farmhouse -> models/604.glb
+- (unnamed, ID: 605) -> models/605.glb
+- (unnamed, ID: 606) -> models/606.glb
+- Flint Cottage -> models/607.glb
+- (unnamed, ID: 608) -> models/608.glb
+- (unnamed, ID: 609) -> models/609.glb
+- (unnamed, ID: 610) -> models/610.glb
+- (unnamed, ID: 613) -> models/613.glb
+- (unnamed, ID: 614) -> models/614.glb
+- (unnamed, ID: 615) -> models/615.glb
+- Haughend -> models/616.glb
+- (unnamed, ID: 617) -> models/617.glb
+- (unnamed, ID: 618) -> models/618.glb
+- (unnamed, ID: 622) -> models/622.glb
+- Royal Dunkeld Hotel Annex -> models/623.glb
+- (unnamed, ID: 624) -> models/624.glb
+- Gallowhill Lodge -> models/625.glb
+- (unnamed, ID: 627) -> models/627.glb
+- (unnamed, ID: 628) -> models/628.glb
+- Old Abattoir -> models/634.glb
+- (unnamed, ID: 639) -> models/639.glb
+- (unnamed, ID: 640) -> models/640.glb
+- (unnamed, ID: 641) -> models/641.glb
+- (unnamed, ID: 644) -> models/644.glb
+- (unnamed, ID: 645) -> models/645.glb
+- (unnamed, ID: 646) -> models/646.glb
+- (unnamed, ID: 649) -> models/649.glb
+- (unnamed, ID: 653) -> models/653.glb
+- (unnamed, ID: 654) -> models/654.glb
+- 2 Water Wynd -> models/655.glb
+- 3 Water Wynd -> models/656.glb
+- 4 Water Wynd -> models/657.glb
+- NULL5 Water Wynd -> models/658.glb
+- (unnamed, ID: 659) -> models/659.glb
+- (unnamed, ID: 660) -> models/660.glb
+- (unnamed, ID: 661) -> models/661.glb
+- (unnamed, ID: 668) -> models/668.glb
+- (unnamed, ID: 670) -> models/670.glb
+- (unnamed, ID: 671) -> models/671.glb
+- (unnamed, ID: 672) -> models/672.glb
+- (unnamed, ID: 673) -> models/673.glb
+- Macbeth Cottage -> models/691.glb
+- (unnamed, ID: 692) -> models/692.glb
+- Erigmore -> models/693.glb
+- (unnamed, ID: 696) -> models/696.glb
+- MUGA -> models/697.glb
+- (unnamed, ID: 766) -> models/766.glb
+- The Neuk -> models/770.glb
+- (unnamed, ID: 778) -> models/778.glb
+- (unnamed, ID: 779) -> models/779.glb
+- (unnamed, ID: 784) -> models/784.glb
+- Averil Cottage -> models/785.glb
+- (unnamed, ID: 786) -> models/786.glb
+- River Cottage -> models/787.glb
+- (unnamed, ID: 788) -> models/788.glb
+- The Old Bake House -> models/789.glb
+- Birchwood Cottage -> models/790.glb
+- 28 Willowbank -> models/832.glb
+- The Birnam Reader -> models/835.glb
+- (unnamed, ID: 836) -> models/836.glb
+- Parkview -> models/837.glb
+- Birnam CD & DVD Duplication -> models/838.glb
+- (unnamed, ID: 839) -> models/839.glb
+- (unnamed, ID: 840) -> models/840.glb
+- (unnamed, ID: 841) -> models/841.glb
+- (unnamed, ID: 842) -> models/842.glb
+- (unnamed, ID: 843) -> models/843.glb
+- (unnamed, ID: 844) -> models/844.glb
+- (unnamed, ID: 845) -> models/845.glb
+- 1 Station Road -> models/846.glb
+- 2 Station Road -> models/847.glb
+- Balgownie -> models/848.glb
+- Westwood -> models/849.glb
+- (unnamed, ID: 857) -> models/857.glb
+- (unnamed, ID: 859) -> models/859.glb
+- Garage -> models/860.glb
+- Bob's Mechanical Repairs -> models/861.glb
+- Woodside -> models/862.glb
+- The Craft Diner -> models/864.glb
+- Merlin House -> models/918.glb
+- (unnamed, ID: 941) -> models/941.glb
+- (unnamed, ID: 942) -> models/942.glb
+- (unnamed, ID: 943) -> models/943.glb
+- (unnamed, ID: 944) -> models/944.glb
+- Taybank Beer Garden -> models/947.glb
+- Taybank Pizza -> models/948.glb
+- Workshop -> models/949.glb
+- Walnut Tree Cottage -> models/950.glb
+- (unnamed, ID: 951) -> models/951.glb
+- (unnamed, ID: 954) -> models/954.glb
+- Air Raid Shelter? -> models/955.glb
+- (unnamed, ID: 957) -> models/957.glb
+- Kincraig -> models/958.glb
+- Woodlark Cottage -> models/959.glb
+- (unnamed, ID: 960) -> models/960.glb
+- (unnamed, ID: 961) -> models/961.glb
+- (unnamed, ID: 964) -> models/964.glb
+- (unnamed, ID: 968) -> models/968.glb
+- (unnamed, ID: 969) -> models/969.glb
+- (unnamed, ID: 970) -> models/970.glb
+- (unnamed, ID: 971) -> models/971.glb
+- (unnamed, ID: 972) -> models/972.glb
+- (unnamed, ID: 973) -> models/973.glb
+- Dunkeld & Birnam, Signal Box -> models/974.glb
+- St Adamnan's Cottage -> models/980.glb
+- St Ninian's Chapel -> models/998.glb
+- Palace (Unfinished) -> models/1002.glb
+- (unnamed, ID: 1020) -> models/1020.glb
+- (unnamed, ID: 1021) -> models/1021.glb
+- (unnamed, ID: 1022) -> models/1022.glb
+- Birnam House -> models/1023.glb
+- St. Mary's Tower -> models/1024.glb
+- Niel Gow Statue -> models/1026.glb
+
+FEATURES WITH MISSING NOTES
+========================================
+
+FEATURES WITH MISSING FROM_YEAR
+========================================
+- Larachmhor
+- (unnamed, ID: 32)
+- (unnamed, ID: 34)
+- 6,7 Water Wynd
+- (unnamed, ID: 60)
+- (unnamed, ID: 68)
+- (unnamed, ID: 70)
+- (unnamed, ID: 112)
+- (unnamed, ID: 113)
+- (unnamed, ID: 116)
+- Spoutwell House
+- (unnamed, ID: 124)
+- Spoutswell Cottage
+- Garage
+- 2  - Atholl Park
+- (unnamed, ID: 134)
+- The White Cottage
+- Lonsdale
+- Garage
+- Thimmlefield - Atholl Park
+- Greenwalk - Atholl Park
+- The Haining - Atholl Park
+- 4 - Atholl Park
+- 5 - Atholl Park
+- Deanholm - Atholl Park
+- Garage
+- (unnamed, ID: 151)
+- (unnamed, ID: 155)
+- (unnamed, ID: 160)
+- 8 Station Road
+- 10 Station Road
+- Garage
+- Shed
+- Ivy Cottage
+- Armoury House
+- (unnamed, ID: 384)
+- The Old Coach House
+- Erigmore Swimming Pool
+- (unnamed, ID: 447)
+- Dowiestone
+- (unnamed, ID: 461)
+- (unnamed, ID: 524)
+- The Ice House
+- Shed
+- (unnamed, ID: 534)
+- (unnamed, ID: 537)
+- (unnamed, ID: 539)
+- (unnamed, ID: 541)
+- Gunpowder Store
+- Park Cottage
+- (unnamed, ID: 590)
+- (unnamed, ID: 593)
+- (unnamed, ID: 601)
+- Greenkeepers Cottage
+- (unnamed, ID: 603)
+- Fungarth Farmhouse
+- (unnamed, ID: 605)
+- (unnamed, ID: 606)
+- (unnamed, ID: 608)
+- (unnamed, ID: 609)
+- (unnamed, ID: 613)
+- (unnamed, ID: 614)
+- (unnamed, ID: 615)
+- Haughend
+- (unnamed, ID: 617)
+- Garage
+- (unnamed, ID: 624)
+- Gallowhill Lodge
+- Old Abattoir
+- (unnamed, ID: 640)
+- (unnamed, ID: 641)
+- (unnamed, ID: 644)
+- (unnamed, ID: 650)
+- Garage
+- (unnamed, ID: 668)
+- (unnamed, ID: 670)
+- (unnamed, ID: 671)
+- (unnamed, ID: 672)
+- (unnamed, ID: 673)
+- Garage
+- Garage
+- (unnamed, ID: 692)
+- (unnamed, ID: 696)
+- Garage
+- (unnamed, ID: 778)
+- (unnamed, ID: 779)
+- The Birnam Reader
+- (unnamed, ID: 836)
+- Parkview
+- Birnam CD & DVD Duplication
+- Balgownie
+- Westwood
+- (unnamed, ID: 857)
+- (unnamed, ID: 944)
+- (unnamed, ID: 957)
+- Niel Gow Statue
+
+VALID FEATURE NAMES
+========================================
+- Dunkeld Community Fire Station (ID: 2)
+- Old Police House (ID: 3)
+- The Royal School of Dunkeld (ID: 4)
+- Highland Reserve Forces and Cadets Association (ID: 5)
+- Little Dunkeld Kirk (ID: 6)
+- Old Village House Ruin (ID: 7)
+- Old Village House Ruin (ID: 8)
+- Old Village House Ruin (ID: 9)
+- Old Village House Ruin (ID: 10)
+- Old Village House Ruin (ID: 11)
+- Old Village House Ruin (ID: 12)
+- Old Village House Ruin (ID: 13)
+- Old Village House Ruin (ID: 14)
+- Old Village House Ruin (ID: 15)
+- Old Village House Ruin (ID: 16)
+- Old Village House Ruin (ID: 17)
+- Old Village House Ruin (ID: 18)
+- Old Village House Ruin (ID: 19)
+- Birnam Library (ID: 20)
+- St Columba's (ID: 21)
+- St. Mary's Church (ID: 22)
+- Dunkeld & Birnam railway station (ID: 23)
+- Larachmhor (ID: 24)
+- Craigmore (ID: 25)
+- Birnam Bank Cottage (ID: 27)
+- Elsey Cottage (ID: 28)
+- Birnam Bank (ID: 29)
+- Coach House (ID: 30)
+- Heath Park (ID: 33)
+- Oakbank (ID: 35)
+- Birnam Inn (ID: 38)
+- Birnam Hotel (ID: 39)
+- Birnam Hotel (ID: 39_pre1913)
+- Merryburn Hotel (ID: 41)
+- Taybank (ID: 42)
+- Atholl Arms Hotel (ID: 43)
+- Bridge Street Terrace (ID: 44)
+- Bridge Street Terrace (ID: 45)
+- 12 Cathedral Street (ID: 46)
+- 18 Cathedral Street (ID: 47)
+- 18 Cathedral Street (ID: 48)
+- 6,7 Water Wynd (ID: 49)
+- Chanonry (ID: 51)
+- Chanonry (ID: 52)
+- The Manse (ID: 53)
+- Tay House (ID: 54)
+- 5 Brae Street (ID: 55)
+- Bakehouse Cottage (ID: 56)
+- Jeremy Law (ID: 62)
+- 12a The Cross (ID: 63)
+- The Duchess Anne (ID: 65)
+- The Old Church (ID: 66)
+- 3, 6, 9 Saltire Court (ID: 71)
+- Perth Arms Hotel (ID: 74)
+- The Old Smithy (ID: 75)
+- Stables Cottage (ID: 77)
+- Eastferry House (ID: 78)
+- Eastwood House (ID: 80)
+- Garage (ID: 81)
+- Woodbrae (ID: 82)
+- Craigwood (ID: 83)
+- Sabhal Beag (ID: 85)
+- Murray House (ID: 86)
+- Boatbrae (ID: 87)
+- Frochan (ID: 88)
+- St Jerome's (ID: 89)
+- Morvern (ID: 90)
+- Garage (ID: 91)
+- Dun Vorist (ID: 92)
+- Deerfield (ID: 93)
+- Yew Cottage (ID: 94)
+- Craigrankie (ID: 95)
+- Tayhill (ID: 96)
+- Hillhead House (ID: 97)
+- Birnam Arts (ID: 109)
+- Glasalt (ID: 118)
+- Herons (ID: 119)
+- Garage (ID: 120)
+- Craig Royston (ID: 121)
+- Brackenbank (ID: 122)
+- Spoutwell House (ID: 123)
+- Cottage (ID: 125)
+- Spoutswell Cottage (ID: 126)
+- Atholl Garden Terrace (ID: 127)
+- Dean's House (ID: 129)
+- Rectory House (ID: 130)
+- Rectory House (ID: 131)
+- Garage (ID: 132)
+- 2  - Atholl Park (ID: 133)
+- 1 Water Wynd (ID: 135)
+- The White Cottage (ID: 136)
+- Lonsdale (ID: 137)
+- Garage (ID: 138)
+- Thimmlefield - Atholl Park (ID: 139)
+- Greenwalk - Atholl Park (ID: 140)
+- 5 Atholl Gardens (ID: 142)
+- The Haining - Atholl Park (ID: 143)
+- 4 - Atholl Park (ID: 145)
+- 5 - Atholl Park (ID: 146)
+- Deanholm - Atholl Park (ID: 147)
+- Garage (ID: 148)
+- Highfield (ID: 149)
+- 1 Atholl Gardens (ID: 150)
+- 3 Atholl Gardens (ID: 152)
+- 2 Atholl Gardens (ID: 153)
+- Garage (ID: 154)
+- Highland Offroad (ID: 156)
+- 15 Atholl Gardens (ID: 157)
+- 10 Atholl Gardens (ID: 158)
+- Bruce Gardens Apartments (ID: 159)
+- Birkenbrae (ID: 161)
+- 7 Atholl Gardens (ID: 162)
+- Verinag (ID: 163)
+- Bruce Gardens Apartments (ID: 164)
+- 14 Atholl Gardens (ID: 165)
+- Bruce Gardens Apartments (ID: 166)
+- 16 Atholl Gardens (ID: 169)
+- The Shieling (ID: 170)
+- 4 Atholl Gardens (ID: 171)
+- Craigie Barns (ID: 172)
+- Garage (ID: 174)
+- Strathview (ID: 175)
+- 11 Atholl Gardens (ID: 177)
+- Bruce Gardens Apartments (ID: 178)
+- Hillcrest (ID: 179)
+- 12 Atholl Gardens (ID: 181)
+- Duns Law (ID: 182)
+- Bruce Gardens Apartments (ID: 183)
+- Rosemount (ID: 184)
+- Glenburn (ID: 185)
+- Sunny Corner (ID: 186)
+- 8 Station Road (ID: 187)
+- 10 Station Road (ID: 188)
+- Beltane (ID: 189)
+- 44, 46, 48 Stell Park (ID: 190)
+- 40, 42 Stell Park (ID: 191)
+- 38 Stell Park (ID: 192)
+- Little Dunkeld House (ID: 205)
+- Nursery Cottage (ID: 206)
+- Puddleduck (ID: 207)
+- 1,2 Kirkfield Place (ID: 208)
+- 3,4 Kirkfield Place (ID: 209)
+- Nurses House (ID: 210)
+- Garage (ID: 211)
+- Garage (ID: 212)
+- Toll House (ID: 213)
+- Glenfalloch (ID: 214)
+- Merle House (ID: 215)
+- Waterside (ID: 216)
+- Kariba (ID: 217)
+- Garage (ID: 218)
+- 5,6 Kirkfield Place (ID: 219)
+- Garage (ID: 220)
+- Rossie (ID: 221)
+- Invertay (ID: 222)
+- Girlguiding Dunkeld And Birnam (ID: 223)
+- 7,8 Kirkfield Place (ID: 224)
+- Garage (ID: 225)
+- Craigvinean Surgery (ID: 226)
+- Dunkeld and Birnam Community Co-Working Space (ID: 227)
+- Gowrie Cottage (ID: 228)
+- Garage (ID: 229)
+- Lagbeag (ID: 230)
+- Shed (ID: 231)
+- 54, 55 Willowbank (ID: 248)
+- 52, 53 Willowbank (ID: 249)
+- 56, 57 Willowbank (ID: 250)
+- Garage (ID: 251)
+- Dunkeld and Birnam Golf Club (ID: 252)
+- Servite House (ID: 253)
+- Servite House (ID: 254)
+- Servite House (ID: 255)
+- Servite House (ID: 256)
+- Servite House (ID: 257)
+- Servite House (ID: 258)
+- Servite House (ID: 259)
+- 11a Willowbank (ID: 260)
+- 102-105 Perth Road (ID: 261)
+- 100, 101 Perth Road (ID: 262)
+- Flixton (ID: 263)
+- The Retreat (ID: 264)
+- Merrie Meade (ID: 265)
+- Ladylands (ID: 266)
+- Edal (ID: 267)
+- 9 Burnmouth Road (ID: 268)
+- 10 Burnmouth Road (ID: 269)
+- 5 Burnmouth Road (ID: 270)
+- 4 Burnmouth Road (ID: 271)
+- 3 Burnmouth Road (ID: 272)
+- 2 Burnmouth Road (ID: 273)
+- 1 Burnmouth Road (ID: 274)
+- 6 Burnmouth Road (ID: 275)
+- 7 Burnmouth Road (ID: 276)
+- 8 Burnmouth Road (ID: 277)
+- Dove Cottage (ID: 278)
+- Rhovanion (ID: 279)
+- Bon Accord (ID: 280)
+- Tayburn House (ID: 281)
+- Carter's Lodge (ID: 282)
+- House - Stell Park (ID: 283)
+- 30 Stell Park (ID: 284)
+- 26 Stell Park (ID: 285)
+- House - Stell Park (ID: 286)
+- 22, 24 Stell Park (ID: 287)
+- 9-12 Stell Park (ID: 288)
+- 13-15 Stell Park (ID: 289)
+- House - Stell Park (ID: 290)
+- 18, 19 Stell Park (ID: 291)
+- House - Stell Park (ID: 292)
+- 14 Stell Park (ID: 293)
+- 12 Stell Park (ID: 294)
+- 10 Stell Park (ID: 295)
+- 8 Stell Park (ID: 296)
+- 6 Stell Park (ID: 297)
+- 4 Stell Park (ID: 298)
+- 2 Stell Park (ID: 299)
+- 5 Stell Park (ID: 300)
+- 7 Stell Park (ID: 301)
+- 9 Stell Park (ID: 302)
+- 15 Stell Park (ID: 303)
+- 17 Stell Park (ID: 304)
+- 35 Stell Park (ID: 305)
+- 37 Stell Park (ID: 306)
+- 39-45 Stell Park (ID: 307)
+- 47-53 Stell Park (ID: 308)
+- 55 Stell Park (ID: 309)
+- 50 Stell Park (ID: 310)
+- Thistle Cottage (ID: 313)
+- Ard Darach (ID: 314)
+- Dunsinane (ID: 315)
+- 36 Stell Park (ID: 316)
+- 33 Stell Park (ID: 317)
+- 8 Stell Park (ID: 318)
+- 6 Stell Park (ID: 319)
+- 4 Stell Park (ID: 320)
+- 2 Stell Park (ID: 321)
+- House - Stell Park (ID: 322)
+- House - Stell Park (ID: 323)
+- 27, 29 Stell Park (ID: 324)
+- 31 Stell Park (ID: 325)
+- 1 Stell Park (ID: 326)
+- 3 Stell Park (ID: 327)
+- 1 Stell Park (ID: 328)
+- Garage (ID: 329)
+- 3 Stell Park (ID: 330)
+- Garage (ID: 331)
+- Garage (ID: 332)
+- The Bungalow (ID: 334)
+- Ivy Cottage (ID: 335)
+- The Old Bakery (ID: 337)
+- Aran Bakery (ID: 338)
+- St Abbas (ID: 341)
+- Cherrytrees (ID: 342)
+- Armoury House (ID: 343)
+- Armoury House (ID: 344)
+- Schoolhouse (ID: 345)
+- Bheinne Mhor (ID: 346)
+- Garage (ID: 347)
+- Rectory (ID: 354)
+- Dunbraantay Laundry (ID: 356)
+- Garage (ID: 371)
+- Ladyhill House (ID: 380)
+- Conival (ID: 386)
+- Schiehallion (ID: 387)
+- Ballinoe,Rockfield (ID: 388)
+- Byways (ID: 389)
+- Garage (ID: 391)
+- The Old Coach House (ID: 393)
+- Chalet (ID: 394)
+- Chalet (ID: 395)
+- Chalet (ID: 396)
+- Chalet (ID: 397)
+- Chalet (ID: 398)
+- Chalet (ID: 399)
+- Chalet (ID: 400)
+- Erigmore Swimming Pool (ID: 401)
+- Chalet (ID: 402)
+- Chalet (ID: 403)
+- Kennard (ID: 404)
+- Hazlebee (ID: 426)
+- 3 Torlee Road (ID: 429)
+- 4,5 Torlee Road (ID: 431)
+- The Fields (ID: 432)
+- 6 Torlee Road (ID: 433)
+- 7 Torlee Road (ID: 434)
+- 8 Torlee Road (ID: 435)
+- 9 Torlee Road (ID: 436)
+- 10 Torlee Road (ID: 437)
+- 11 Torlee Road (ID: 438)
+- Hollybank (ID: 444)
+- Wychwood (ID: 446)
+- Dowiestone (ID: 448)
+- Chalet (ID: 449)
+- Chalet (ID: 450)
+- Chalet (ID: 451)
+- Chalet (ID: 452)
+- Chalet (ID: 453)
+- Chalet (ID: 454)
+- Birchwood House (ID: 455)
+- Chalet (ID: 456)
+- Chalet (ID: 457)
+- Chalet (ID: 458)
+- Chalet (ID: 459)
+- Chalet (ID: 460)
+- Chalet (ID: 462)
+- Chalet (ID: 463)
+- Chalet (ID: 464)
+- Chalet (ID: 465)
+- Chalet (ID: 466)
+- Chalet (ID: 467)
+- Chalet (ID: 468)
+- Chalet (ID: 469)
+- Chalet (ID: 470)
+- Chalet (ID: 471)
+- Chalet (ID: 472)
+- Chalet (ID: 473)
+- Chalet (ID: 474)
+- Chalet (ID: 475)
+- Chalet (ID: 476)
+- Chalet (ID: 477)
+- Chalet (ID: 478)
+- Chalet (ID: 479)
+- Chalet (ID: 480)
+- Chalet (ID: 481)
+- Chalet (ID: 482)
+- Chalet (ID: 483)
+- Chalet (ID: 484)
+- Chalet (ID: 485)
+- Chalet (ID: 486)
+- Chalet (ID: 487)
+- Chalet (ID: 488)
+- Chalet (ID: 489)
+- Chalet (ID: 490)
+- Chalet (ID: 491)
+- Chalet (ID: 493)
+- Chalet (ID: 494)
+- Chalet (ID: 495)
+- Chalet (ID: 496)
+- Chalet (ID: 497)
+- Chalet (ID: 498)
+- Chalet (ID: 499)
+- Chalet (ID: 500)
+- Chalet (ID: 501)
+- Chalet (ID: 502)
+- Chalet (ID: 503)
+- Chalet (ID: 504)
+- Chalet (ID: 505)
+- Chalet (ID: 506)
+- Chalet (ID: 507)
+- Chalet (ID: 508)
+- Chalet (ID: 509)
+- Chalet (ID: 510)
+- Chalet (ID: 511)
+- Chalet (ID: 512)
+- Chalet (ID: 513)
+- Chalet (ID: 514)
+- Sundial House (ID: 521)
+- North Lodge (ID: 522)
+- 8 Atholl Gardens (ID: 523)
+- Dunkeld Community Archive (ID: 526)
+- Shed (ID: 527)
+- Shed (ID: 528)
+- Shed (ID: 529)
+- The Ice House (ID: 530)
+- Shed (ID: 531)
+- 3 Brae Street (ID: 533)
+- Dunkeld and Birnam Bowling Club (ID: 538)
+- Shed (ID: 540)
+- Royal British Legion (ID: 544)
+- Gate Lodge (North) (ID: 545)
+- Shed (ID: 546)
+- Greystones (ID: 548)
+- Garage (ID: 550)
+- Shed (ID: 552)
+- Gunpowder Store (ID: 553)
+- Torwood House (ID: 555)
+- Guthrie Villa (ID: 556)
+- Garage (ID: 559)
+- District Nurse (ID: 560)
+- Ferwaldon (ID: 561)
+- Cnocairde (ID: 562)
+- Dunkeld Telephone Exchange (ID: 563)
+- Tayview House (ID: 564)
+- Tayview Cottage (ID: 565)
+- Mansewood (ID: 566)
+- Free Church School (ID: 567)
+- Oronsay (ID: 568)
+- Rivendell House (ID: 573)
+- Allan Johnstone Court (ID: 574)
+- The Oaks (ID: 575)
+- 1-8Stell Park (ID: 576)
+- Park Cottage (ID: 577)
+- The Tummel (ID: 578)
+- Bridge House (ID: 579)
+- Hare House (ID: 580)
+- Osprey House (ID: 581)
+- Inverbraan (ID: 583)
+- Wash House (ID: 584)
+- Braan Cottage (ID: 587)
+- Greenhouse (ID: 591)
+- Garage (ID: 592)
+- Rushven (ID: 595)
+- Garage (ID: 596)
+- Greenkeepers Cottage (ID: 602)
+- Fungarth Farmhouse (ID: 604)
+- Flint Cottage (ID: 607)
+- Haughend (ID: 616)
+- Elizabeth Allison Interiors (ID: 620)
+- Garage (ID: 621)
+- Royal Dunkeld Hotel Annex (ID: 623)
+- Gallowhill Lodge (ID: 625)
+- Old Abattoir (ID: 634)
+- Shed (ID: 635)
+- Royal Dunkeld Hotel (ID: 636)
+- 6 Brae Street (ID: 637)
+- 7 Brae Street (ID: 638)
+- Greenhouse (ID: 643)
+- The Ell House (ID: 647)
+- Garage (ID: 651)
+- 2 Water Wynd (ID: 655)
+- 3 Water Wynd (ID: 656)
+- 4 Water Wynd (ID: 657)
+- NULL5 Water Wynd (ID: 658)
+- Dunkeld Fish Bar (ID: 663)
+- 15 The Cross (ID: 666)
+- Shed (ID: 667)
+- Atholl Memorial Fountain (ID: 669)
+- Garage (ID: 682)
+- Garage (ID: 683)
+- Garage (ID: 685)
+- Garage (ID: 686)
+- Garage (ID: 687)
+- Macbeth Cottage (ID: 691)
+- Erigmore (ID: 693)
+- Garage (ID: 694)
+- Chalet (ID: 695)
+- MUGA (ID: 697)
+- Caravan (ID: 698)
+- Caravan (ID: 699)
+- Caravan (ID: 700)
+- Caravan (ID: 701)
+- Caravan (ID: 702)
+- Caravan (ID: 703)
+- Caravan (ID: 704)
+- Caravan (ID: 705)
+- Caravan (ID: 706)
+- Caravan (ID: 707)
+- Caravan (ID: 708)
+- Caravan (ID: 709)
+- Caravan (ID: 710)
+- Caravan (ID: 711)
+- Caravan (ID: 712)
+- Caravan (ID: 713)
+- Caravan (ID: 714)
+- Caravan (ID: 715)
+- Caravan (ID: 716)
+- Caravan (ID: 717)
+- Caravan (ID: 745)
+- Caravan (ID: 747)
+- Caravan (ID: 748)
+- Caravan (ID: 749)
+- Caravan (ID: 750)
+- Caravan (ID: 751)
+- Caravan (ID: 752)
+- Caravan (ID: 753)
+- Caravan (ID: 754)
+- Caravan (ID: 755)
+- Caravan (ID: 756)
+- Caravan (ID: 757)
+- Caravan (ID: 758)
+- Caravan (ID: 759)
+- Caravan (ID: 760)
+- Caravan (ID: 761)
+- Caravan (ID: 762)
+- Garage (ID: 767)
+- 48a Stell Park (ID: 768)
+- Garage (ID: 769)
+- The Neuk (ID: 770)
+- Garage (ID: 771)
+- The Birnam Oak Cafe (ID: 773)
+- Birnam Cottage (ID: 782)
+- Burn Lodge (ID: 783)
+- Averil Cottage (ID: 785)
+- River Cottage (ID: 787)
+- The Old Bake House (ID: 789)
+- Birchwood Cottage (ID: 790)
+- 50 Willowbank (ID: 794)
+- 51 Willowbank (ID: 795)
+- 46 Willowbank (ID: 796)
+- 47 Willowbank (ID: 797)
+- 44 Willowbank (ID: 798)
+- 45 Willowbank (ID: 799)
+- 48 Willowbank (ID: 800)
+- 43 Willowbank (ID: 801)
+- 42 Willowbank (ID: 802)
+- 32 Willowbank (ID: 803)
+- 33 Willowbank (ID: 804)
+- 34 Willowbank (ID: 805)
+- 35 Willowbank (ID: 806)
+- 36 Willowbank (ID: 807)
+- 37 Willowbank (ID: 808)
+- 38 Willowbank (ID: 809)
+- 39 Willowbank (ID: 810)
+- 40 Willowbank (ID: 811)
+- 41 Willowbank (ID: 812)
+- 26 Willowbank (ID: 813)
+- 24 Willowbank (ID: 814)
+- 22 Willowbank (ID: 815)
+- 20 Willowbank (ID: 816)
+- 18 Willowbank (ID: 817)
+- 16 Willowbank (ID: 818)
+- 14 Willowbank (ID: 819)
+- 12 Willowbank (ID: 820)
+- 15 Willowbank (ID: 821)
+- 13 Willowbank (ID: 822)
+- 19 Willowbank (ID: 823)
+- 17 Willowbank (ID: 824)
+- 23 Willowbank (ID: 825)
+- 21 Willowbank (ID: 826)
+- 27 Willowbank (ID: 827)
+- 25 Willowbank (ID: 828)
+- 31 Willowbank (ID: 829)
+- 29 Willowbank (ID: 830)
+- 30 Willowbank (ID: 831)
+- 28 Willowbank (ID: 832)
+- 13 Stell Park (ID: 833)
+- 11 Stell Park (ID: 834)
+- The Birnam Reader (ID: 835)
+- Parkview (ID: 837)
+- Birnam CD & DVD Duplication (ID: 838)
+- 1 Station Road (ID: 846)
+- 2 Station Road (ID: 847)
+- Balgownie (ID: 848)
+- Westwood (ID: 849)
+- Garage (ID: 860)
+- Bob's Mechanical Repairs (ID: 861)
+- Woodside (ID: 862)
+- Shed (ID: 863)
+- The Craft Diner (ID: 864)
+- Greenhouse (ID: 865)
+- Greenhouse (ID: 866)
+- 19 Cathedral Street (ID: 873)
+- Chalet (ID: 875)
+- Chalet (ID: 876)
+- Chalet (ID: 877)
+- Chalet (ID: 878)
+- Chalet (ID: 879)
+- Chalet (ID: 880)
+- Chalet (ID: 881)
+- Chalet (ID: 882)
+- Chalet (ID: 883)
+- Chalet (ID: 884)
+- Chalet (ID: 885)
+- Chalet (ID: 886)
+- Chalet (ID: 887)
+- Chalet (ID: 888)
+- Chalet (ID: 889)
+- Chalet (ID: 890)
+- Chalet (ID: 891)
+- Chalet (ID: 892)
+- Chalet (ID: 893)
+- Chalet (ID: 894)
+- Chalet (ID: 895)
+- Chalet (ID: 896)
+- Chalet (ID: 897)
+- Chalet (ID: 898)
+- Chalet (ID: 899)
+- Chalet (ID: 900)
+- Chalet (ID: 901)
+- Chalet (ID: 902)
+- Chalet (ID: 903)
+- Chalet (ID: 904)
+- Chalet (ID: 905)
+- Chalet (ID: 906)
+- Chalet (ID: 907)
+- Chalet (ID: 908)
+- Chalet (ID: 909)
+- Chalet (ID: 910)
+- Chalet (ID: 911)
+- Chalet (ID: 912)
+- Chalet (ID: 913)
+- Chalet (ID: 914)
+- Chalet (ID: 915)
+- Chalet (ID: 916)
+- Chalet (ID: 917)
+- Merlin House (ID: 918)
+- Chalet (ID: 920)
+- Chalet (ID: 921)
+- Chalet (ID: 922)
+- Chalet (ID: 923)
+- Chalet (ID: 924)
+- Chalet (ID: 925)
+- Chalet (ID: 926)
+- Chalet (ID: 927)
+- Chalet (ID: 928)
+- Chalet (ID: 929)
+- Chalet (ID: 930)
+- Chalet (ID: 931)
+- Chalet (ID: 932)
+- Chalet (ID: 933)
+- Chalet (ID: 934)
+- Chalet (ID: 935)
+- Chalet (ID: 936)
+- Shed (ID: 937)
+- Greenhouse (ID: 938)
+- Greenhouse (ID: 939)
+- Garage (ID: 940)
+- Shed (ID: 946)
+- Taybank Beer Garden (ID: 947)
+- Taybank Pizza (ID: 948)
+- Workshop (ID: 949)
+- Walnut Tree Cottage (ID: 950)
+- Garage (ID: 952)
+- Garage (ID: 953)
+- Air Raid Shelter? (ID: 955)
+- Shed (ID: 956)
+- Kincraig (ID: 958)
+- Woodlark Cottage (ID: 959)
+- Dunkeld & Birnam, Signal Box (ID: 974)
+- Dunkeld Cathedral - Quire (ID: 979)
+- St Adamnan's Cottage (ID: 980)
+- Dunkeld Cathedral - Knave (ID: 981)
+- Dunkeld Cathedral - Knave (ID: 982)
+- Dunkeld Cathedral - Tower (ID: 983)
+- Bishop's Palace (ID: 984)
+- Old Dunkeld House Palace (ID: 985)
+- Old Dunkeld House (earlier house) (ID: 986)
+- Old Dunkeld House (ruin) (ID: 987)
+- St Ninian's Chapel (ID: 998)
+- Dairy (ID: 999)
+- Palace (Unfinished) (ID: 1002)
+- Dunkeld Bridge (ID: 1003)
+- Old Village House (ID: 1004)
+- Old Village House (ID: 1005)
+- Old Village House (ID: 1006)
+- Old Village House (ID: 1007)
+- Old Village House (ID: 1008)
+- Old Village House (ID: 1009)
+- Old Village House (ID: 1010)
+- Old Village House (ID: 1011)
+- Old Village House (ID: 1012)
+- Old Village House (ID: 1013)
+- Old Village House (ID: 1014)
+- Old Village House (ID: 1015)
+- Old Village House (ID: 1016)
+- Old Bridge (ID: 1017)
+- Bishop Brown Bridge (ID: 1018)
+- Bishop Brown Bridge Remains (ID: 1019)
+- Birnam House (ID: 1023)
+- St. Mary's Tower (ID: 1024)
+- War Memorial (ID: 1025)
+- Niel Gow Statue (ID: 1026)
