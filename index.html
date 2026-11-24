@@ -13,8 +13,6 @@
 </script>
 <!-- Start the module graph and the biggest data files downloading now, instead of after the scripts above have
      run. Keep this list to files that actually exist in your project: a preload that is never used just wastes a request. -->
-<link rel="modulepreload" href="./vendor/three/build/three.module.min.js">
-<link rel="modulepreload" href="./viewer_utils.js">
 <link rel="preload" as="fetch" crossorigin href="tiles/meta.json">
 <link rel="preload" as="fetch" crossorigin href="base.geojson">
 <link rel="preload" as="fetch" crossorigin href="buildings_master.geojson">
@@ -150,7 +148,7 @@ html:not([data-mode="curator"]) .curator-only { display: none !important; }
       <div id="activeMaps" class="curator-only"></div>
       <div class="opts">
         <label><input id="bldVis" type="checkbox" checked> Buildings</label>
-        <!-- <label><input id="nightMode" type="checkbox"> Night mode (dims lighting and landscape)</label> -->
+        <label><input id="nightMode" type="checkbox"> Night mode (dims lighting and landscape)</label>
         <label><input id="smokeVis" type="checkbox" checked> Chimney smoke</label>
         <label><input id="treeVis" type="checkbox" checked> Trees</label>
         <label><input id="roadAreasVis" type="checkbox" checked> Road surfaces & markings</label>
