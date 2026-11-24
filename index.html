@@ -116,7 +116,7 @@ html:not([data-mode="curator"]) .curator-only { display: none !important; }
 </div>
 <div id="timelineBar" role="region" aria-label="Historical timeline">
   <div id="timelineHeading">
-    <div><strong>Timeline</strong>: <span id="year">2026</span><span class="mode-badge curator-only">Curator mode</span></div>
+    <div><strong>Timeline</strong>: <span id="year"></span><span class="mode-badge curator-only">Curator mode</span></div>
     <div id="timelineActions">
       <button id="playTimeline" type="button" aria-label="Play timeline">▶ Play</button>
       <select id="timelineSpeed" aria-label="Timeline playback speed" title="Time per year">
@@ -128,7 +128,7 @@ html:not([data-mode="curator"]) .curator-only { display: none !important; }
     </div>
   </div>
   <div id="timelineControls">
-    <input id="yearSlider" type="range" min="1200" max="2026" step="1" value="2026" aria-label="Timeline year">
+    <input id="yearSlider" type="range" min="1200" step="1" aria-label="Timeline year">
   </div>
 </div>
 <div id="side">
