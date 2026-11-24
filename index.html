@@ -143,14 +143,18 @@ html:not([data-mode="curator"]) .curator-only { display: none !important; }
     </button>
     <div id="infoContent" class="panel-content">
       <label>Historic map opacity
-        <input id="mapOpacity" type="range" min="0" max="1" step="0.05" value="0.85">
+        <input id="mapOpacity" type="range" min="0" max="1" step="0.05" value="0.0">
       </label>
       <div id="activeMaps" class="curator-only"></div>
       <div class="opts">
         <label><input id="bldVis" type="checkbox" checked> Buildings</label>
-        <!-- <label><input id="nightMode" type="checkbox"> Night mode (dims lighting and landscape)</label> -->
-        <!-- <label><input id="smokeVis" type="checkbox" checked> Chimney smoke</label> -->
-        <!-- <label><input id="treeVis" type="checkbox" checked> Trees</label>
+      </div>
+      <label class="row curator-only">Mist above
+        <input id="mistHeight" type="range" min="25" max="650" step="25" value="75">
+        <span id="mistHeightValue">75 m</span>
+                <label><input id="nightMode" type="checkbox"> Night mode (dims lighting and landscape)</label>
+        <label><input id="smokeVis" type="checkbox" checked> Chimney smoke</label>
+        <label><input id="treeVis" type="checkbox" checked> Trees</label>
         <label><input id="roadAreasVis" type="checkbox" checked> Road surfaces & markings</label>
         <label><input id="urbanGroundVis" type="checkbox" checked> Urban ground areas</label>
         <label><input id="borderVis" type="checkbox" checked> Walls, hedges, bushes & fences</label>
@@ -160,11 +164,7 @@ html:not([data-mode="curator"]) .curator-only { display: none !important; }
         <label><input id="mistVis" type="checkbox" checked> Mountain mist</label>
         <label><input id="texVis" type="checkbox" checked> Ground textures</label>
         <label><input id="boatVis" type="checkbox" checked> River boats</label>
-        <label><input id="birdVis" type="checkbox" checked> Birds</label> -->
-      </div>
-      <label class="row curator-only">Mist above
-        <input id="mistHeight" type="range" min="25" max="650" step="25" value="75">
-        <span id="mistHeightValue">75 m</span>
+        <label><input id="birdVis" type="checkbox" checked> Birds</label>
       </label>
       <label class="row">Season
         <select id="season" aria-label="Season">
