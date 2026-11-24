@@ -4,6 +4,13 @@
 <meta charset="utf-8">
 <title>Dunkeld & Birnam through time</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The import map must come before any module or modulepreload (Firefox rejects it otherwise). -->
+<script type="importmap">
+{ "imports": {
+    "three": "./vendor/three/build/three.module.min.js",
+    "three/addons/": "./vendor/three/examples/jsm/"
+} }
+</script>
 <!-- Start the module graph and the biggest data files downloading now, instead of after the scripts above have
      run. Keep this list to files that actually exist in your project: a preload that is never used just wastes a request. -->
 <link rel="modulepreload" href="./vendor/three/build/three.module.min.js">
@@ -250,12 +257,6 @@ document.documentElement.dataset.mode = window.VIEWER_MODE;
 
 <!-- The minified Three.js build is about half the size of three.module.js (less to download and parse).
      GLTFLoader is only fetched if there are building models to load. -->
-<script type="importmap">
-{ "imports": {
-    "three": "./vendor/three/build/three.module.min.js",
-    "three/addons/": "./vendor/three/examples/jsm/"
-} }
-</script>
 
 <script type="module">
   // Viewer build: v21 two-material warm window lighting.
