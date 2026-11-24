@@ -4,10 +4,9 @@
 <meta charset="utf-8">
 <title>Dunkeld & Birnam through time</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preconnect" href="https://unpkg.com" crossorigin>
 <!-- Start the module graph and the biggest data files downloading now, instead of after the scripts above have
      run. Keep this list to files that actually exist in your project: a preload that is never used just wastes a request. -->
-<link rel="modulepreload" href="https://unpkg.com/three@0.160.0/build/three.module.min.js">
+<link rel="modulepreload" href="./vendor/three/build/three.module.min.js">
 <link rel="modulepreload" href="./viewer_utils.js">
 <link rel="preload" as="fetch" crossorigin href="tiles/meta.json">
 <link rel="preload" as="fetch" crossorigin href="base.geojson">
@@ -15,7 +14,7 @@
 <link rel="preload" as="fetch" crossorigin href="roads.geojson">
 <link rel="preload" as="fetch" crossorigin href="roads_areas.geojson">
 <link rel="preload" as="fetch" crossorigin href="forest4.geojson">
-<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<link rel="stylesheet" href="./vendor/maplibre-gl/maplibre-gl.css">
 <style>
   html, body, #map { margin: 0; height: 100%; background: #000; }
   #timelineBar { position: absolute; top: 10px; left: 10px; right: 10px; z-index: 3;
@@ -71,6 +70,39 @@
   #loader .ld-row { display: flex; justify-content: space-between; gap: 12px; margin-top: 10px; color: #aab3a6; font-size: 13px; }
   #loader .ld-pct { font-variant-numeric: tabular-nums; }
   @media (prefers-reduced-motion: reduce) { #loader, #loader .ld-bar { transition: none; } }
+/* ---- kiosk readability + touch ---- */
+html:not([data-mode="curator"]) .curator-only { display: none !important; }
+.mode-badge { margin-left: 10px; padding: 2px 8px; border-radius: 10px; background: #b4562b; color: #fff; font: 600 12px system-ui, sans-serif; vertical-align: middle; }
+#timelineBar, #panel, #events { font-size: 16px; }
+#timelineBar { padding: 10px 16px 6px; }
+#year { font-size: 30px; }
+#playTimeline, #timelineSpeed, #panel select, #events .ev button { min-height: 44px; font-size: 16px; padding: 4px 14px; cursor: pointer; }
+#timelineSpeed { max-width: 150px; }
+#yearSlider { -webkit-appearance: none; appearance: none; height: 44px; background: transparent; touch-action: none; }
+#yearSlider::-webkit-slider-runnable-track { height: 8px; border-radius: 4px; background: #b9c4b3; }
+#yearSlider::-webkit-slider-thumb { -webkit-appearance: none; width: 34px; height: 34px; margin-top: -13px; border-radius: 50%; background: #44683a; border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.45); }
+#yearSlider::-moz-range-track { height: 8px; border-radius: 4px; background: #b9c4b3; }
+#yearSlider::-moz-range-thumb { width: 28px; height: 28px; border-radius: 50%; background: #44683a; border: 3px solid #fff; }
+#side { top: 124px; width: 340px; max-height: calc(100% - 134px); }
+.panel-toggle { min-height: 48px; padding: 10px 14px; font-size: 17px; }
+#panel .opts { grid-template-columns: 1fr; }
+#panel .opts label, #panel label.row { display: flex; align-items: center; gap: 10px; min-height: 40px; }
+#panel input[type=checkbox] { width: 24px; height: 24px; flex: 0 0 auto; }
+#status, #activeMaps, #perf, #events .ev small { font-size: 14px; color: #444; }
+#events .ev { padding: 10px 0; }
+#events .ev-jump { font-size: 16px; min-height: 40px; }
+#events .ev img { max-height: 180px; }
+@media (max-width: 600px) { #side { top: 118px; width: min(340px, calc(100% - 12px)); } #year { font-size: 24px; } }
+.maplibregl-popup-content { padding: 14px 18px 16px; border-radius: 10px; font: 16px/1.5 system-ui, sans-serif; }
+.popup-curator .maplibregl-popup-content { font-size: 13px; line-height: 1.4; }
+.maplibregl-popup-close-button { width: 44px; height: 44px; font-size: 28px; }
+.pu h3 { margin: 0 30px 4px 0; font-size: 20px; line-height: 1.25; }
+.pu-dates { color: #44683a; font-weight: 600; font-size: 17px; }
+.pu-note { margin: 8px 0 0; max-height: 240px; overflow-y: auto; white-space: pre-line; }
+.pu-flag { color: #9a4a00; margin-top: 3px; }
+#attractCaption { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 4; max-width: min(90vw, 760px); padding: 14px 26px; border-radius: 12px; background: rgba(255,255,255,.95); font: 22px/1.3 system-ui, sans-serif; text-align: center; pointer-events: none; box-shadow: 0 2px 12px rgba(0,0,0,.35); }
+#attractCaption small { display: block; margin-top: 4px; font-size: 15px; color: #555; }
+#attractCaption[hidden] { display: none; }
 </style>
 </head>
 <body>
@@ -84,7 +116,7 @@
 </div>
 <div id="timelineBar" role="region" aria-label="Historical timeline">
   <div id="timelineHeading">
-    <div><strong>Timeline</strong>: <span id="year">2026</span></div>
+    <div><strong>Timeline</strong>: <span id="year">2026</span><span class="mode-badge curator-only">Curator mode</span></div>
     <div id="timelineActions">
       <button id="playTimeline" type="button" aria-label="Play timeline">▶ Play</button>
       <select id="timelineSpeed" aria-label="Timeline playback speed" title="Time per year">
@@ -108,7 +140,7 @@
       <label>Historic map opacity
         <input id="mapOpacity" type="range" min="0" max="1" step="0.05" value="0.85">
       </label>
-      <div id="activeMaps"></div>
+      <div id="activeMaps" class="curator-only"></div>
       <div class="opts">
         <label><input id="bldVis" type="checkbox" checked> Buildings</label>
         <label><input id="nightMode" type="checkbox"> Night mode (dims lighting and landscape)</label>
@@ -125,7 +157,7 @@
         <label><input id="boatVis" type="checkbox" checked> River boats</label>
         <label><input id="birdVis" type="checkbox" checked> Birds</label>
       </div>
-      <label class="row">Mist above
+      <label class="row curator-only">Mist above
         <input id="mistHeight" type="range" min="25" max="650" step="25" value="75">
         <span id="mistHeightValue">75 m</span>
       </label>
@@ -139,7 +171,7 @@
         <span id="seasonResolved"></span>
       </label>
       <label class="row"><input id="seasonCycle" type="checkbox"> Auto-cycle season</label>
-      <label class="row">Quality
+      <label class="row curator-only">Quality
         <select id="quality">
           <option value="auto">Automatic</option>
           <option value="low">Low</option>
@@ -147,8 +179,8 @@
           <option value="high">High</option>
         </select>
       </label>
-      <div id="status" aria-live="polite">Loading…</div>
-      <div id="perf"></div>
+      <div id="status" class="curator-only" aria-live="polite">Loading…</div>
+      <div id="perf" class="curator-only"></div>
     </div>
   </div>
   <div id="events">
@@ -206,14 +238,22 @@ window.addEventListener('unhandledrejection', event => {
 });
 </script>
 
-<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script>
+// ?mode=curator shows full records in popups and turns off the kiosk idle reset / attract loop.
+window.VIEWER_MODE = new URLSearchParams(location.search).get('mode') === 'curator' ? 'curator' : 'visitor';
+window.CURRENT_YEAR = new Date().getFullYear();
+document.documentElement.dataset.mode = window.VIEWER_MODE;
+(() => { const s = document.getElementById('yearSlider'); s.max = window.CURRENT_YEAR; s.value = window.CURRENT_YEAR;
+  document.getElementById('year').textContent = window.CURRENT_YEAR; })();
+</script>
+<script src="./vendor/maplibre-gl/maplibre-gl.js"></script>
 
 <!-- The minified Three.js build is about half the size of three.module.js (less to download and parse).
      GLTFLoader is only fetched if there are building models to load. -->
 <script type="importmap">
 { "imports": {
-    "three": "https://unpkg.com/three@0.160.0/build/three.module.min.js",
-    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    "three": "./vendor/three/build/three.module.min.js",
+    "three/addons/": "./vendor/three/examples/jsm/"
 } }
 </script>
 
@@ -229,12 +269,15 @@ import { areaBounds, padBounds, inBounds, centroid, generateTrees, localiseTrees
 // ============================================================ settings
 const AREA_CENTRE = [-3.5806115,56.562696];
 const AREA_HALF_M = [1000, 1000];
-const DEFAULT_YEAR = 2026;
+const CURRENT_YEAR = window.CURRENT_YEAR, CURATOR = window.VIEWER_MODE === 'curator';
+const DEFAULT_YEAR = CURRENT_YEAR;   // timeline runs from the slider minimum to the current year
 const DEFAULT_PITCH = 50, DEFAULT_BEARING = 0, MAX_PITCH = 75;
 const IDLE_MS = 60000;
-const IDLE_RESETS_YEAR = false;
+const IDLE_RESETS_YEAR = true;          // after IDLE_MS with no input: home view + current year (visitor mode only)
+const ATTRACT_ENABLED = true;           // after the idle reset, step through the Dates of Interest until someone touches the screen
+const ATTRACT_DWELL_MS = 6000;          // time spent on each date in the attract loop
 const EXAGGERATION = 1.0;
-const MODERN_FROM = 2000;               // buildings with no from_year count as modern
+const MODERN_FROM = -99999;             // no from_year = present from the start of the timeline (to_year null = still here)
 const FOREST_UNDATED_FROM = MODERN_FROM; // forests/trees follow the SAME rule as buildings; set to null to keep
                                          // forests that have no from_year visible in every year
 const TERRAIN_MAXZOOM = 16;
@@ -1598,7 +1641,7 @@ async function start() {
   const MODEL_CONCURRENCY = QUALITY === 'low' ? 3 : 6;
   let preloading = false;                             // true only during the opening load: ignore zoom gates, cover the whole area
   const modelCache = new Map();                       // url -> Promise<Object3D>: each file is parsed once, then cloned
-  const DRACO_PATH = 'https://unpkg.com/three@0.160.0/examples/jsm/libs/draco/gltf/';
+  const DRACO_PATH = './vendor/three/examples/jsm/libs/draco/gltf/';
   const lastMatrix = new Float64Array(16);
   let haveMatrix = false;
   // MapLibre's custom-layer matrix (and queryTerrainElevation) measure height RELATIVE to the terrain
@@ -3808,12 +3851,50 @@ async function start() {
   // ============================================================ default view + idle reset
   let HOME = null, idleTimer = null, popup = null, lastIdleReset = 0;
 
+  // ---- attract loop (visitor mode): steps through the Dates of Interest while nobody is using the screen
+  let attractTimer = null, attractActive = false, attractIdx = 0;
+  const attractCaption = document.createElement('div');
+  attractCaption.id = 'attractCaption'; attractCaption.hidden = true;
+  document.body.append(attractCaption);
+  const attractYears = () => {
+    const lo = Number(slider.min), hi = Number(slider.max);
+    const ys = [...new Set(eventList.map(e => Math.floor(e.fromDate)).filter(y => y >= lo && y <= hi))].sort((a, b) => a - b);
+    if (ys.length >= 3) return ys;
+    const out = [], step = Math.ceil((hi - lo) / 40);
+    for (let y = lo; y < hi; y += step) out.push(y);
+    return [...out, hi];
+  };
+  function attractStep() {
+    const ys = attractYears();
+    if (attractIdx >= ys.length) attractIdx = 0;
+    const y = ys[attractIdx++];
+    slider.value = String(y); updateTimelineLabel(); onYearChange(false);
+    const evs = eventList.filter(e => Math.floor(e.fromDate) === y);
+    attractCaption.innerHTML = `<b>${y}</b>${evs.length ? ' \u2014 ' + esc(evs.map(e => e.title).join(' \u00b7 ')) : ''}<small>Touch the screen to explore</small>`;
+    attractCaption.hidden = false;
+    const at = evs.find(e => e.lon != null && e.lat != null && inBounds([e.lon, e.lat], AREA));
+    if (at) map.flyTo({ center: [at.lon, at.lat], zoom: at.zoom ?? 16.5, pitch: 55, duration: 2500 });
+  }
+  function startAttract() {
+    if (!ATTRACT_ENABLED || CURATOR || attractActive) return;
+    stopTimeline(); attractActive = true; attractIdx = 0;
+    attractStep(); attractTimer = setInterval(attractStep, ATTRACT_DWELL_MS);
+  }
+  function stopAttract() {
+    if (!attractActive) return;
+    attractActive = false; clearInterval(attractTimer); attractTimer = null; attractCaption.hidden = true;
+  }
+
   function goHome() {
+    if (CURATOR) return;                                         // never reset under a curator who is editing
     if (popup) { popup.remove(); popup = null; }
+    stopTimeline(); stopAttract();
     if (HOME) map.flyTo({ ...HOME, duration: 4000, essential: true });
-    if (IDLE_RESETS_YEAR) { slider.value = DEFAULT_YEAR; updateTimelineLabel(); onYearChange(true); }
+    if (IDLE_RESETS_YEAR) { slider.value = String(DEFAULT_YEAR); updateTimelineLabel(); onYearChange(true); }
+    startAttract();
   }
   function resetIdle() {
+    if (attractActive) stopAttract();
     const now = performance.now();
     if (idleTimer && now - lastIdleReset < 250) return;           // pointermove fires very often
     lastIdleReset = now;
@@ -3822,49 +3903,115 @@ async function start() {
     if (idleCap !== Infinity) { idleCap = Infinity; syncAnim(); }
     clearTimeout(throttleTimer);
     const throttleWhenIdle = () => {
-      if (timelineTimer !== null) { throttleTimer = setTimeout(throttleWhenIdle, IDLE_THROTTLE_MS); return; }   // not while the timeline is playing
+      if (timelineTimer !== null || attractActive) { throttleTimer = setTimeout(throttleWhenIdle, IDLE_THROTTLE_MS); return; }   // not while the timeline is playing
       idleCap = IDLE_ANIM_FPS; syncAnim();
     };
     throttleTimer = setTimeout(throttleWhenIdle, IDLE_THROTTLE_MS);
   }
   ['pointerdown', 'pointermove', 'wheel', 'keydown', 'touchstart'].forEach(ev => window.addEventListener(ev, resetIdle, { passive: true }));
+  setTimeout(() => { try { resetIdle(); } catch (err) { console.warn(err); } }, 3000);   // arm the idle timer even if nobody ever touches the screen
 
   // ============================================================ popups / picking
   const PICK = ['master-footprints'];
-  const row = (k, v) => v === undefined || v === null || v === 'null' ? '' : `<div><b>${k}</b> ${esc(v)}</div>`;
+  const BASE_PICK = ['base-water', 'base-river', 'base-stream', 'urban-ground', 'base-green', 'base-wood'];
+  const row = (k, v) => v === undefined || v === null || v === '' || v === 'null' ? '' : `<div><b>${esc(k)}</b> ${esc(v)}</div>`;
 
- function showPopup(lngLat, html) {
-    if (popup) popup.remove();
-    popup = new maplibregl.Popup({ maxWidth: '260px' }).setLngLat(lngLat)
-      .setHTML(`<div style="font:12px system-ui">${html}</div>`).addTo(map);
+  // Notes may be inline text or a path to a text file. Loading never throws: a bad file just means no note.
+  const noteCache = new Map();
+  async function noteText(raw) {
+    if (raw == null || raw === '' || raw === 'null') return null;
+    raw = String(raw);
+    if (!(/^\S+$/.test(raw) && /[\/.]/.test(raw))) return raw;           // inline text
+    if (!CURATOR && noteCache.has(raw)) return noteCache.get(raw);
+    try {
+      const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 4000);
+      const r = await fetch(raw, { signal: ctl.signal, cache: CURATOR ? 'no-store' : 'default' });
+      clearTimeout(timer);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const text = (await r.text()).trim() || null;
+      noteCache.set(raw, text);
+      return text;
+    } catch (err) { console.warn('Could not load note', raw, err); return null; }
   }
-  const years = p => row('years', `${p.from_year ?? '?'} – ${p.to_year ?? 'present'}`);
-  const buildingHtml = async p =>
-    row('id', p.id) + row('name', p.name) + row('type', p.btype) + years(p) +
-    row('height', p.h != null ? `${p.h} m${p.h_src ? ` (${p.h_src})` : ''}` : null) + row('notes', p.notes ? await (await fetch(p.notes)).text() : null) +
-    row('dates from', p.date_src) + row('model', p.model) + row('source', p.src);
-  const forestHtml = p =>
-    '<b>Forest</b>' + row('id', p.id) + row('name', p.name) + row('trees', p.tree_type) +
-    row('density', p.density ? `${p.density}/ha` : null) + years(p) +
-    row('dates from', p.date_src) + row('source', p.src) + row('notes', p.notes);
-  const roadHtml = p =>
-    '<b>Road / route</b>' + row('id', p.id) + row('name', p.name) + row('type', p.road_type || p.kind) +
-    row('class', p.road_class || p.cls) + row('surface', p.surface) + years(p) +
-    row('dates from', p.date_src) + row('documented by', p.documented_by) + row('source', p.src) + row('notes', p.notes);
+  const dateLabel = p => {
+    const f = toYear(p.from_year), t = toYear(p.to_year);
+    if (f == null && t == null) return 'Throughout the timeline';
+    if (f == null) return `Until ${t}`;
+    if (t == null) return `${f} \u2013 present`;
+    return f === t ? String(f) : `${f} \u2013 ${t}`;
+  };
+  const years = p => row('years', `${p.from_year ?? '(none)'} \u2013 ${p.to_year ?? '(none)'}`);
+
+  // Visitors: name, dates, note. Curators: every stored property plus data-quality flags.
+  const visitorHtml = async (fallback, p) => {
+    const note = await noteText(p.notes);
+    return `<div class="pu"><h3>${esc(p.name || fallback)}</h3><div class="pu-dates">${esc(dateLabel(p))}</div>${note ? `<p class="pu-note">${esc(note)}</p>` : ''}</div>`;
+  };
+  const curatorHtml = async (title, p) => {
+    const note = await noteText(p.notes);
+    const SKIP = new Set(['notes', 'from_year', 'to_year']);
+    const keys = Object.keys(p).filter(k => !k.startsWith('_') && !SKIP.has(k)).sort((a, b) => ['id', 'name'].indexOf(b) - ['id', 'name'].indexOf(a));
+    const fields = keys.map(k => row(k, typeof p[k] === 'object' && p[k] !== null ? JSON.stringify(p[k]) : p[k])).join('');
+    const flags = [
+      toYear(p.from_year) == null && 'No start year: shown from the start of the timeline',
+      toYear(p.to_year) == null && 'No end year: shown up to the present',
+      !p.name && 'No name',
+      !p.src && !p.date_src && 'No source recorded',
+      p.notes && note == null ? `Note could not be loaded (${p.notes})` : (!p.notes && 'No note'),
+    ].filter(Boolean).map(m => `<div class="pu-flag">\u26a0 ${esc(m)}</div>`).join('');
+    return `<b>${esc(title)}</b>${years(p)}${fields}${row('notes', note)}${flags}`;
+  };
+  const popupHtml = (title, p) => CURATOR ? curatorHtml(title, p) : visitorHtml(title, p);
+  function showPopup(lngLat, html) {
+    if (popup) popup.remove();
+    popup = new maplibregl.Popup({ maxWidth: CURATOR ? '340px' : '420px', className: CURATOR ? 'popup-curator' : 'popup-visitor' })
+      .setLngLat(lngLat).setHTML(html).addTo(map);
+  }
+
+  // Click-picking for railway and border meshes (buildings use pickModel above).
+  const shownInScene = o => { for (; o; o = o.parent) if (!o.visible) return false; return true; };
+  function pickItems(pt, items) {
+    const live = items.filter(it => it.group && shownInScene(it.group));
+    if (!live.length) return null;
+    const cv = map.getCanvas();
+    const nx = (pt.x / cv.clientWidth) * 2 - 1, ny = 1 - (pt.y / cv.clientHeight) * 2;
+    _inv.fromArray(lastMatrix).multiply(localToMerc).invert();
+    _ra.set(nx, ny, -1).applyMatrix4(_inv);
+    _rb.set(nx, ny, 1).applyMatrix4(_inv);
+    raycaster.ray.origin.copy(_ra);
+    raycaster.ray.direction.copy(_rb).sub(_ra).normalize();
+    const hit = raycaster.intersectObjects(live.map(it => it.group), true)[0];
+    if (!hit) return null;
+    for (let o = hit.object; o; o = o.parent) { const it = live.find(x => x.group === o); if (it) return it; }
+    return null;
+  }
 
   map.on('click', async e => {
-    if (haveMatrix && modelsShown && modelRoot.visible) {           // 1. 3D models
-      const hit = pickModel(e.point);
-      if (hit) { showPopup(e.lngLat, await buildingHtml(hit.props)); return; }
+    try {
+      if (haveMatrix && modelsShown && modelRoot.visible) {         // 1. 3D buildings
+        const hit = pickModel(e.point);
+        if (hit) { showPopup(e.lngLat, await popupHtml('Building', hit.props)); return; }
+      }
+      if (haveMatrix) {                                             // 2. railway + border meshes
+        const rail = pickItems(e.point, railwayItems);
+        if (rail) { showPopup(e.lngLat, await popupHtml('Railway', rail.props)); return; }
+        const border = pickItems(e.point, borderItems);
+        if (border) { showPopup(e.lngLat, await popupHtml('Wall, hedge or fence', border.props)); return; }
+      }
+      const f = map.queryRenderedFeatures(e.point, { layers: PICK.filter(id => map.getLayer(id)) })[0];   // 3. building footprints
+      if (f) { showPopup(e.lngLat, await popupHtml('Building', f.properties)); return; }
+      if (map.getLayer('forest-floor')) {                           // 4. forests
+        const ff = map.queryRenderedFeatures(e.point, { layers: ['forest-floor'] })[0];
+        if (ff) { showPopup(e.lngLat, await popupHtml('Woodland', ff.properties)); return; }
+      }
+      const road = map.queryRenderedFeatures(e.point, { layers: ROAD_AREA_LAYER_IDS.filter(id => map.getLayer(id)) })[0];   // 5. roads
+      if (road) { showPopup(e.lngLat, await popupHtml('Road or route', road.properties)); return; }
+      const base = map.queryRenderedFeatures(e.point, { layers: BASE_PICK.filter(id => map.getLayer(id)) })[0];   // 6. water, ground, green
+      if (base && (CURATOR || base.properties.name || base.properties.notes)) showPopup(e.lngLat, await popupHtml('Landscape feature', base.properties));
+    } catch (err) {
+      console.warn('Click handler failed', err);
+      showPopup(e.lngLat, '<div class="pu"><p class="pu-note">Sorry, the details for this feature could not be loaded.</p></div>');
     }
-    const f = map.queryRenderedFeatures(e.point, { layers: PICK.filter(id => map.getLayer(id)) })[0];   // 2. buildings
-    if (f) { showPopup(e.lngLat, await buildingHtml(f.properties)); return; }
-    if (map.getLayer('forest-floor')) {                             // 3. forests
-      const ff = map.queryRenderedFeatures(e.point, { layers: ['forest-floor'] })[0];
-      if (ff) { showPopup(e.lngLat, forestHtml(ff.properties)); return; }
-    }
-    const road = map.queryRenderedFeatures(e.point, { layers: ROAD_AREA_LAYER_IDS.filter(id => map.getLayer(id)) })[0];   // 4. buffered roads
-    if (road) showPopup(e.lngLat, roadHtml(road.properties));
   });
 
   // hover cursor: at most ~10 queries per second, only when no button is held and the map is still
