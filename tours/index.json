@@ -1,0 +1,12 @@
+{
+  "tours": [
+    {
+      "id": "dunkeld-heritage-walk",
+      "title": "Dunkeld Heritage Walk (sample)",
+      "description": "A short walk through the town, watching it change from the medieval period to today.",
+      "duration_min": 20,
+      "stops": 3,
+      "file": "dunkeld-heritage-walk/tour.json"
+    }
+  ]
+}

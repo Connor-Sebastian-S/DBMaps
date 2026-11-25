@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "id": "dunkeld-heritage-walk",
+  "title": "Dunkeld Heritage Walk (sample)",
+  "description": "A short walk through the town, watching it change from the medieval period to today.",
+  "author": "Connor :)",
+  "duration_min": 20,
+
+  "here": { "lon": -3.587070297510587, "lat":56.5657402804502, "label": "You're here" },
+  "overview": { "lon": -3.587070297510587, "lat":56.5657402804502, "zoom": 15.8, "pitch": 45, "bearing": 0 },
+  "start_year": 2026,
+  "intro": "Welcome. This tour visits three places in Dunkeld. At each one the map will fly there and the timeline will show you how it looked in the past.\n\nTap Begin when you are ready.",
+  "outro": "Thanks for visiting. You can now explore the map yourself.",
+
+  "stops": [
+    {
+      "title": "Dunkeld Cathedral",
+      "lon": -3.589071898822005, "lat": 56.56513643174469, 
+      "zoom": 17.5, "pitch": 58, "bearing": 20, "fly_ms": 3500,
+      "year": 1500,
+      "year_steps": [ { "after_ms": 9000, "year": 2026, "mode": "sweep", "duration_ms": 5000 } ],
+      "text": "PLACEHOLDER: describe the cathedral as it stood around 1500, fully intact. After a few seconds the timeline sweeps forward to the present day.",
+      "image": "media/cathedral.jpg",
+      "image_caption": "The cathedral from above, looks cool, right? Big. Imposing. Wow.",
+      "text_file": "text/cathedral.txt",
+      "audio": "media/cathedral.mp3",
+      "advance": "manual"
+    },
+    {
+      "title": "Telford's Bridge",
+      "lon": -3.5853121944657858, "lat": 56.564481420888576, 
+      "zoom": 17, "pitch": 55,
+      "year": 1820,
+      "text": "PLACEHOLDER text. Stops can have just a title, a place and a year, with everything else optional.",
+      "season": "autumn"
+    },
+    {
+      "title": "The Birnam Oak",
+      "lon": -3.575499713551126, "lat": 56.56136108445674, 
+      "zoom": 17, "pitch": 60, "bearing": 200,
+      "year": 2026,
+      "text_file": "text/birnam-oak.txt",
+      "advance": "auto",
+      "dwell_ms": 20000
+    }
+  ]
+}

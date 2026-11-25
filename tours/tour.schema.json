@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dunkeld viewer tour",
+  "type": "object",
+  "required": ["title", "stops"],
+  "properties": {
+    "format": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "author": { "type": "string" },
+    "duration_min": { "type": "number" },
+    "image": { "type": "string" }, "image_caption": { "type": "string" },
+    "intro": { "type": "string" }, "intro_file": { "type": "string" }, "outro": { "type": "string" },
+    "here": { "type": "object", "required": ["lon", "lat"], "properties": { "lon": { "type": "number" }, "lat": { "type": "number" }, "label": { "type": "string" } } },
+    "overview": { "$ref": "#/$defs/camera" },
+    "start_year": { "type": "integer" }, "end_year": { "type": "integer" },
+    "stops": { "type": "array", "minItems": 1, "items": {
+      "type": "object", "required": ["title", "lon", "lat"],
+      "allOf": [ { "$ref": "#/$defs/camera" } ],
+      "properties": {
+        "title": { "type": "string" },
+        "year": { "type": "integer" },
+        "year_sweep_ms": { "type": "integer", "minimum": 0 },
+        "year_steps": { "type": "array", "items": { "type": "object", "required": ["year"], "properties": {
+          "after_ms": { "type": "integer", "minimum": 0 }, "year": { "type": "integer" },
+          "mode": { "enum": ["jump", "sweep"] }, "duration_ms": { "type": "integer", "minimum": 0 } } } },
+        "season": { "enum": ["spring", "summer", "autumn", "winter"] },
+        "night": { "type": "boolean" },
+        "text": { "type": "string" }, "text_file": { "type": "string" },
+        "image": { "type": "string" }, "image_caption": { "type": "string" },
+        "audio": { "type": "string" },
+        "advance": { "enum": ["manual", "auto"] }, "dwell_ms": { "type": "integer", "minimum": 0 },
+        "fly_ms": { "type": "integer", "minimum": 0 }
+      } } }
+  },
+  "$defs": { "camera": { "type": "object", "properties": {
+    "lon": { "type": "number" }, "lat": { "type": "number" }, "zoom": { "type": "number" },
+    "pitch": { "type": "number", "minimum": 0, "maximum": 75 }, "bearing": { "type": "number" } } } }
+}
