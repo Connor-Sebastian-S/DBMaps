@@ -143,15 +143,10 @@ html[data-tour] #timelineActions { display: none; }
 #tourUI .t-card h3 { margin: 0 0 2px; font-size: 18px; }
 #tourUI .t-card small { color: #555; display: block; margin-bottom: 8px; }
 #tourUI .t-empty { color: #555; padding: 10px 0 14px; }
-.tour-pin { width: 32px; height: 32px; border-radius: 50%; background: #44683a; color: #fff; border: 3px solid #fff;
-  box-shadow: 0 1px 6px rgba(0,0,0,.5); font: 700 15px/26px system-ui, sans-serif; text-align: center; cursor: default; }
-.tour-pin.cur { background: #b4562b; transform: scale(1.25); }
-.tour-pin.past { background: #8a9a82; }
-.tour-here { position: relative; width: 18px; height: 18px; border-radius: 50%; background: #2a6fdb; border: 3px solid #fff; box-shadow: 0 1px 5px rgba(0,0,0,.5); }
-.tour-here::after { content: ''; position: absolute; inset: -12px; border-radius: 50%; border: 2px solid #2a6fdb; animation: tourPulse 1.8s ease-out infinite; }
-.tour-here-label { position: absolute; left: 24px; top: -4px; white-space: nowrap; padding: 2px 8px; border-radius: 10px; background: #2a6fdb; color: #fff; font: 600 13px system-ui, sans-serif; }
-@keyframes tourPulse { from { transform: scale(.4); opacity: .9; } to { transform: scale(1.4); opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .tour-here::after { animation: none; opacity: .5; } }
+#tourLabels { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 2; }
+.tour-pin { position: absolute; left: 0; top: 0; min-width: 24px; text-align: center; color: #fff; font: 700 15px/1 system-ui, sans-serif; text-shadow: 0 1px 2px rgba(0,0,0,.55); will-change: transform; }
+.tour-pin.cur { font-size: 20px; }
+.tour-here-label { position: absolute; left: 0; top: 0; white-space: nowrap; padding: 3px 10px; border-radius: 12px; background: #2a6fdb; color: #fff; font: 600 14px system-ui, sans-serif; box-shadow: 0 1px 5px rgba(0,0,0,.4); will-change: transform; }
 @media (max-width: 700px) {
   #tourUI { left: 0; right: 0; bottom: 0; width: 100%; max-height: 56vh; border-radius: 14px 14px 0 0; padding-bottom: env(safe-area-inset-bottom, 0px); }
   #tourUI h2 { font-size: 20px; }
@@ -1584,6 +1579,8 @@ async function start() {
   const railwayRoot = new THREE.Group();
   const borderRoot = new THREE.Group();
   const trainGroup = new THREE.Group();
+  const tourPinGroup = new THREE.Group();                 // guided-tour location poles (tour mode only)
+  tourPinGroup.name = 'tour-pins';
   smokeGroup.name = 'chimney-smoke';
   lampLightRoot.name = 'artificial-lamp-lights';
   railwayRoot.name = '3d-railway-models';
@@ -1628,7 +1625,7 @@ async function start() {
 
   const modelRoot = new THREE.Group();                // all GLB buildings: one draw pass with the rest of the 3D content
   modelRoot.matrixWorldAutoUpdate = false;            // static root; each BatchedMesh instance matrix is baked once
-  localScene.add(waterGroup, treeGroup, boatGroup, birdGroup, mistGroup, smokeGroup, lampLightRoot, railwayRoot, borderRoot, trainGroup, modelRoot);
+  localScene.add(waterGroup, treeGroup, boatGroup, birdGroup, mistGroup, smokeGroup, lampLightRoot, railwayRoot, borderRoot, trainGroup, modelRoot, tourPinGroup);
 
   let hf = null;                                    // Heightfield (set once loaded)
   let heightAt = () => 0;                           // (east, north) in metres -> ground height
@@ -1724,10 +1721,12 @@ async function start() {
       railwayRoot.visible = railwayModelsOn && railwayModelsShown > 0 && zoom >= RAILWAY_MODEL_MIN_ZOOM;
       borderRoot.visible = borderModelsOn && borderModelsShown > 0 && zoom >= BORDER_MODEL_MIN_ZOOM;
       trainGroup.visible = trainTrafficOn && activeTrains.length > 0 && zoom >= TRAIN_MIN_ZOOM;
+      tourPinGroup.visible = tourPinGroup.children.length > 0;
+      if (tourPinGroup.visible) updateTourPins(zoom);
       smokeGroup.visible = smokeOn && buildingModelsVisible && activeSmokeEmitters > 0 && zoom >= TIER.modelMinZoom;
       if (smokeGroup.visible && smokeMaterial) smokeMaterial.uniforms.uSizeScale.value = 1 / Math.max(0.05, mPerPx(zoom));
       const treeDraw = treeGroup.visible && activeTreeLod >= 0 && treeLodGroups[activeTreeLod].children.length > 0;
-      const drawWorld = treeDraw || [waterGroup, boatGroup, birdGroup, mistGroup, smokeGroup, lampLightRoot, railwayRoot, borderRoot, trainGroup, modelRoot].some(g => g.visible && g.children.length);
+      const drawWorld = treeDraw || [waterGroup, boatGroup, birdGroup, mistGroup, smokeGroup, lampLightRoot, railwayRoot, borderRoot, trainGroup, modelRoot, tourPinGroup].some(g => g.visible && g.children.length);
       if (!drawWorld) { worldDrawn = false; return; }
 
       const r = this.renderer;
@@ -3969,7 +3968,7 @@ async function start() {
   const TOURS_DIR = './tours/';
   const tourParams = new URLSearchParams(location.search);
   let tourUI = null, tour = null, tourBase = '', tourIdx = -1, tourToken = 0;
-  let tourMarkers = [], hereMarker = null, tourTimers = [], yearAnim = null;
+  let tourTimers = [], yearAnim = null;
   const toursReady = () => HOME ? Promise.resolve() : new Promise(r => map.once('load', () => setTimeout(r, 0)));
   const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
   const tourUrl = p => /^(https?:)?\/\//.test(p) || p.startsWith('/') ? p : tourBase + p;
@@ -4005,26 +4004,70 @@ async function start() {
   }
   function clearTourTimers() { tourTimers.forEach(clearTimeout); tourTimers = []; cancelYearAnim(); }
 
-  // ---- map furniture: numbered pins, "You're here", and a dashed leg to the next stop
+  // ---- map furniture: 3D location poles, "You're here", and a dashed leg to the next stop
+  // The poles are real objects in the viewer's Three.js scene, standing on the same LiDAR ground heights as the buildings,
+  // so they stay put as the camera tilts (HTML markers are anchored to a flat map and drift against the 3D terrain).
+  // Geometry is built in "pixel" units and scaled by metres-per-pixel each frame, so a pole is always about the same size on screen.
+  const PIN_H = 120, PIN_MIN_SCALE = 0.12;                 // pole height in px-units; never shorter than ~14 m in the world
+  const PIN_COL = { cur: 0xb4562b, stop: 0x44683a, past: 0x8a9a82, here: 0x2a6fdb };
+  const pinGeo = {
+    pole: new THREE.CylinderGeometry(1.8, 1.8, PIN_H, 8).rotateX(Math.PI / 2).translate(0, 0, PIN_H / 2),
+    head: new THREE.SphereGeometry(1, 20, 14), ring: new THREE.RingGeometry(13, 19, 36),
+  };
+  let tourPins = [], tourLabelHost = null;
+  const pinScale = zoom => Math.max(mPerPx(zoom), PIN_MIN_SCALE);
+  function makePin(kind, lon, lat, label) {
+    const mat = new THREE.MeshBasicMaterial({ color: PIN_COL[kind], side: THREE.DoubleSide });
+    mat.polygonOffset = true; mat.polygonOffsetFactor = -2; mat.polygonOffsetUnits = -2;
+    const g = new THREE.Group(), pole = new THREE.Mesh(pinGeo.pole, mat), head = new THREE.Mesh(pinGeo.head, mat), ring = new THREE.Mesh(pinGeo.ring, mat);
+    head.position.z = PIN_H; ring.position.z = 0.6;
+    g.add(pole, head, ring); g.visible = true; tourPinGroup.add(g);
+    const [e, n] = frame.toLocal(lon, lat);
+    const el = document.createElement('div'); el.className = kind === 'here' ? 'tour-here-label' : 'tour-pin'; el.textContent = label; el.style.display = 'none';
+    tourLabelHost.append(el);
+    return { kind, g, mat, head, ring, e, n, z: 0, el, lon, lat };
+  }
+  function styleTourPin(p, state) {                       // state: cur | stop | past | here
+    p.mat.color.setHex(PIN_COL[state]); p.state = state;
+    p.head.userData.r = state === 'cur' ? 15 : state === 'here' ? 10 : 11;
+    p.el.className = (p.kind === 'here' ? 'tour-here-label' : 'tour-pin') + (state === 'cur' ? ' cur' : '');
+  }
+  function updateTourPins(zoom) {                         // called once per frame from the scene layer
+    const sc = pinScale(zoom), lift = 0.2 + 1.0 * mPerPx(zoom);
+    for (const p of tourPins) {
+      p.z = Number(heightAt(p.e, p.n)) || 0;
+      p.g.position.set(p.e, p.n, p.z + lift); p.g.scale.setScalar(sc);
+      const r = p.head.userData.r || 11; p.head.scale.setScalar(r);
+    }
+  }
+  const _pm = new THREE.Matrix4(), _pv = new THREE.Vector4();
+  function updateTourLabels() {                           // HTML number badges, pinned to the projected head of each pole
+    if (!tourPins.length || !haveMatrix) return;
+    const cv = map.getCanvas(), w = cv.clientWidth, h = cv.clientHeight, sc = pinScale(map.getZoom());
+    _pm.fromArray(lastMatrix).multiply(localToMerc);
+    for (const p of tourPins) {
+      _pv.set(p.e, p.n, p.z + PIN_H * sc, 1).applyMatrix4(_pm);
+      const x = (_pv.x / _pv.w * 0.5 + 0.5) * w, y = (1 - (_pv.y / _pv.w * 0.5 + 0.5)) * h, on = _pv.w > 0 && x > -60 && x < w + 60 && y > -60 && y < h + 60;
+      p.el.style.display = on ? '' : 'none';
+      if (on) p.el.style.transform = `translate(${x}px, ${y}px) translate(${p.kind === 'here' ? '18px, -50%' : '-50%, -50%'})`;
+    }
+  }
   function clearTourMap() {
-    tourMarkers.forEach(m => m.remove()); tourMarkers = [];
-    if (hereMarker) { hereMarker.remove(); hereMarker = null; }
+    tourPins.forEach(p => { tourPinGroup.remove(p.g); p.mat.dispose(); p.el.remove(); }); tourPins = [];
     try { if (map.getLayer('tour-leg')) map.removeLayer('tour-leg'); if (map.getSource('tour-leg')) map.removeSource('tour-leg'); } catch (_) {}
+    map.triggerRepaint();
   }
   function buildTourMap() {
     clearTourMap();
-    tour.stops.forEach((s, i) => {
-      const el = document.createElement('div'); el.className = 'tour-pin'; el.textContent = String(i + 1);
-      el.title = s.title; el.style.pointerEvents = 'none';
-      tourMarkers.push(new maplibregl.Marker({ element: el }).setLngLat([s.lon, s.lat]).addTo(map));
-    });
-    if (tour.here) {
-      const el = document.createElement('div'); el.className = 'tour-here';
-      const lab = document.createElement('span'); lab.className = 'tour-here-label'; lab.textContent = tour.here.label || "You're here"; el.append(lab);
-      hereMarker = new maplibregl.Marker({ element: el }).setLngLat([tour.here.lon, tour.here.lat]).addTo(map);
-    }
+    if (!tourLabelHost) { tourLabelHost = document.createElement('div'); tourLabelHost.id = 'tourLabels'; map.getCanvasContainer().append(tourLabelHost); map.on('render', updateTourLabels); }
+    tour.stops.forEach((s, i) => { const p = makePin('stop', s.lon, s.lat, String(i + 1)); p.title = s.title; tourPins.push(p); });
+    if (tour.here) tourPins.push(makePin('here', tour.here.lon, tour.here.lat, tour.here.label || "You're here"));
+    markPins(); map.triggerRepaint();
   }
-  function markPins() { tourMarkers.forEach((m, i) => m.getElement().className = 'tour-pin' + (i === tourIdx ? ' cur' : i < tourIdx ? ' past' : '')); }
+  function markPins() {
+    tourPins.forEach((p, i) => styleTourPin(p, p.kind === 'here' ? 'here' : i === tourIdx ? 'cur' : i < tourIdx ? 'past' : 'stop'));
+    map.triggerRepaint();
+  }
   function showLeg(from, to) {
     try {
       const data = { type: 'Feature', geometry: { type: 'LineString', coordinates: from && to ? [[from.lon, from.lat], [to.lon, to.lat]] : [] } };
