@@ -7,6 +7,15 @@
       "duration_min": 20,
       "stops": 3,
       "file": "dunkeld-heritage-walk/tour.json"
+    },
+    {
+      "id": "test-tour-123",
+      "title": "Test Tour 123",
+      "description": "Here we're checking if the Editor works",
+      "duration_min": 10,
+      "stops": 1,
+      "image": "test-tour-123/media/test-tour-123-image-mww0b0g5.jpg",
+      "file": "test-tour-123/tour.json"
     }
   ]
 }
