@@ -176,7 +176,7 @@ html[data-tour] #timelineActions { display: none; }
     </div>
   </div>
   <div id="timelineControls">
-    <input id="yearSlider" type="range" min="1200" step="1" aria-label="Timeline year">
+    <input id="yearSlider" type="range" min="800" step="1" aria-label="Timeline year">
   </div>
 </div>
 <div id="side">
@@ -820,18 +820,19 @@ function drawRoadPattern(kind, season = 'summer') {
   };
 
   if (kind === 'earth') {
-    // Old carriage roads: compacted earth with damp, dark patches and embedded grit.
-    for (let i = 0; i < 105; i++) speck(pick(['43,32,24', '59,42,29', '77,54,36', '94,68,46']), range(0.20, 0.43), range(2.0, 5.8), range(1.0, 3.0));
-    for (let i = 0; i < 150; i++) speck(pick(['76,55,35', '110,82,52', '132,105,71', '66,52,39']), range(0.12, 0.28), range(0.55, 1.7), range(0.45, 1.2));
-    for (let i = 0; i < 30; i++) stroke(pick(['48,35,26', '83,62,42', '137,105,68']), range(0.18, 0.34), range(4, 12), range(0.55, 1.25));
-    // A few lighter stones keep the surface earthy rather than turning it into a uniform brown strip.
-    for (let i = 0; i < 28; i++) speck(pick(['150,133,104', '123,111,88', '91,82,66']), range(0.20, 0.36), range(0.8, 1.9), range(0.6, 1.3));
+    // Old carriage roads: compacted, weathered earth in muted olive-grey and taupe tones.
+    // Lower contrast lets the terrain show through instead of making the road read as a brown stripe.
+    for (let i = 0; i < 105; i++) speck(pick(['78,75,64', '94,89,75', '111,103,85', '126,117,98']), range(0.13, 0.27), range(2.0, 5.8), range(1.0, 3.0));
+    for (let i = 0; i < 150; i++) speck(pick(['91,87,75', '112,105,88', '129,121,101', '82,80,70']), range(0.08, 0.19), range(0.55, 1.7), range(0.45, 1.2));
+    for (let i = 0; i < 30; i++) stroke(pick(['77,73,62', '103,96,79', '130,120,98']), range(0.10, 0.22), range(4, 12), range(0.55, 1.25));
+    // A few softly contrasting stones retain a natural gravelly surface.
+    for (let i = 0; i < 28; i++) speck(pick(['153,146,126', '135,130,113', '112,108,94']), range(0.12, 0.22), range(0.8, 1.9), range(0.6, 1.3));
   } else if (kind === 'mud') {
-    // Saturated track surface: broad dark mud patches, wheel-smeared streaks and small wet highlights.
-    for (let i = 0; i < 115; i++) speck(pick(['35,26,20', '48,34,25', '61,42,29', '77,52,35']), range(0.34, 0.62), range(2.8, 7.8), range(1.5, 4.2));
-    for (let i = 0; i < 175; i++) speck(pick(['31,25,20', '68,48,32', '91,65,42', '111,81,54']), range(0.18, 0.36), range(0.65, 1.9), range(0.5, 1.3));
-    for (let i = 0; i < 38; i++) stroke(pick(['35,26,20', '49,35,26', '82,59,39']), range(0.24, 0.43), range(6, 19), range(0.7, 1.6));
-    for (let i = 0; i < 24; i++) speck(pick(['143,124,97', '160,139,108']), range(0.12, 0.22), range(1.1, 3.0), range(0.7, 1.8));
+    // Track surface: subdued wheel-worn earth, avoiding the previous strong chocolate-brown contrast.
+    for (let i = 0; i < 115; i++) speck(pick(['57,57,49', '70,67,56', '84,79,65', '101,93,75']), range(0.22, 0.40), range(2.8, 7.8), range(1.5, 4.2));
+    for (let i = 0; i < 175; i++) speck(pick(['66,65,55', '86,81,67', '106,97,77', '120,110,89']), range(0.10, 0.24), range(0.65, 1.9), range(0.5, 1.3));
+    for (let i = 0; i < 38; i++) stroke(pick(['58,57,49', '78,74,61', '106,97,77']), range(0.14, 0.28), range(6, 19), range(0.7, 1.6));
+    for (let i = 0; i < 24; i++) speck(pick(['145,137,115', '157,149,127']), range(0.08, 0.16), range(1.1, 3.0), range(0.7, 1.8));
   } else if (kind === 'gravel' || kind === 'ballast') {
     const palette = kind === 'ballast'
       ? ['76,73,67', '100,96,87', '126,120,107', '57,57,53']
@@ -862,8 +863,9 @@ function drawRoadPattern(kind, season = 'summer') {
       });
     }
   } else if (kind === 'asphalt') {
-    for (let i = 0; i < 390; i++) speck(pick(['205,205,198', '20,22,24', '130,132,131', '91,94,94']), range(0.12, 0.28), range(0.35, 1.05), range(0.35, 0.85));
-    for (let i = 0; i < 28; i++) stroke('12,14,16', range(0.08, 0.16), range(2, 6), range(0.35, 0.7));
+    // Fine, low-contrast aggregate over the same neutral slate-grey as the bridge road surface.
+    for (let i = 0; i < 390; i++) speck(pick(['54,57,63', '72,75,81', '94,97,103', '116,119,125']), range(0.07, 0.15), range(0.35, 1.05), range(0.35, 0.85));
+    for (let i = 0; i < 28; i++) stroke('42,45,51', range(0.04, 0.09), range(2, 6), range(0.35, 0.7));
   }
   // Small, material-aware seasonal cues keep the four variants distinct without changing the road geometry.
   if (season === 'winter') {
@@ -1378,8 +1380,8 @@ async function start() {
   const dateF = dated, buildingDateF = dated, forestDateF = dated;
   // Muted earth before hard surfacing; neutral weathered stone/concrete afterwards.
   // `_urban_hard_from` defaults to 99999, so an unspecified hard_surface_year stays brown.
-  const urbanGroundColour = y => ['case', ['<=', ['get', '_urban_hard_from'], y], '#85837d', '#8b765f'];
-  const urbanGroundOutline = y => ['case', ['<=', ['get', '_urban_hard_from'], y], '#696862', '#705e49'];
+  const urbanGroundColour = y => ['case', ['<=', ['get', '_urban_hard_from'], y], '#74777a', '#898573'];
+  const urbanGroundOutline = y => ['case', ['<=', ['get', '_urban_hard_from'], y], '#606467', '#74715f'];
 
   const K = (kind, cls) => cls
     ? ['all', ['==', ['get', 'kind'], kind], ['==', ['get', 'cls'], cls]]
@@ -1426,7 +1428,6 @@ async function start() {
     cobbledRoad: ['all', ROAD_CARRIAGEWAY_FILTER, ['<=', '_road_cobble_year', y], ['>', '_road_tarmac_year', y], ...roadAreaDateFilters(y)],
     asphaltRoad: ['all', ROAD_CARRIAGEWAY_FILTER, ['<=', '_road_tarmac_year', y], ...roadAreaDateFilters(y)],
     rail: ['all', ROAD_RAIL_FILTER, ...roadAreaDateFilters(y)],
-    majorTarmac: ['all', ['==', 'kind', 'road'], ['==', 'cls', 'major'], ['<=', '_road_tarmac_year', y], ...roadAreaDateFilters(y)],
     majorMarked: ['all', ['==', 'kind', 'road'], ['==', 'cls', 'major'], ['<=', '_road_marking_year', y], ...roadAreaDateFilters(y)],
     trackLines: ['all', ['==', 'kind', 'road'], ['==', 'cls', 'track'], ...roadAreaDateFilters(y)],
   });
@@ -1434,44 +1435,36 @@ async function start() {
   const fadeIn = (a, b, o) => ['interpolate', ['linear'], ['zoom'], a, 0, b, o];
   const ROAD_AREA_LAYERS = [
     { id: 'road-areas-base', source: 'roadAreas', type: 'fill', filterKey: 'all', paint: {
-        'fill-color': ['case', ROAD_RAIL, '#77736b', ROAD_TRACK, '#806548', ROAD_PATH, '#987f5d',
-          ['==', ['get', 'cls'], 'major'], '#927858', '#aa9678'],
-        'fill-outline-color': ['case', ROAD_RAIL, '#504d48', ROAD_TRACK, '#55412f', ROAD_PATH, '#6f593e', '#736047'],
-        'fill-opacity': 0.98 } },
-    // A separate opaque asphalt undercoat is essential: transparent pixels in the repeating
-    // asphalt grain reveal the surface beneath, which must be tarmac rather than historic brown earth.
+        'fill-color': ['case', ROAD_RAIL, '#77736b', ROAD_TRACK, '#787563', ROAD_PATH, '#928b78',
+          ['==', ['get', 'cls'], 'major'], '#898371', '#97917f'],
+        'fill-outline-color': ['case', ROAD_RAIL, '#504d48', ROAD_TRACK, '#625f50', ROAD_PATH, '#716c5b', '#716d5d'],
+        'fill-opacity': 0.93 } },
+    // Keep the solid undercoat identical to the bridge road material; the pattern adds only faint aggregate.
     { id: 'road-areas-asphalt-base', source: 'roadAreas', type: 'fill', filterKey: 'asphaltRoad', paint: {
-        'fill-color': '#292d31', 'fill-outline-color': '#41464a', 'fill-opacity': 1 } },
+        'fill-color': '#52555c', 'fill-outline-color': '#41454c', 'fill-opacity': 1 } },
     { id: 'road-areas-track-texture', minzoom: 13.5, source: 'roadAreas', type: 'fill', filterKey: 'track', paint: {
-        'fill-pattern': `road:mud:${season0}`, 'fill-opacity': fadeIn(13.5, 14.5, 0.97) } },
+        'fill-pattern': `road:mud:${season0}`, 'fill-opacity': fadeIn(13.5, 14.5, 0.80) } },
     { id: 'road-areas-old-road-texture', minzoom: 13.5, source: 'roadAreas', type: 'fill', filterKey: 'earlyRoad', paint: {
-        'fill-pattern': `road:earth:${season0}`, 'fill-opacity': fadeIn(13.5, 14.5, 0.88) } },
+        'fill-pattern': `road:earth:${season0}`, 'fill-opacity': fadeIn(13.5, 14.5, 0.72) } },
     { id: 'road-areas-cobble-texture', minzoom: 13.5, source: 'roadAreas', type: 'fill', filterKey: 'cobbledRoad', paint: {
         'fill-pattern': `road:cobble:${season0}`, 'fill-opacity': fadeIn(13.5, 14.5, 0.92) } },
     { id: 'road-areas-asphalt-texture', minzoom: 13.5, source: 'roadAreas', type: 'fill', filterKey: 'asphaltRoad', paint: {
-        'fill-color': '#52555c', 'fill-pattern': `road:asphalt:${season0}`, 'fill-opacity': fadeIn(13.5, 14.5, 0.97) } },
+        'fill-color': '#52555c', 'fill-pattern': `road:asphalt:${season0}`, 'fill-opacity': fadeIn(13.5, 14.5, 0.90) } },
     { id: 'road-areas-rail-texture', minzoom: 13.5, source: 'roadAreas', type: 'fill', filterKey: 'rail', paint: {
         'fill-pattern': `road:ballast:${season0}`, 'fill-opacity': fadeIn(13.5, 14.5, 0.88) } },
-    // Track wheel-ruts and a muted grassy crown. These are thin map strokes on the original centreline,
-    // not road-width strokes, so they add texture without reintroducing the heavy meshes.
+    // Tracks retain subtle wheel wear, but the tones now sit much closer to the surrounding soil.
     { id: 'road-track-rut-left', minzoom: 15, source: 'roads', type: 'line', filterKey: 'trackLines', paint: {
-        'line-color': '#443323', 'line-width': zoomW(0.25, 0.85), 'line-offset': zoomW(-0.65, -1.8),
-        'line-opacity': 0.62, 'line-blur': 0.25 } },
+        'line-color': '#5c594b', 'line-width': zoomW(0.2, 0.65), 'line-offset': zoomW(-0.65, -1.8),
+        'line-opacity': 0.36, 'line-blur': 0.25 } },
     { id: 'road-track-rut-right', minzoom: 15, source: 'roads', type: 'line', filterKey: 'trackLines', paint: {
-        'line-color': '#443323', 'line-width': zoomW(0.25, 0.85), 'line-offset': zoomW(0.65, 1.8),
-        'line-opacity': 0.62, 'line-blur': 0.25 } },
+        'line-color': '#5c594b', 'line-width': zoomW(0.2, 0.65), 'line-offset': zoomW(0.65, 1.8),
+        'line-opacity': 0.36, 'line-blur': 0.25 } },
     { id: 'road-track-grass-crown', minzoom: 15, source: 'roads', type: 'line', filterKey: 'trackLines', paint: {
-        'line-color': '#899064', 'line-width': zoomW(0.2, 0.8), 'line-opacity': 0.46 } },
-    // Modern major roads: solid edge paint and a broken centre line from the configured marking year.
-    { id: 'road-marking-edge-left', minzoom: 15, source: 'roads', type: 'line', filterKey: 'majorTarmac', paint: {
-        'line-color': '#eeeade', 'line-width': zoomW(0.25, 0.8), 'line-offset': zoomW(-0.6, -2.0),
-        'line-opacity': 0.82 } },
-    { id: 'road-marking-edge-right', minzoom: 15, source: 'roads', type: 'line', filterKey: 'majorTarmac', paint: {
-        'line-color': '#eeeade', 'line-width': zoomW(0.25, 0.8), 'line-offset': zoomW(0.6, 2.0),
-        'line-opacity': 0.82 } },
+        'line-color': '#858674', 'line-width': zoomW(0.2, 0.65), 'line-opacity': 0.28 } },
+    // Modern major roads use one simple dashed white centre line, with no solid edge markings.
     { id: 'road-marking-centre', minzoom: 15, source: 'roads', type: 'line', filterKey: 'majorMarked', paint: {
-        'line-color': '#fffdf2', 'line-width': zoomW(0.3, 1.0), 'line-dasharray': [3.2, 3.0],
-        'line-opacity': 0.92 } },
+        'line-color': '#ffffff', 'line-width': zoomW(0.3, 0.9), 'line-dasharray': [3, 3],
+        'line-opacity': 0.90 } },
   ];
   const ROAD_AREA_LAYER_IDS = ROAD_AREA_LAYERS.map(d => d.id);
 
@@ -1540,7 +1533,7 @@ async function start() {
     { id: 'urban-ground', type: 'fill', source: 'base',
       filter: ['all', ['==', ['get', 'kind'], 'urban'], ...dateF(y0)],
       layout: { visibility: $('urbanGroundVis').checked ? 'visible' : 'none' },
-      paint: { 'fill-color': urbanGroundColour(y0), 'fill-outline-color': urbanGroundOutline(y0), 'fill-opacity': 0.96,
+      paint: { 'fill-color': urbanGroundColour(y0), 'fill-outline-color': urbanGroundOutline(y0), 'fill-opacity': 0.90,
         'fill-color-transition': { duration: 0 }, 'fill-outline-color-transition': { duration: 0 } } },
     ...ROAD_AREA_LAYERS.map(d => ({ id: d.id, type: d.type, source: d.source, ...(d.minzoom != null ? { minzoom: d.minzoom } : {}),
       filter: roadAreaFilters(y0)[d.filterKey],
@@ -1871,10 +1864,10 @@ async function start() {
   // ---- seasons: four discrete ground states, independent of the historical year
   let currentSeason = 'summer', seasonInitialised = false, seasonTransitionTimer = null;
   const ROAD_SEASON_PALETTE = {
-    spring: { track: '#604a36', path: '#99815e', major: '#927858', minor: '#a99577' },
-    summer: { track: '#684b34', path: '#a18a65', major: '#9b8160', minor: '#b19b7d' },
-    autumn: { track: '#59402f', path: '#917451', major: '#8e7150', minor: '#a48b69' },
-    winter: { track: '#49382e', path: '#79664d', major: '#76654f', minor: '#8d8069' },
+    spring: { track: '#777461', path: '#918b78', major: '#888372', minor: '#96907e' },
+    summer: { track: '#787563', path: '#928b78', major: '#898371', minor: '#97917f' },
+    autumn: { track: '#77715e', path: '#918773', major: '#88806b', minor: '#958b75' },
+    winter: { track: '#747164', path: '#898473', major: '#827d70', minor: '#908a7c' },
   };
   const blendVector = (from, to, t) => from.clone().lerp(to, t);
   function startSeasonBlend(season) {
