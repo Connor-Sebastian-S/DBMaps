@@ -1,0 +1,158 @@
+{
+  "type": "FeatureCollection",
+  "name": "positions",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "1",
+        "kind": "model",
+        "name": "Government Troop",
+        "model": "models/government/cameronian_hodden_kneeling_musket.glb",
+        "heading_deg": 0,
+        "scale": 1,
+        "phase_from": "1",
+        "phase_to": "2",
+        "musket_fire": {
+          "phase_from": 2,
+          "interval": 7,
+          "interval_jitter": 1.5,
+          "duration": 1.3,
+          "muzzle_offset": [0, 1.15, -0.72],
+          "size": 1
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.590729535553526,
+          56.565324914115465
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fire_001",
+        "kind": "effect",
+        "effect": "building_fire_smoke",
+        "scale": 1.5,
+        "intensity": 0.8,
+        "target_building_id": "1005",
+        "anchor": "roof",
+        "phase_from": 3,
+        "phase_to": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5903367,
+          56.5659195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fire_002",
+        "kind": "effect",
+        "effect": "building_fire_smoke",
+        "scale": 1.5,
+        "intensity": 0.8,
+        "target_building_id": "1004",
+        "anchor": "roof",
+        "phase_from": 3,
+        "phase_to": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5900705,
+          56.5659152
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fire_003",
+        "kind": "effect",
+        "effect": "building_fire_smoke",
+        "scale": 1.5,
+        "intensity": 0.8,
+        "target_building_id": "1016",
+        "anchor": "roof",
+        "phase_from": 3,
+        "phase_to": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5913162, 56.5657233
+                ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2",
+        "kind": "model",
+        "effect": null,
+        "name": "Government Troop",
+        "model": "models/government/cameronian_hodden_musket_aiming.glb",
+        "heading_deg": 0,
+        "scale": 1,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "2",
+        "musket_fire": {
+          "phase_from": 2,
+          "interval": 7,
+          "interval_jitter": 1.5,
+          "duration": 1.3,
+          "muzzle_offset": [0, 1.15, -0.72],
+          "size": 1
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.590814117631937,
+          56.565323139145676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "3",
+        "kind": "model",
+        "effect": null,
+        "name": "Government Troop",
+        "model": "models/government/cameronian_hodden_musket_ready.glb",
+        "heading_deg": 0,
+        "scale": 1,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.590772333406495,
+          56.56532386607043
+        ]
+      }
+    }
+  ]
+}

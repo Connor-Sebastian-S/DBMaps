@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "initial_phase": "1",
+  "phases": [
+    {
+      "id": "1",
+      "title": "The Approach",
+      "time_label": "Before the main fighting",
+      "description": "The opposing forces take up positions around Dunkeld. Troop placements in this phase should show the initial dispositions, rather than the later street fighting."
+    },
+    {
+      "id": "2",
+      "title": "The Assault",
+      "time_label": "Opening stages",
+      "description": "Jacobite forces begin their attack on the Government positions. Use this phase for the first advances, firing positions and artillery placements."
+    },
+    {
+      "id": "3",
+      "title": "Street Fighting",
+      "time_label": "As the fighting moves into the town",
+      "description": "The fighting spreads into Dunkeld. Troop positions change, defensive points become important, and smoke and fire effects can appear where supported by the evidence."
+    },
+    {
+      "id": "4",
+      "title": "The Aftermath",
+      "time_label": "After the fighting",
+      "description": "The fighting has ended. Show the forces withdrawing or regrouping, with any surviving fires and damage represented in the affected parts of the town."
+    }
+  ]
+}

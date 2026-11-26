@@ -84,7 +84,8 @@
       "text": "On 21 August 1689, government troops known as the Cameronians fought Jacobite forces supporting the deposed King James VII. The Jacobites, commanded by Colonel Alexander Cannon, attacked the town, which was defended by Lieutenant Colonel William Cleland. Fierce street-to-street fighting continued for several hours. The Cameronians eventually prevailed, although Cleland was killed. Much of Dunkeld was burned or destroyed during the fighting, and the town centre seen today largely dates from the subsequent rebuilding.",
       "lon": -3.59124,
       "lat": 56.5672,
-      "zoom": 16
+      "zoom": 16,
+      "folder": "battle_1689"
     },
     {
       "title": "Birth of Niel Gow",

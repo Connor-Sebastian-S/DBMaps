@@ -109,9 +109,10 @@ html:not([data-mode="curator"]) .curator-only { display: none !important; }
 #attractCaption small { display: block; margin-top: 4px; font-size: 15px; color: #555; }
 #attractCaption[hidden] { display: none; }
 /* ---- tours (?mode=tour) ---- */
-html[data-tour] #side { display: none !important; }
+html[data-tour] #side, html[data-event] #side { display: none !important; }
 html[data-tour] #yearSlider { pointer-events: none; opacity: .75; }
 html[data-tour] #timelineActions { display: none; }
+html[data-event] #yearSlider { opacity: .6; }
 #tourUI { position: fixed; z-index: 5; left: 12px; bottom: 12px; width: min(440px, calc(100% - 24px));
   max-height: min(62vh, 640px); display: flex; flex-direction: column; box-sizing: border-box;
   background: rgba(255,255,255,.97); border-radius: 12px; box-shadow: 0 4px 22px rgba(0,0,0,.35);
@@ -143,6 +144,39 @@ html[data-tour] #timelineActions { display: none; }
 #tourUI .t-card h3 { margin: 0 0 2px; font-size: 18px; }
 #tourUI .t-card small { color: #555; display: block; margin-bottom: 8px; }
 #tourUI .t-empty { color: #555; padding: 10px 0 14px; }
+/* ---- event reconstruction detail/phase panel ---- */
+#eventUI { position: fixed; z-index: 6; left: 12px; bottom: 12px; width: min(480px, calc(100% - 24px));
+  max-height: min(68vh, 700px); display: flex; flex-direction: column; box-sizing: border-box;
+  background: rgba(255,255,255,.98); border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,.38);
+  font: 16px/1.5 system-ui, sans-serif; color: #1d231b; overflow: hidden; }
+#eventUI[hidden] { display: none; }
+#eventUI .e-scroll { overflow-y: auto; padding: 15px 18px 10px; -webkit-overflow-scrolling: touch; }
+#eventUI h2 { margin: 2px 0 5px; font-size: 23px; line-height: 1.22; }
+#eventUI .e-kicker { font-size: 13px; font-weight: 700; letter-spacing: .045em; text-transform: uppercase; color: #526c43; }
+#eventUI .e-date { display: inline-block; margin: 2px 0 8px; padding: 2px 10px; border-radius: 12px; background: #e8eee2; color: #354d2b; font-weight: 650; font-variant-numeric: tabular-nums; }
+#eventUI .e-description { margin: 7px 0 12px; white-space: pre-line; }
+#eventUI .e-phase { margin: 12px 0 6px; padding: 12px; border: 1px solid #d7dfd1; border-radius: 10px; background: #f7f9f5; }
+#eventUI .e-phase h3 { margin: 2px 0 5px; font-size: 19px; line-height: 1.25; }
+#eventUI .e-phase p { margin: 5px 0; white-space: pre-line; }
+#eventUI .e-phase-time { color: #5d6f52; font-size: 13px; font-weight: 650; }
+#eventUI .e-progress { display: flex; gap: 5px; margin: 10px 0 4px; }
+#eventUI .e-progress button { min-width: 0; flex: 1; height: 7px; min-height: 7px; padding: 0; border: 0; border-radius: 5px; background: #d5ddd0; }
+#eventUI .e-progress button.done { background: #91aa7a; }
+#eventUI .e-progress button.active { background: #48663b; }
+#eventUI .e-muted { color: #626b5e; font-size: 14px; }
+#eventUI .e-source { margin-top: 8px; padding-top: 8px; border-top: 1px solid #e1e6dc; color: #596052; font-size: 13px; }
+#eventUI .e-bar { display: flex; gap: 8px; align-items: center; padding: 9px 14px 12px; border-top: 1px solid #e3e7df; }
+#eventUI .e-bar .grow { flex: 1; }
+#eventUI button { min-height: 46px; padding: 6px 14px; border-radius: 8px; border: 1px solid #b9c4b3; background: #fff; font: 600 15px system-ui, sans-serif; cursor: pointer; color: #1d231b; }
+#eventUI button.primary { background: #44683a; border-color: #44683a; color: #fff; }
+#eventUI button:disabled { opacity: .4; cursor: default; }
+#eventUI button.link { border: 0; background: none; min-height: 40px; padding: 4px 8px; color: #244d72; }
+#eventUI figure { margin: 8px 0; }
+#eventUI figure img { display: block; width: 100%; max-height: 210px; object-fit: cover; border-radius: 8px; background: #ddd; }
+#eventUI figcaption { color: #555; font-size: 13px; margin-top: 3px; }
+#events .ev .ev-go { display: block; width: 100%; margin-top: 8px; min-height: 44px; padding: 7px 12px; border: 0; border-radius: 7px; background: #44683a; color: #fff; text-align: center; font-weight: 650; }
+#events .ev .ev-go:hover { background: #36552b; }
+#events .ev .ev-go:focus-visible, #eventUI button:focus-visible { outline: 3px solid #8eaf70; outline-offset: 2px; }
 #tourLabels { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 2; }
 .tour-pin { position: absolute; left: 0; top: 0; min-width: 24px; text-align: center; color: #fff; font: 700 15px/1 system-ui, sans-serif; text-shadow: 0 1px 2px rgba(0,0,0,.55); will-change: transform; }
 .tour-pin.cur { font-size: 20px; }
@@ -150,6 +184,8 @@ html[data-tour] #timelineActions { display: none; }
 @media (max-width: 700px) {
   #tourUI { left: 0; right: 0; bottom: 0; width: 100%; max-height: 56vh; border-radius: 14px 14px 0 0; padding-bottom: env(safe-area-inset-bottom, 0px); }
   #tourUI h2 { font-size: 20px; }
+  #eventUI { left: 0; right: 0; bottom: 0; width: 100%; max-height: 62vh; border-radius: 14px 14px 0 0; padding-bottom: env(safe-area-inset-bottom, 0px); }
+  #eventUI h2 { font-size: 21px; }
 }
 </style>
 </head>
@@ -176,7 +212,7 @@ html[data-tour] #timelineActions { display: none; }
     </div>
   </div>
   <div id="timelineControls">
-    <input id="yearSlider" type="range" min="800" step="1" aria-label="Timeline year">
+    <input id="yearSlider" type="range" min="1200" step="1" aria-label="Timeline year">
   </div>
 </div>
 <div id="side">
@@ -196,7 +232,7 @@ html[data-tour] #timelineActions { display: none; }
         <input id="mistHeight" type="range" min="25" max="650" step="25" value="75">
         <span id="mistHeightValue">75 m</span>
                 <label><input id="nightMode" type="checkbox"> Night mode (dims lighting and landscape)</label>
-        <label><input id="smokeVis" type="checkbox" checked> Chimney smoke</label>
+        <label><input id="smokeVis" type="checkbox" checked> Smoke effects</label>
         <label><input id="treeVis" type="checkbox" checked> Trees</label>
         <label><input id="roadAreasVis" type="checkbox" checked> Road surfaces & markings</label>
         <label><input id="urbanGroundVis" type="checkbox" checked> Urban ground areas</label>
@@ -724,13 +760,21 @@ void main() {
 // particle rise, expansion, drift and fading are evaluated per-vertex on the GPU.
 const SMOKE_VERT = /* glsl */`
 attribute float aPhase, aSeed, aSize, aRise, aActive;
+attribute float aBurst, aPeriod, aDuration, aOffset;
 uniform float uTime, uSizeScale;
 varying float vSmokeAlpha;
 void main() {
-  float age = fract(uTime * 0.22 + aPhase);
+  // Normal chimney/fire plumes recycle continuously. Burst emitters (muskets) only
+  // create particles for a short duration, then wait for their individual interval.
+  float continuousAge = fract(uTime * 0.22 + aPhase);
+  float safePeriod = max(aPeriod, 0.1);
+  float burstElapsed = mod(uTime + aOffset + aPhase * 0.12, safePeriod);
+  float burstAge = clamp(burstElapsed / max(aDuration, 0.08), 0.0, 1.0);
+  float age = mix(continuousAge, burstAge, aBurst);
+  float burstActive = mix(1.0, 1.0 - step(aDuration, burstElapsed), aBurst);
   float fadeIn = smoothstep(0.0, 0.10, age);
   float fadeOut = 1.0 - smoothstep(0.76, 1.0, age);
-  vSmokeAlpha = fadeIn * fadeOut * aActive;
+  vSmokeAlpha = fadeIn * fadeOut * aActive * burstActive;
   vec3 p = position;
   float sway = sin(uTime * 0.72 + aSeed) * 0.22 * age
              + sin(uTime * 0.29 + aSeed * 1.71) * 0.14 * age;
@@ -1577,6 +1621,7 @@ async function start() {
   const lampLightRoot = new THREE.Group();
   const railwayRoot = new THREE.Group();
   const borderRoot = new THREE.Group();
+  const eventRoot = new THREE.Group();              // lazily loaded, phase-driven historical event objects
   const trainGroup = new THREE.Group();
   const tourPinGroup = new THREE.Group();                 // guided-tour location poles (tour mode only)
   tourPinGroup.name = 'tour-pins';
@@ -1584,6 +1629,8 @@ async function start() {
   lampLightRoot.name = 'artificial-lamp-lights';
   railwayRoot.name = '3d-railway-models';
   borderRoot.name = '3d-border-models';
+  eventRoot.name = 'historical-event-objects';
+  eventRoot.visible = false;
   trainGroup.name = 'historical-trains';
 
   // All tree LODs are built once from the same per-tree instance attributes. Only one level is
@@ -1624,7 +1671,7 @@ async function start() {
 
   const modelRoot = new THREE.Group();                // all GLB buildings: one draw pass with the rest of the 3D content
   modelRoot.matrixWorldAutoUpdate = false;            // static root; each BatchedMesh instance matrix is baked once
-  localScene.add(waterGroup, treeGroup, boatGroup, birdGroup, mistGroup, smokeGroup, lampLightRoot, railwayRoot, borderRoot, trainGroup, modelRoot, tourPinGroup);
+  localScene.add(waterGroup, treeGroup, boatGroup, birdGroup, mistGroup, smokeGroup, lampLightRoot, railwayRoot, borderRoot, eventRoot, trainGroup, modelRoot, tourPinGroup);
 
   let hf = null;                                    // Heightfield (set once loaded)
   let heightAt = () => 0;                           // (east, north) in metres -> ground height
@@ -1667,6 +1714,7 @@ async function start() {
   let boats = [];
   let buildingModelsVisible = true;
   let smokeMesh = null, smokeParticleCount = 0, activeSmokeEmitters = 0, smokeRebuildTimer = null;
+  let activeEventSmokeEmitters = 0;
   let activeLampEmitters = 0;
   const SMOKE_PARTICLES_PER_CHIMNEY = QUALITY === 'low' ? 8 : QUALITY === 'medium' ? 11 : 14;
 
@@ -1726,8 +1774,11 @@ async function start() {
       if (tourPinGroup.visible) updateTourPins(zoom);
       smokeGroup.visible = smokeOn && buildingModelsVisible && activeSmokeEmitters > 0 && zoom >= TIER.modelMinZoom;
       if (smokeGroup.visible && smokeMaterial) smokeMaterial.uniforms.uSizeScale.value = 1 / Math.max(0.05, mPerPx(zoom));
+      const smokeSizeScale = 1 / Math.max(0.05, mPerPx(zoom));
+      eventFireSmokeMaterial.uniforms.uSizeScale.value = smokeSizeScale;
+      eventMusketSmokeMaterial.uniforms.uSizeScale.value = smokeSizeScale;
       const treeDraw = treeGroup.visible && activeTreeLod >= 0 && treeLodGroups[activeTreeLod].children.length > 0;
-      const drawWorld = treeDraw || [waterGroup, boatGroup, birdGroup, mistGroup, smokeGroup, lampLightRoot, railwayRoot, borderRoot, trainGroup, modelRoot, tourPinGroup].some(g => g.visible && g.children.length);
+      const drawWorld = treeDraw || [waterGroup, boatGroup, birdGroup, mistGroup, smokeGroup, lampLightRoot, railwayRoot, borderRoot, eventRoot, trainGroup, modelRoot, tourPinGroup].some(g => g.visible && g.children.length);
       if (!drawWorld) { worldDrawn = false; return; }
 
       const r = this.renderer;
@@ -1749,12 +1800,15 @@ async function start() {
   // ---- materials
   const noiseTexture = makeNoiseTexture();                 // fallback noise texture for animated water
   const smokeTexture = makeSmokeTexture();
-  const smokeMaterial = new THREE.ShaderMaterial({
+  const makeSmokeMaterial = colour => new THREE.ShaderMaterial({
     vertexShader: SMOKE_VERT, fragmentShader: SMOKE_FRAG,
     transparent: true, depthWrite: false, depthTest: true,
     uniforms: { uTime: Uni.uTime, uSmoke: { value: smokeTexture },
-      uSmokeColor: { value: new THREE.Color(0xb8bdc1) }, uSizeScale: { value: 1 }, uNightMix: Uni.uNightMix },
+      uSmokeColor: { value: new THREE.Color(colour) }, uSizeScale: { value: 1 }, uNightMix: Uni.uNightMix },
   });
+  const smokeMaterial = makeSmokeMaterial(0xb8bdc1);
+  const eventFireSmokeMaterial = makeSmokeMaterial(0x68645f);
+  const eventMusketSmokeMaterial = makeSmokeMaterial(0xc8cdd0);
   let waterTexture = noiseTexture;
   if (waterBitmap) {
     waterTexture = new THREE.Texture(waterBitmap);
@@ -2118,7 +2172,8 @@ async function start() {
   let idleCap = Infinity, throttleTimer = null;
   const waterShown = () => waterOn && waterGroup.children.length > 0 && map.getZoom() >= TIER.waterMinZoom;
   const lifeShown = () => map.getZoom() >= TIER.lifeMinZoom && ((boatsOn && boatGroup.children.length > 0) || (birdsOn && birdGroup.children.length > 0));
-  const smokeShown = () => smokeOn && buildingModelsVisible && activeSmokeEmitters > 0 && map.getZoom() >= TIER.modelMinZoom;
+  const smokeShown = () => smokeOn && map.getZoom() >= TIER.modelMinZoom
+    && ((buildingModelsVisible && activeSmokeEmitters > 0) || activeEventSmokeEmitters > 0);
   const trainsShown = () => trainTrafficOn && trainAnimationNeeded() && map.getZoom() >= TRAIN_MIN_ZOOM;
   function wantedFps() {
     if (document.hidden) return 0;
@@ -2138,6 +2193,7 @@ async function start() {
     syncAnim();
   });
   map.on('zoomend', () => {
+    syncEventSmokeVisibility();
     syncAnim();
     syncBuildingFootprints();
     ensureRailwayModels();
@@ -3169,6 +3225,7 @@ async function start() {
       smokeMesh = null;
     }
     const positions = [], phases = [], seeds = [], sizes = [], rises = [], active = [];
+    const bursts = [], periods = [], durations = [], offsets = [];
     for (const item of modelItems) {
       item.smokeParticleRanges = [];
       const points = item.chimneyPoints || [];
@@ -3186,6 +3243,7 @@ async function start() {
           sizes.push(1.05 + rnd() * 0.8);
           rises.push(7.0 + rnd() * 5.0);
           active.push(item.visible ? 1 : 0);
+          bursts.push(0); periods.push(0); durations.push(1); offsets.push(0);
         }
         item.smokeParticleRanges.push({ start, count: SMOKE_PARTICLES_PER_CHIMNEY });
       }
@@ -3204,6 +3262,10 @@ async function start() {
     geometry.setAttribute('aSize', new THREE.Float32BufferAttribute(sizes, 1));
     geometry.setAttribute('aRise', new THREE.Float32BufferAttribute(rises, 1));
     geometry.setAttribute('aActive', new THREE.Float32BufferAttribute(active, 1));
+    geometry.setAttribute('aBurst', new THREE.Float32BufferAttribute(bursts, 1));
+    geometry.setAttribute('aPeriod', new THREE.Float32BufferAttribute(periods, 1));
+    geometry.setAttribute('aDuration', new THREE.Float32BufferAttribute(durations, 1));
+    geometry.setAttribute('aOffset', new THREE.Float32BufferAttribute(offsets, 1));
     smokeMesh = new THREE.Points(geometry, smokeMaterial);
     smokeMesh.name = 'all-chimney-smoke-particles';
     smokeMesh.frustumCulled = false;
@@ -3977,6 +4039,7 @@ async function start() {
   });
   $('smokeVis').addEventListener('change', e => {
     smokeOn = e.target.checked;
+    syncEventSmokeVisibility();
     syncAnim();
     map.triggerRepaint();
   });
@@ -4030,7 +4093,7 @@ async function start() {
     location.search = p.toString();                   // the quality tier is applied at startup
   });
 
-  // ============================================================ Dates of Interest
+  // ============================================================ Dates of Interest + event reconstruction entry point
   const eventList = (eventsCfg.events || [])
     .filter(e => e.title && e.from_year != null && Number.isFinite(Number(e.from_year)))
     .map((e, i) => ({ ...e, _i: i,
@@ -4041,11 +4104,528 @@ async function start() {
 
   const evPanel = $('events'), evToggle = $('eventsToggle'), evContent = $('eventsContent');
   $('eventsHeading').textContent = `Dates of Interest${eventList.length ? ` (${eventList.length})` : ''}`;
+  const EVENTS_DIR = './events/';
+  // Folder names are deliberately restricted to one safe path segment. This avoids accidental
+  // traversal while allowing readable names such as battle_1689 or viking_raid_903.
+  const eventFolderName = value => {
+    if (typeof value !== 'string') return null;
+    const name = value.trim();
+    return name && name.length <= 80 && /^[A-Za-z0-9_-]+$/.test(name) ? name : null;
+  };
+  let eventUI = null, activeEvent = null, activeEventPhases = [], activeEventPhaseIndex = 0, eventLoadToken = 0;
+  let activeEventScene = null;
+  const eventSceneCache = new Map(); // folder -> { root, items, loadPromise, error }; GLBs themselves are shared through modelCache
+  const eventDateLabel = e => {
+    const month = e.from_month != null ? new Date(Date.UTC(2000, (Number(e.from_month) || 1) - 1, 1)).toLocaleString('en-GB', { month: 'long', timeZone: 'UTC' }) : null;
+    return month ? `${month} ${e.from_year}` : String(e.from_year);
+  };
+  function ensureEventUI() {
+    if (eventUI) return eventUI;
+    eventUI = document.createElement('section');
+    eventUI.id = 'eventUI'; eventUI.hidden = true;
+    eventUI.setAttribute('role', 'region'); eventUI.setAttribute('aria-label', 'Event reconstruction');
+    eventUI.setAttribute('aria-live', 'polite');
+    document.body.append(eventUI);
+    return eventUI;
+  }
+  const eventImageHtml = (base, image, caption) => {
+    if (!image) return '';
+    const src = /^(https?:)?\/\//.test(image) || image.startsWith('/') ? image : base + image;
+    return `<figure><img src="${esc(src)}" alt="${esc(caption || '')}" onerror="this.closest('figure').remove()">${caption ? `<figcaption>${esc(caption)}</figcaption>` : ''}</figure>`;
+  };
+  function renderEventPhase() {
+    if (!activeEvent || !eventUI) return;
+    const e = activeEvent, phases = activeEventPhases, i = activeEventPhaseIndex;
+    const phase = phases[i] || null;
+    const folder = eventFolderName(e.folder);
+    const eventBase = EVENTS_DIR + folder + '/';
+    const progress = phases.length > 1
+      ? `<div class="e-progress" aria-label="Event phase ${i + 1} of ${phases.length}">${phases.map((p, k) => `<button type="button" class="${k < i ? 'done' : k === i ? 'active' : ''}" data-phase-index="${k}" aria-label="Go to phase ${k + 1}: ${esc(p.title || p.id || `Phase ${k + 1}`)}" title="${esc(p.title || p.id || `Phase ${k + 1}`)}"></button>`).join('')}</div>` : '';
+    const phaseHtml = phase ? `<div class="e-phase">
+      <div class="e-phase-time">${esc(phase.time_label || phase.period || `Phase ${i + 1} of ${phases.length}`)}</div>
+      <h3>${esc(phase.title || phase.id || `Phase ${i + 1}`)}</h3>
+      ${eventImageHtml(eventBase, phase.image, phase.image_caption)}
+      <p>${esc(phase.description || phase.text || phase.summary || '')}</p>
+      ${phase.location ? `<div class="e-muted"><b>Location:</b> ${esc(phase.location)}</div>` : ''}
+      ${phase.notes ? `<div class="e-muted">${esc(phase.notes)}</div>` : ''}
+      <div class="e-muted" id="eventSceneStatus">Preparing event scene…</div>
+    </div>` : `<div class="e-phase"><h3>Event phases not added yet</h3><p class="e-muted">Add a <code>phases.json</code> file inside <code>events/${esc(folder)}/</code> to define the sequence and enable the phase controls.</p><div class="e-muted" id="eventSceneStatus">Preparing event scene…</div></div>`;
+    const eventExtra = [e.location && `<div class="e-muted"><b>Location:</b> ${esc(e.location)}</div>`, e.subtitle && `<div class="e-muted">${esc(e.subtitle)}</div>`].filter(Boolean).join('');
+    const sources = Array.isArray(e.sources) ? e.sources : (e.source ? [e.source] : []);
+    const sourceHtml = sources.length ? `<div class="e-source"><b>Sources</b><br>${sources.map(x => esc(typeof x === 'string' ? x : (x.title || x.url || JSON.stringify(x)))).join('<br>')}</div>` : '';
+    eventUI.innerHTML = `<div class="e-scroll">
+      <div class="e-kicker">Historical event reconstruction</div>
+      <h2>${esc(e.title)}</h2>
+      <div class="e-date">${esc(eventDateLabel(e))}${e.to_year != null && Number(e.to_year) !== Number(e.from_year) ? `–${esc(e.to_year)}` : ''}</div>
+      ${eventImageHtml(BASE, e.image, e.image_caption)}
+      ${eventExtra}
+      <div class="e-description">${esc(e.text || e.description || '')}</div>
+      ${progress}${phaseHtml}${sourceHtml}
+      ${!phase && e.notes ? `<div class="e-source">${esc(e.notes)}</div>` : ''}
+    </div>
+    <div class="e-bar">
+      <button class="link" id="eventClose">← Dates of Interest</button><span class="grow"></span>
+      <button id="eventPrevious" ${!phase || i <= 0 ? 'disabled' : ''}>Previous</button>
+      <button class="primary" id="eventNext" ${!phase || i >= phases.length - 1 ? 'disabled' : ''}>${phase && i === phases.length - 1 ? 'Complete' : 'Next phase →'}</button>
+    </div>`;
+    $('eventClose').onclick = closeEventView;
+    $('eventPrevious').onclick = () => setEventPhase(activeEventPhaseIndex - 1);
+    $('eventNext').onclick = () => setEventPhase(activeEventPhaseIndex + 1);
+    eventUI.querySelectorAll('[data-phase-index]').forEach(b => b.addEventListener('click', () => setEventPhase(Number(b.dataset.phaseIndex))));
+  }
+  function eventPhaseNumber(phase, index) {
+    for (const value of [phase && phase.number, phase && phase.phase, phase && phase.id]) {
+      if (value == null || value === '') continue;
+      const n = Number(value);
+      if (Number.isFinite(n)) return n;
+    }
+    return index + 1; // event phase numbering is one-based
+  }
+  function eventPhaseBound(value, fallback) {
+    if (value == null || value === '') return fallback;
+    const n = Number(value);
+    return Number.isFinite(n) ? n : fallback;
+  }
+  function eventSceneState(folder) {
+    let state = eventSceneCache.get(folder);
+    if (!state) {
+      const root = new THREE.Group();
+      root.name = `event-${folder}`;
+      root.visible = false;
+      const fireSmokeGroup = new THREE.Group();
+      fireSmokeGroup.name = `event-${folder}-building-fire-smoke`;
+      fireSmokeGroup.visible = false;
+      const musketSmokeGroup = new THREE.Group();
+      musketSmokeGroup.name = `event-${folder}-musket-smoke`;
+      musketSmokeGroup.visible = false;
+      root.add(fireSmokeGroup, musketSmokeGroup);
+      eventRoot.add(root);
+      state = { folder, root, items: [], loadPromise: null, error: null, sourceFile: null,
+        fireSmokeGroup, musketSmokeGroup, fireSmokeMesh: null, musketSmokeMesh: null,
+        fireSmokeRanges: [], musketSmokeRanges: [], fireSmokeActiveEmitters: 0, musketSmokeActiveEmitters: 0,
+        musketRebuildTimer: null };
+      eventSceneCache.set(folder, state);
+    }
+    return state;
+  }
+  function safeEventModelUrl(folder, modelPath) {
+    if (typeof modelPath !== 'string' || !modelPath.trim()) throw new Error('Missing model path');
+    const clean = modelPath.trim().replace(/\\/g, '/');
+    const parts = clean.split('/');
+    if (clean.startsWith('/') || /^[a-z][a-z0-9+.-]*:/i.test(clean) || parts.some(part => !part || part === '.' || part === '..' || !/^[A-Za-z0-9_.-]+$/.test(part)))
+      throw new Error(`Unsafe event model path: ${modelPath}`);
+    const url = new URL(EVENTS_DIR + folder + '/' + parts.join('/'), BASE);
+    url.searchParams.set('assetrev', 'event-models-v1');
+    return url.href;
+  }
+  async function fetchEventObjects(folder) {
+    const paths = ['objects.geojson', 'positions.geojson'];
+    let lastStatus = 404;
+    for (const file of paths) {
+      const response = await fetch(EVENTS_DIR + folder + '/' + file, { cache: 'no-cache' });
+      if (response.ok) return { data: await response.json(), file };
+      lastStatus = response.status;
+      if (response.status !== 404) throw new Error(`Could not load ${file} (${response.status})`);
+    }
+    throw new Error(`No objects.geojson or positions.geojson found (HTTP ${lastStatus})`);
+  }
+  function eventDeterministicRandom(text) {
+    let seed = 2166136261;
+    const str = String(text);
+    for (let i = 0; i < str.length; i++) seed = Math.imul(seed ^ str.charCodeAt(i), 16777619);
+    return mulberry32(seed >>> 0);
+  }
+  function eventSmokePosition(item) {
+    const p = item.props || {};
+    const targetId = p.target_building_id ?? p.building_id ?? p.target;
+    const target = targetId != null ? modelItems.find(b => String(b.id) === String(targetId)) : null;
+    // The GeoJSON Point is the actual emitter location. A target building is used only
+    // to obtain its ground datum and estimated roof height, not to override that placement.
+    const [east, north] = frame.toLocal(item.lon, item.lat);
+    const sampled = hf.sampleMerc(mercX(item.lon), mercY(item.lat));
+    const ground = target ? target.z + target.dz : (Number.isFinite(sampled) ? sampled : 0);
+    const anchor = String(p.anchor || (target ? 'roof' : 'ground')).toLowerCase();
+    const explicitHeight = Number(p.anchor_height ?? p.height ?? p.height_offset ?? p.dz);
+    let height = Number.isFinite(explicitHeight) ? explicitHeight : 0;
+    if (!Number.isFinite(explicitHeight) && anchor === 'roof') {
+      const buildingHeight = Number(target && (target.props.h ?? target.props.height));
+      height = Number.isFinite(buildingHeight) && buildingHeight > 0 ? buildingHeight : 5.5;
+    }
+    return new THREE.Vector3(east, north, ground + height);
+  }
+  function replaceEventSmokeMesh(state, group, oldMesh, records, material, mode) {
+    if (oldMesh) {
+      group.remove(oldMesh);
+      oldMesh.geometry?.dispose();
+    }
+    const positions = [], phases = [], seeds = [], sizes = [], rises = [], active = [];
+    const bursts = [], periods = [], durations = [], offsets = [];
+    const ranges = [];
+    const fireBaseCount = QUALITY === 'low' ? 16 : QUALITY === 'medium' ? 22 : 28;
+    const musketBaseCount = QUALITY === 'low' ? 7 : QUALITY === 'medium' ? 9 : 11;
+    for (const record of records) {
+      const rnd = eventDeterministicRandom(`${record.id}:${mode}`);
+      const scale = Math.max(0.25, Math.min(4, Number(record.scale) || 1));
+      const intensity = Math.max(0.35, Math.min(2.5, Number(record.intensity) || 1));
+      const count = Math.max(4, Math.round((mode === 'fire' ? fireBaseCount : musketBaseCount) * intensity));
+      const start = phases.length;
+      for (let i = 0; i < count; i++) {
+        positions.push(record.position.x, record.position.y, record.position.z);
+        phases.push(mode === 'fire' ? (i + rnd() * 0.3) / count : rnd());
+        seeds.push(rnd() * 100);
+        if (mode === 'fire') {
+          sizes.push((2.1 + rnd() * 2.1) * scale);
+          rises.push((8.0 + rnd() * 10.0) * scale);
+          bursts.push(0); periods.push(0); durations.push(1); offsets.push(0);
+        } else {
+          sizes.push((1.15 + rnd() * 1.0) * scale);
+          rises.push((1.0 + rnd() * 2.2) * scale);
+          bursts.push(1); periods.push(record.period); durations.push(record.duration); offsets.push(record.offset);
+        }
+        active.push(0);
+      }
+      ranges.push({ id: record.id, start, count, from: record.from, to: record.to });
+    }
+    if (!positions.length) return { mesh: null, ranges: [] };
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    geometry.setAttribute('aPhase', new THREE.Float32BufferAttribute(phases, 1));
+    geometry.setAttribute('aSeed', new THREE.Float32BufferAttribute(seeds, 1));
+    geometry.setAttribute('aSize', new THREE.Float32BufferAttribute(sizes, 1));
+    geometry.setAttribute('aRise', new THREE.Float32BufferAttribute(rises, 1));
+    geometry.setAttribute('aActive', new THREE.Float32BufferAttribute(active, 1));
+    geometry.setAttribute('aBurst', new THREE.Float32BufferAttribute(bursts, 1));
+    geometry.setAttribute('aPeriod', new THREE.Float32BufferAttribute(periods, 1));
+    geometry.setAttribute('aDuration', new THREE.Float32BufferAttribute(durations, 1));
+    geometry.setAttribute('aOffset', new THREE.Float32BufferAttribute(offsets, 1));
+    const mesh = new THREE.Points(geometry, material);
+    mesh.name = mode === 'fire' ? `event-${state.folder}-fire-smoke-particles` : `event-${state.folder}-musket-smoke-particles`;
+    mesh.frustumCulled = false;
+    mesh.renderOrder = 13;
+    group.add(mesh);
+    return { mesh, ranges };
+  }
+  function rebuildEventFireSmoke(state) {
+    const records = state.items.filter(item => item.kind === 'effect' && item.effectType === 'fire_smoke')
+      .map(item => ({ id: item.id, position: item.position, scale: item.props.scale, intensity: item.props.intensity,
+        from: item.from, to: item.to }));
+    const result = replaceEventSmokeMesh(state, state.fireSmokeGroup, state.fireSmokeMesh, records, eventFireSmokeMaterial, 'fire');
+    state.fireSmokeMesh = result.mesh;
+    state.fireSmokeRanges = result.ranges;
+    updateEventSmokeActive(state, activeEventScene === state ? eventCurrentPhaseNumber() : -Infinity);
+  }
+  function normaliseMusketFire(value) {
+    if (value == null || value === false) return null;
+    if (value === true) return {};
+    if (typeof value === 'number') return { interval: value };
+    if (typeof value === 'object') return value;
+    return null;
+  }
+  function rebuildEventMusketSmoke(state) {
+    const records = [];
+    for (const item of state.items) {
+      if (item.kind !== 'model' || !item.holder) continue;
+      const fire = normaliseMusketFire(item.props.musket_fire ?? (item.props.effects && item.props.effects.musket_fire));
+      if (!fire) continue;
+      const offset = Array.isArray(fire.muzzle_offset) && fire.muzzle_offset.length >= 3
+        ? fire.muzzle_offset.map(Number) : [0, 1.15, -0.72];
+      if (!offset.every(Number.isFinite)) continue;
+      const muzzle = new THREE.Vector3(offset[0], offset[1], offset[2]).applyMatrix4(item.holder.matrix);
+      const baseInterval = Number(fire.interval);
+      const interval = Number.isFinite(baseInterval) ? Math.max(1, Math.min(120, baseInterval)) : 8;
+      const jitterValue = Number(fire.interval_jitter ?? fire.jitter);
+      const jitter = Number.isFinite(jitterValue) ? Math.max(0, Math.min(interval * 0.8, jitterValue)) : 1.25;
+      const rnd = eventDeterministicRandom(`${item.id}:musket-cadence`);
+      const period = Math.max(1, interval + (rnd() * 2 - 1) * jitter);
+      const durationValue = Number(fire.duration);
+      const duration = Number.isFinite(durationValue) ? Math.max(0.25, Math.min(period * 0.8, durationValue)) : 1.25;
+      // musket_fire.phase_from (or start_phase) can delay firing independently
+      // of the soldier's own visibility interval. The soldier must still be present.
+      const fireFrom = eventPhaseBound(fire.phase_from ?? fire.start_phase, item.from);
+      const fireTo = eventPhaseBound(fire.phase_to ?? fire.end_phase, item.to);
+      const from = Math.max(item.from, fireFrom);
+      const to = Math.min(item.to, fireTo);
+      if (from > to) {
+        console.warn(`Skipping musket fire for ${item.id}: firing phase range does not overlap the model's visible phases`);
+        continue;
+      }
+      records.push({ id: item.id, position: muzzle, scale: fire.size, intensity: fire.intensity,
+        period, duration, offset: rnd() * period, from, to });
+    }
+    const result = replaceEventSmokeMesh(state, state.musketSmokeGroup, state.musketSmokeMesh, records, eventMusketSmokeMaterial, 'musket');
+    state.musketSmokeMesh = result.mesh;
+    state.musketSmokeRanges = result.ranges;
+    updateEventSmokeActive(state, activeEventScene === state ? eventCurrentPhaseNumber() : -Infinity);
+  }
+  function scheduleEventMusketSmokeRebuild(state) {
+    if (state.musketRebuildTimer != null) return;
+    state.musketRebuildTimer = setTimeout(() => {
+      state.musketRebuildTimer = null;
+      rebuildEventMusketSmoke(state);
+    }, 90);
+  }
+  function eventCurrentPhaseNumber() {
+    return eventPhaseNumber(activeEventPhases[activeEventPhaseIndex] || null, activeEventPhaseIndex);
+  }
+  function updateEventSmokeActive(state, number = eventCurrentPhaseNumber()) {
+    const updateRanges = (mesh, ranges) => {
+      const attr = mesh?.geometry?.getAttribute('aActive');
+      let count = 0;
+      for (const range of ranges) {
+        const on = activeEventScene === state && range.from <= number && number <= range.to;
+        if (on) count++;
+        if (attr) attr.array.fill(on ? 1 : 0, range.start, range.start + range.count);
+      }
+      if (attr) attr.needsUpdate = true;
+      return count;
+    };
+    state.fireSmokeActiveEmitters = updateRanges(state.fireSmokeMesh, state.fireSmokeRanges);
+    state.musketSmokeActiveEmitters = updateRanges(state.musketSmokeMesh, state.musketSmokeRanges);
+    activeEventSmokeEmitters = activeEventScene === state
+      ? state.fireSmokeActiveEmitters + state.musketSmokeActiveEmitters : 0;
+    syncEventSmokeVisibility();
+    syncAnim();
+  }
+  function syncEventSmokeVisibility(zoom = map.getZoom()) {
+    const state = activeEventScene;
+    const allowed = !!state && smokeOn && zoom >= TIER.modelMinZoom;
+    if (state) {
+      state.fireSmokeGroup.visible = allowed && state.fireSmokeActiveEmitters > 0;
+      state.musketSmokeGroup.visible = allowed && state.musketSmokeActiveEmitters > 0;
+    }
+  }
+
+  async function ensureEventObjectsLoaded(state) {
+    if (state.loadPromise) return state.loadPromise;
+    state.error = null;
+    state.loadPromise = (async () => {
+      const result = await fetchEventObjects(state.folder);
+      const data = result.data;
+      if (!data || data.type !== 'FeatureCollection' || !Array.isArray(data.features))
+        throw new Error(`${result.file} must contain a GeoJSON FeatureCollection`);
+      state.sourceFile = result.file;
+      state.items = data.features.map((feature, index) => {
+        const p = feature && feature.properties || {};
+        const kind = String(p.kind || '').toLowerCase();
+        if (!['model', 'effect', 'smoke'].includes(kind) || (kind === 'model' && !p.model)) return null;
+        if (!feature.geometry || feature.geometry.type !== 'Point') return null;
+        const coord = feature.geometry.coordinates;
+        const lon = Number(coord && coord[0]), lat = Number(coord && coord[1]);
+        if (!Number.isFinite(lon) || !Number.isFinite(lat) || Math.abs(lon) > 180 || Math.abs(lat) > 90) {
+          console.warn(`Skipping event object ${p.id ?? index}: invalid Point coordinates`); return null;
+        }
+        const from = eventPhaseBound(p.phase_from, -Infinity);
+        const to = eventPhaseBound(p.phase_to, Infinity);
+        if (from > to) {
+          console.warn(`Skipping event object ${p.id ?? index}: phase_from is later than phase_to`); return null;
+        }
+        const id = p.id != null ? String(p.id) : `event_object_${index + 1}`;
+        if (kind === 'model') return { kind, feature, props: p, id, lon, lat, from, to,
+          holder: null, promise: null, failed: false, url: null };
+        const effectName = String(p.effect || p.effect_type || 'fire_smoke').toLowerCase();
+        if (!['fire_smoke', 'building_fire_smoke', 'house_fire_smoke'].includes(effectName)) {
+          console.warn(`Skipping unsupported event effect ${effectName} (${id})`); return null;
+        }
+        const item = { kind: 'effect', effectType: 'fire_smoke', feature, props: p, id, lon, lat, from, to };
+        item.position = eventSmokePosition(item);
+        return item;
+      }).filter(Boolean);
+      rebuildEventFireSmoke(state);
+      return state;
+    })().catch(err => {
+      state.error = err?.message || String(err);
+      state.loadPromise = null; // permit retry if the file is added/fixed during this session
+      console.warn(`Could not load event objects for ${state.folder}:`, err);
+      throw err;
+    });
+    return state.loadPromise;
+  }
+  function updateEventSceneStatus() {
+    const el = $('eventSceneStatus');
+    if (!el || !activeEventScene) return;
+    const phase = activeEventPhases[activeEventPhaseIndex] || null;
+    const number = eventPhaseNumber(phase, activeEventPhaseIndex);
+    const relevant = activeEventScene.items.filter(item => item.from <= number && number <= item.to);
+    const models = relevant.filter(item => item.kind === 'model');
+    const effects = relevant.filter(item => item.kind === 'effect');
+    const loaded = models.filter(item => item.holder).length;
+    const pending = models.filter(item => item.promise && !item.holder && !item.failed).length;
+    const failed = models.filter(item => item.failed).length;
+    const total = models.length;
+    const smokeCount = activeEventScene.fireSmokeActiveEmitters + activeEventScene.musketSmokeActiveEmitters;
+    if (activeEventScene.error) el.textContent = `Event placements unavailable: ${activeEventScene.error}`;
+    else if (!total && !effects.length) el.textContent = 'No models or effects are assigned to this phase yet.';
+    else {
+      const modelText = total ? `Event models: ${loaded} of ${total} placed${pending ? `; ${pending} loading` : ''}${failed ? `; ${failed} failed` : ''}` : 'No GLB models in this phase';
+      const effectText = effects.length ? `${effects.length} environmental effect${effects.length === 1 ? '' : 's'}` : '';
+      const firingText = activeEventScene.musketSmokeRanges.length ? `${activeEventScene.musketSmokeActiveEmitters} firing troop${activeEventScene.musketSmokeActiveEmitters === 1 ? '' : 's'}` : '';
+      el.textContent = [modelText, effectText, smokeCount ? `${smokeCount} smoke emitter${smokeCount === 1 ? '' : 's'} active` : '', firingText].filter(Boolean).join('; ') + '.';
+    }
+  }
+  async function ensureEventModelLoaded(state, item) {
+    if (item.holder || item.promise || item.failed) return item.promise;
+    item.promise = (async () => {
+      await ensureTerrainReady();
+      gltfLoaderPromise ||= (async () => {
+        const [{ GLTFLoader }, { DRACOLoader }, { MeshoptDecoder }] = await Promise.all([
+          import('three/addons/loaders/GLTFLoader.js'),
+          import('three/addons/loaders/DRACOLoader.js'),
+          import('three/addons/libs/meshopt_decoder.module.js'),
+        ]);
+        return new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath(DRACO_PATH)).setMeshoptDecoder(MeshoptDecoder);
+      })();
+      const loader = await gltfLoaderPromise;
+      const url = safeEventModelUrl(state.folder, item.props.model);
+      item.url = url;
+      let sourcePromise = modelCache.get(url);
+      if (!sourcePromise) modelCache.set(url, sourcePromise = loader.loadAsync(url).then(gltf => gltf.scene));
+      const sourceScene = await sourcePromise;
+      const clone = sourceScene.clone(true);
+      clone.name = `${item.id}-model`;
+      const [east, north] = frame.toLocal(item.lon, item.lat);
+      const sampled = hf.sampleMerc(mercX(item.lon), mercY(item.lat));
+      const ground = Number.isFinite(sampled) ? sampled : 0;
+      const scaleValue = Number(item.props.scale ?? item.props.model_scale);
+      const scale = Number.isFinite(scaleValue) && scaleValue !== 0 ? scaleValue : 1;
+      const headingValue = Number(item.props.heading_deg);
+      const heading = Number.isFinite(headingValue) ? headingValue : 0;
+      const dzValue = Number(item.props.dz ?? item.props.height_offset ?? item.props.model_dz);
+      const dz = Number.isFinite(dzValue) ? dzValue : 0;
+      // GLB convention: +X east, +Y up, -Z north. Positive heading is clockwise from north.
+      const modelRotation = new THREE.Matrix4().makeRotationY(-heading * Math.PI / 180);
+      const modelScale = new THREE.Matrix4().makeScale(scale, scale, scale);
+      const holder = new THREE.Group();
+      holder.name = `event-object-${item.id}`;
+      holder.matrixAutoUpdate = false;
+      holder.matrix.copy(new THREE.Matrix4().makeTranslation(east, north, ground + dz).multiply(rotX).multiply(modelRotation).multiply(modelScale));
+      holder.add(clone);
+      const phase = activeEventPhases[activeEventPhaseIndex] || null;
+      const number = eventPhaseNumber(phase, activeEventPhaseIndex);
+      holder.visible = activeEventScene === state && item.from <= number && number <= item.to;
+      state.root.add(holder);
+      item.holder = holder;
+      if (normaliseMusketFire(item.props.musket_fire ?? (item.props.effects && item.props.effects.musket_fire)))
+        scheduleEventMusketSmokeRebuild(state);
+      map.triggerRepaint();
+      updateEventSceneStatus();
+      return holder;
+    })().catch(err => {
+      item.failed = true;
+      console.warn(`Event model failed (${item.id}, ${item.props.model}):`, err);
+      updateEventSceneStatus();
+      return null;
+    });
+    return item.promise;
+  }
+  async function syncEventPhaseScene() {
+    if (!activeEvent || !activeEventScene) return;
+    const state = activeEventScene;
+    const phase = activeEventPhases[activeEventPhaseIndex] || null;
+    const number = eventPhaseNumber(phase, activeEventPhaseIndex);
+    state.root.visible = true;
+    eventRoot.visible = true;
+    for (const item of state.items) {
+      if (item.kind !== 'model') continue;
+      const visible = item.from <= number && number <= item.to;
+      if (item.holder) item.holder.visible = visible;
+      if (visible && !item.holder && !item.failed) ensureEventModelLoaded(state, item);
+    }
+    updateEventSmokeActive(state, number);
+    updateEventSceneStatus();
+    map.triggerRepaint();
+  }
+  function setEventPhase(index) {
+    if (!activeEventPhases.length) return;
+    activeEventPhaseIndex = Math.max(0, Math.min(activeEventPhases.length - 1, Number(index) || 0));
+    renderEventPhase();
+    syncEventPhaseScene();
+    window.dispatchEvent(new CustomEvent('dbmaps:event-phase-change', { detail: {
+      event: activeEvent, phase: activeEventPhases[activeEventPhaseIndex], index: activeEventPhaseIndex,
+      number: eventPhaseNumber(activeEventPhases[activeEventPhaseIndex], activeEventPhaseIndex)
+    }}));
+  }
+  async function openEventView(e) {
+    const folder = eventFolderName(e && e.folder);
+    if (!folder) return;
+    const token = ++eventLoadToken;
+    if (typeof stopAttract === 'function') stopAttract();
+    if (typeof stopTimeline === 'function') stopTimeline();
+    activeEvent = e; activeEventPhases = []; activeEventPhaseIndex = 0;
+    activeEventScene = eventSceneState(folder);
+    activeEventSmokeEmitters = 0;
+    for (const state of eventSceneCache.values()) {
+      state.root.visible = state === activeEventScene;
+      // Hide cached particle groups until this event's current phase is applied below.
+      state.fireSmokeGroup.visible = false;
+      state.musketSmokeGroup.visible = false;
+    }
+    eventRoot.visible = true;
+    const ui = ensureEventUI(); ui.hidden = false;
+    document.documentElement.dataset.event = '1';
+    slider.disabled = true;
+    $('playTimeline').disabled = true;
+    $('timelineSpeed').disabled = true;
+    ui.innerHTML = `<div class="e-scroll"><div class="e-kicker">Historical event reconstruction</div><h2>${esc(e.title)}</h2><div class="e-muted">Loading event phases and placements…</div></div><div class="e-bar"><button class="link" id="eventCloseLoading">← Dates of Interest</button></div>`;
+    $('eventCloseLoading').onclick = closeEventView;
+
+    const targetYear = Math.max(Number(slider.min), Math.min(Number(slider.max), Math.floor(e.fromDate)));
+    if (Number(slider.value) !== targetYear) { slider.value = String(targetYear); onYearChange(false); }
+    if (e.lon != null && e.lat != null && Number.isFinite(Number(e.lon)) && Number.isFinite(Number(e.lat))) {
+      map.flyTo({ center: [Number(e.lon), Number(e.lat)], zoom: Number(e.zoom) || 16, pitch: 55, duration: 2200, essential: true });
+    }
+    const phaseTask = (async () => {
+      const response = await fetch(EVENTS_DIR + folder + '/phases.json', { cache: 'no-cache' });
+      if (!response.ok) {
+        if (response.status === 404) return null;
+        throw new Error(`phases.json returned HTTP ${response.status}`);
+      }
+      return response.json();
+    })();
+    const objectsTask = ensureEventObjectsLoaded(activeEventScene);
+    const [phaseResult, objectResult] = await Promise.allSettled([phaseTask, objectsTask]);
+    if (token !== eventLoadToken) return;
+    if (phaseResult.status === 'fulfilled' && phaseResult.value) {
+      const data = phaseResult.value;
+      activeEventPhases = (Array.isArray(data) ? data : (Array.isArray(data && data.phases) ? data.phases : []))
+        .filter(p => p && typeof p === 'object');
+      const initial = !Array.isArray(data) && data ? data.initial_phase : null;
+      if (initial != null) {
+        let found = activeEventPhases.findIndex((p, i) => [p.id, p.number, p.phase, i + 1].some(v => v != null && String(v) === String(initial)));
+        if (found < 0 && Number.isFinite(Number(initial))) found = Math.max(0, Math.min(activeEventPhases.length - 1, Number(initial) - 1));
+        if (found >= 0) activeEventPhaseIndex = found;
+      }
+    } else if (phaseResult.status === 'rejected') {
+      console.warn(`Could not load event phases for ${folder}:`, phaseResult.reason);
+    }
+    if (objectResult.status === 'rejected') {
+      activeEventScene.error = objectResult.reason?.message || String(objectResult.reason);
+      console.warn(`Could not load event placements for ${folder}:`, objectResult.reason);
+    }
+    if (token !== eventLoadToken) return;
+    renderEventPhase();
+    if (!activeEventPhases.length) {
+      const message = eventUI.querySelector('.e-phase p');
+      if (message && !message.textContent) message.textContent = 'This event folder has no usable phases.json yet. Add phases to enable phase navigation.';
+    }
+    syncEventPhaseScene();
+  }
+  function closeEventView() {
+    eventLoadToken++;
+    activeEvent = null; activeEventPhases = []; activeEventPhaseIndex = 0; activeEventScene = null;
+    activeEventSmokeEmitters = 0;
+    eventRoot.visible = false;
+    for (const state of eventSceneCache.values()) state.root.visible = false;
+    if (eventUI) eventUI.hidden = true;
+    delete document.documentElement.dataset.event;
+    slider.disabled = false;
+    $('playTimeline').disabled = false;
+    $('timelineSpeed').disabled = false;
+    syncAnim();
+  }
+
   if (!eventList.length) {
     evContent.innerHTML = '<div class="ev-none">No dated events were found in events.json.</div>';
   } else {
-    const monthName = month => new Date(Date.UTC(2000, month - 1, 1)).toLocaleString('en-GB', { month: 'short', timeZone: 'UTC' });
-    const eventDateLabel = e => e.from_month != null ? `${monthName(Number(e.from_month) || 1)} ${e.from_year}` : String(e.from_year);
     eventList.forEach(e => {
       const d = document.createElement('div');
       d.className = 'ev';
@@ -4066,18 +4646,25 @@ async function start() {
         range.textContent = `${e.from_year}–${e.to_year}`;
         d.append(range);
       }
-      if (e.text) { const t = document.createElement('div'); t.textContent = e.text; d.append(t); }
-      if (e.image) {
+      // Events with a safe folder name use the dedicated reconstruction view for their long description.
+      if (eventFolderName(e.folder)) {
+        const go = document.createElement('button');
+        go.type = 'button'; go.className = 'ev-go'; go.textContent = 'Go to Event →';
+        go.title = `Open the ${e.title} reconstruction`;
+        go.addEventListener('click', () => openEventView(e));
+        d.append(go);
+      } else {
+        if (e.text) { const t = document.createElement('div'); t.textContent = e.text; d.append(t); }
+      }
+      if (e.image && !eventFolderName(e.folder)) {
         const img = document.createElement('img');
         img.src = e.image; img.alt = e.image_caption || e.title; img.loading = 'lazy';
-        img.onerror = () => img.remove();
-        d.append(img);
+        img.onerror = () => img.remove(); d.append(img);
         if (e.image_caption) { const c = document.createElement('small'); c.textContent = e.image_caption; d.append(c); }
       }
       if (e.lon != null && e.lat != null && inBounds([e.lon, e.lat], AREA)) {
         const b = document.createElement('button');
-        b.type = 'button';
-        b.textContent = 'Show on map';
+        b.type = 'button'; b.textContent = 'Show on map';
         b.onclick = () => map.flyTo({ center: [e.lon, e.lat], zoom: e.zoom ?? 16.5, pitch: 55, duration: 2500 });
         d.append(b);
       }
@@ -4640,11 +5227,12 @@ setInterval(() => {
     }
   });
 
-  window.__viewer = { map, stats, Uni, treeGroup, waterGroup, mistGroup, boatGroup, birdGroup, smokeGroup, lampLightRoot, railwayRoot, borderRoot, trainGroup, ambientLight, sunLight,
+  window.__viewer = { map, stats, Uni, treeGroup, waterGroup, mistGroup, boatGroup, birdGroup, smokeGroup, lampLightRoot, railwayRoot, borderRoot, eventRoot, trainGroup, ambientLight, sunLight,
     get nightMode() { return $('nightMode').checked; },
     get ambientIntensity() { return ambientLight.intensity; },
     get landscapeNightOpacity() { return $('nightMode').checked ? NIGHT_LANDSCAPE_OPACITY : 0; },
     get smokeEmitters() { return activeSmokeEmitters; }, get smokeParticles() { return smokeParticleCount; },
+    get eventSmokeEmitters() { return activeEventSmokeEmitters; },
     get lampEmitters() { return activeLampEmitters; },
     get lampLightObjects() { let n = 0; lampLightRoot.traverse(o => { if (o.isLight) n++; }); return n; },
     get windowGlowMaterials() { return [...windowGlowMaterials.values()].map(x => x.name); },
