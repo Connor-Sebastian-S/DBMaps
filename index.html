@@ -394,7 +394,7 @@ const BIRD_SCALE = 2.5;                              // birds are drawn this man
 const TIERS = {
   low:    { pixelRatio: 1,    maxTrees: 15000, mistPuffs: 160, animFps: 12, heightZoom: 14, treeMinZoom: 15.5, modelMinZoom: 15.5, waterMinZoom: 15,   waterMaxEdge: 45, boats: 3, birds: 10, lifeMinZoom: 15.5, tileCache: 16 },
   medium: { pixelRatio: 1, maxTrees: 30000, mistPuffs: 320, animFps: 15, heightZoom: 15, treeMinZoom: 15,   modelMinZoom: 15,   waterMinZoom: 14.5, waterMaxEdge: 30,   boats: 6, birds: 18, lifeMinZoom: 15, tileCache: 32 },
-  high:   { pixelRatio: 1,  maxTrees: 60000, mistPuffs: 520, animFps: 18, heightZoom: 15, treeMinZoom: 14.5, modelMinZoom: 14.5, waterMinZoom: 14,   waterMaxEdge: 20, boats: 9, birds: 32, lifeMinZoom: 14.5,  tileCache: 64 },
+  high:   { pixelRatio: 1,  maxTrees: 80000, mistPuffs: 520, animFps: 18, heightZoom: 15, treeMinZoom: 14.5, modelMinZoom: 14.5, waterMinZoom: 14,   waterMaxEdge: 20, boats: 9, birds: 32, lifeMinZoom: 14.5,  tileCache: 64 },
 };
 function chooseQuality() {
   const q = new URLSearchParams(location.search).get('quality');
@@ -465,13 +465,13 @@ const forestFloorColour = season => ['match', ['get', 'tree_type'],
 // Green areas: each class keeps its own colour but is pulled towards the season's grass tint.
 const GREEN_TINT = { spring: '#9fd47c', summer: '#afd28e', autumn: '#c1bf80', winter: '#c9cdb4' };
 const GREEN_CLASSES = {
-  farmland: '#bed797', farmyard: '#aabd89', meadow: '#afd28e', grass: '#afd28e', orchard: '#afd28e', allotments: '#a4cb79',
-  garden: '#a0c783', flowerbed: '#d5b98c', recreation_ground: '#70b982', pitch: '#65a77b', sports_centre: '#83ad91',
-  playground: '#d0c18c', golf_course: '#9bc579', religious: '#b3b99a', cemetery: '#a3b69b', grave_yard: '#b1c1a5',
-  heath: '#b9bd83', scrub: '#91ae83',
+  farmland: '#a5c686', farmyard: '#a5c686', meadow: '#a5c686', grass: '#a5c686', orchard: '#a5c686', allotments: '#a5c686',
+  garden: '#a5c686', flowerbed: '#a5c686', recreation_ground: '#a5c686', pitch: '#a5c686', sports_centre: '#a5c686',
+  playground: '#a5c686', golf_course: '#a5c686', religious: '#a5c686', cemetery: '#a5c686', grave_yard: '#a5c686',
+  heath: '#a5c686', scrub: '#a5c686',
 };
-const GREEN_KEEP_OWN = new Set(['flowerbed', 'pitch', 'sports_centre', 'playground', 'religious']);   // follow the season less
-const NO_GRASS_TEXTURE = ['flowerbed', 'pitch', 'sports_centre', 'playground'];
+const GREEN_KEEP_OWN = new Set(['flowerbed', 'pitch', 'sports_centre', 'playground', 'religious', 'playground']);   // follow the season less
+const NO_GRASS_TEXTURE = [];//['flowerbed', 'pitch', 'sports_centre', 'playground'];
 const greenColourFromTint = tint => ['match', ['get', 'cls'],
   ...Object.entries(GREEN_CLASSES).flatMap(([cls, c]) => [cls, mixHex(c, tint, GREEN_KEEP_OWN.has(cls) ? 0.25 : 0.65)]),
   mixHex('#afd28e', tint, 0.65)];
@@ -1525,6 +1525,19 @@ async function start() {
 
   const OSM = '© OpenStreetMap contributors, © OpenHistoricalMap contributors';
   const sources = {
+    backgroundGround: {
+      type: 'geojson',
+      data: {
+        type: 'Feature',
+        properties: {},
+        geometry: {
+          type: 'Polygon',
+          coordinates: [[
+            [W, S], [E, S], [E, N], [W, N], [W, S]
+          ]]
+        }
+      }
+    },
     dem: { type: 'raster-dem', encoding: 'terrarium', tileSize: 256, tiles: demTiles, maxzoom: demMax,
            bounds: DEM_BOUNDS, ...(demMeta ? { minzoom: demMeta.minzoom } : {}),
            attribution: 'Terrain: Scottish Government LiDAR (OGL) / Mapzen' },
@@ -1550,6 +1563,17 @@ async function start() {
   // layers. That needs a single terrain pass; interleaving them would cost an extra pass per switch.
   const layers = [
     { id: 'bg', type: 'background', paint: { 'background-color': GREEN_TINT[season0] } },
+    {
+      id: 'bg-grass-texture',
+      type: 'fill',
+      source: 'backgroundGround',
+      minzoom: 14,
+      layout: { visibility: texVisible },
+      paint: {
+        'fill-pattern': `tex:grass:${season0}`,
+        'fill-opacity': fadeInFrom14(TEXTURE_OPACITY.grass)
+      }
+    },
     ...baseDefs.flatMap(d => {
       const layer = { id: d.id, type: d.type, source: 'base', filter: ['all', d.kf, ...dateF(y0)], paint: d.paint,
         ...(d.type === 'line' ? { layout: { 'line-cap': 'butt', 'line-join': 'round' } } : {}) };
@@ -1991,7 +2015,7 @@ async function start() {
       ['match', ['get','tree_type'], 'conifer', forestPalette.conifer, 'broadleaf', forestPalette.broadleaf, forestPalette.mixed]);
 
     // Apply texture IDs whenever the style is ready, including when a season changed before map load.
-    for (const [id, kind] of [['grass-texture', 'grass'], ['forest-litter', 'litter'], ['forest-needles', 'needles']])
+    for (const [id, kind] of [['grass-texture', 'grass'], ['bg-grass-texture', 'grass'], ['forest-litter', 'litter'], ['forest-needles', 'needles']])
       if (map.getLayer(id)) map.setPaintProperty(id, 'fill-pattern', `tex:${kind}:${currentSeason}`);
     const roadPatterns = [
       ['road-areas-track-texture', 'mud'], ['road-areas-old-road-texture', 'earth'],
