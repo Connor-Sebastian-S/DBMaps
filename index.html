@@ -2642,10 +2642,12 @@ async function start() {
   const modelBatches = new Set();
   const modelFallbackRoots = new Set();
 
-  // Window materials use a deliberately simple two-name contract in the source GLBs:
-  //   window_glass       = ordinary, non-emissive glazing
-  //   window_glow_bright = warm illuminated glazing at night
+  // Window materials use a simple name contract in the source GLBs (case-insensitive, ".001" suffixes ignored):
+  //   window_glass        = ordinary glazing, never lit
+  //   window_glow_lamp    = lit at night in every era: dim orange candle/oil-lamp glow before the electric cutoff, full glow after it
+  //   window_glow_bright  = lit at night only from the electric cutoff year onward (before that it looks like plain glass)
   // Materials are updated in place, so the BatchedMesh instances do not need rebuilding.
+  // The cutoff year is a placeholder for the curators to settle; override it for testing with ?electric=1950
   const windowGlowMaterials = new Map();
   const windowGlassMaterials = new Map();
   // Per-source-GLB inventory is also exposed through diagnostics so material-name mismatches
@@ -2655,6 +2657,9 @@ async function start() {
   // Rich candle/lamplight amber, slightly redder than the previous pale peach-gold.
   const WINDOW_GLOW_COLOUR = 0xffa447;
   const WINDOW_GLOW_INTENSITY = 2.25;
+  const WINDOW_ELECTRIC_YEAR = Number(new URLSearchParams(location.search).get('electric')) || 1930;
+  const WINDOW_LAMP_COLOUR = 0xff8a33, WINDOW_LAMP_INTENSITY = 1.1;     // pre-electric lamplight: redder and dimmer
+  let windowEra = null;                                                  // last era applied (true = electric), so we only touch materials when it flips
   // Unlit panes become darker and subtly cooler at night, helping the lit panes read clearly.
   const WINDOW_GLASS_NIGHT_RGB = [0.62, 0.70, 0.86];
 
@@ -2666,17 +2671,45 @@ async function start() {
     const name = normaliseWindowMaterialName(material?.name);
     if (name === 'window_glass') return 'glass';
     if (name === 'window_glow_bright') return 'glow_bright';
+    if (name === 'window_glow_lamp') return 'glow_lamp';
     return null;
   }
-  function setWindowGlowMaterialNight(material, enabled) {
+  // -> 'off' | 'lamp' | 'electric' for a glow material, given night mode and the timeline year
+  function windowGlowState(kind, enabled) {
+    if (!enabled) return 'off';
+    const electric = year() >= WINDOW_ELECTRIC_YEAR;
+    if (electric) return 'electric';
+    return kind === 'glow_lamp' ? 'lamp' : 'off';
+  }
+  function setWindowGlowMaterialNight(entry, enabled) {
+    const material = entry.material;
     if (!material?.emissive) return;
-    if (enabled) {
+    const state = windowGlowState(entry.kind, enabled);
+    if (state === 'electric') {
       material.emissive.setHex(WINDOW_GLOW_COLOUR);
       material.emissiveIntensity = WINDOW_GLOW_INTENSITY;
+    } else if (state === 'lamp') {
+      material.emissive.setHex(WINDOW_LAMP_COLOUR);
+      material.emissiveIntensity = WINDOW_LAMP_INTENSITY;
     } else {
       material.emissive.setHex(0x000000);
       material.emissiveIntensity = 0;
     }
+    // An unlit pane at night must match its neighbouring plain glass, which is darkened and cooled.
+    if (material.color && entry.originalColour) {
+      if (enabled && state === 'off') {
+        material.color.setRGB(entry.originalColour.r * WINDOW_GLASS_NIGHT_RGB[0], entry.originalColour.g * WINDOW_GLASS_NIGHT_RGB[1], entry.originalColour.b * WINDOW_GLASS_NIGHT_RGB[2]);
+      } else {
+        material.color.copy(entry.originalColour);
+      }
+    }
+  }
+  // Called on every timeline change; does real work only when the year crosses the electric cutoff.
+  function refreshWindowEra() {
+    const electric = year() >= WINDOW_ELECTRIC_YEAR;
+    if (electric === windowEra) return;
+    windowEra = electric;
+    updateWindowGlowMaterials($('nightMode').checked);
   }
   function setWindowGlassMaterialNight(entry, enabled) {
     const material = entry.material;
@@ -2694,11 +2727,11 @@ async function start() {
   function registerWindowMaterial(material) {
     if (!material) return;
     const kind = windowMaterialKind(material);
-    if (kind === 'glow_bright' && material.emissive) {
+    if ((kind === 'glow_bright' || kind === 'glow_lamp') && material.emissive) {
       if (!windowGlowMaterials.has(material.uuid)) {
-        windowGlowMaterials.set(material.uuid, { material, name: material.name || 'window_glow_bright' });
+        windowGlowMaterials.set(material.uuid, { material, kind, name: material.name || 'window_glow_bright', originalColour: material.color ? material.color.clone() : null });
       }
-      setWindowGlowMaterialNight(material, $('nightMode').checked);
+      setWindowGlowMaterialNight(windowGlowMaterials.get(material.uuid), $('nightMode').checked);
     } else if (kind === 'glass' && material.color) {
       if (!windowGlassMaterials.has(material.uuid)) {
         const entry = { material, name: material.name || 'window_glass', originalColour: material.color.clone() };
@@ -2709,7 +2742,7 @@ async function start() {
   }
   function updateWindowGlowMaterials(enabled) {
     for (const entry of windowGlowMaterials.values())
-      setWindowGlowMaterialNight(entry.material, enabled);
+      setWindowGlowMaterialNight(entry, enabled);
     for (const entry of windowGlassMaterials.values())
       setWindowGlassMaterialNight(entry, enabled);
   }
@@ -2736,6 +2769,7 @@ async function start() {
       url, meshCount, materialCount: seen.size,
       windowGlassCount: [...seen.values()].filter(x => x.windowKind === 'glass').length,
       windowGlowBrightCount: [...seen.values()].filter(x => x.windowKind === 'glow_bright').length,
+      windowGlowLampCount: [...seen.values()].filter(x => x.windowKind === 'glow_lamp').length,
       materials: [...seen.values()].sort((a, b) => a.name.localeCompare(b.name))
     });
   }
@@ -3668,6 +3702,7 @@ async function start() {
     const t0 = performance.now();
     updateTimelineLabel();
     Uni.uYear.value = year();
+    refreshWindowEra();
     const buildingsChanged = force || slotOf(buildingPts, year()) !== slots.buildings;
     if (map.getLayer('urban-ground')) {
       const us = slotOf(urbanHardPts, year());
