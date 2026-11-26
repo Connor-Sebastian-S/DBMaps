@@ -1213,22 +1213,28 @@ async function start() {
       return url.href;
     } catch (_) { return null; }
   };
-  // Chimney markers live beside the building model and are named from the GeoJSON ID:
-  // models/42.glb -> models/42_chimney.glb. A missing companion file simply means no smoke.
+  // Optional companion GLBs are requested ONLY for IDs listed here. Keep these empty
+  // until chimney or lamp marker files have actually been added to the project.
+  // Add IDs as strings, for example: new Set(['42', '1003']).
+  const CHIMNEY_MARKER_IDS = new Set([]);
+  const LIGHT_MARKER_IDS = new Set([]);
+
+  // Chimney markers live beside the building model: models/42.glb -> models/42_chimney.glb.
   const chimneyModelUrl = feature => {
     const id = feature?.properties?.id;
+    const key = id == null ? '' : String(id).trim();
     const buildingUrl = modelUrl(feature);
-    if (id == null || String(id).trim() === '' || !buildingUrl) return null;
-    try { return new URL(`${encodeURIComponent(String(id).trim())}_chimney.glb`, new URL('.', buildingUrl)).href; }
+    if (!key || !CHIMNEY_MARKER_IDS.has(key) || !buildingUrl) return null;
+    try { return new URL(`${encodeURIComponent(key)}_chimney.glb`, new URL('.', buildingUrl)).href; }
     catch (_) { return null; }
   };
-  // Artificial lamp positions use the same companion-file convention:
-  // models/1003.glb -> models/1003_lights.glb.
+  // Artificial lamp positions use the same convention: models/1003.glb -> models/1003_lights.glb.
   const lightMarkerModelUrl = feature => {
     const id = feature?.properties?.id;
+    const key = id == null ? '' : String(id).trim();
     const buildingUrl = modelUrl(feature);
-    if (id == null || String(id).trim() === '' || !buildingUrl) return null;
-    try { return new URL(`${encodeURIComponent(String(id).trim())}_lights.glb`, new URL('.', buildingUrl)).href; }
+    if (!key || !LIGHT_MARKER_IDS.has(key) || !buildingUrl) return null;
+    try { return new URL(`${encodeURIComponent(key)}_lights.glb`, new URL('.', buildingUrl)).href; }
     catch (_) { return null; }
   };
   const modelCandidates = master
@@ -1663,6 +1669,7 @@ async function start() {
   const activeTrains = []; // moving and parked consists remain in this list until removed intentionally
   const trainTemplateCache = new Map();
   const trainAssetFailures = new Map();
+  let trainModelsPending = 0;
   let trainSpawnTimer = null, trainLastUpdate = null, trainSerial = 0;
   let boats = [];
   let buildingModelsVisible = true;
@@ -1670,7 +1677,8 @@ async function start() {
   let activeLampEmitters = 0;
   const SMOKE_PARTICLES_PER_CHIMNEY = QUALITY === 'low' ? 8 : QUALITY === 'medium' ? 11 : 14;
 
-  // ---- models (GLB buildings), loaded lazily the first time their date range is reached
+  // ---- building GLBs: all models in the project area are preloaded at startup;
+  // their date ranges control visibility, not whether their files are downloaded.
   const modelItems = [], modelIds = [];
   const railwayItems = [];
   const railwayState = new Map();
@@ -2257,6 +2265,27 @@ async function start() {
     trainTemplateCache.set(modelPath, promise);
     return promise;
   }
+  // Enumerate one representative year from every fleet era, then deduplicate the
+  // locomotive and coach paths. This lets timeline changes reuse already-loaded GLBs.
+  const TRAIN_MODEL_SAMPLE_YEARS = [1200, 1863, 1892, 1923, 1934, 1948, 1951, 1956, 1967, 1990];
+  const TRAIN_MODEL_PATHS = [...new Set(TRAIN_MODEL_SAMPLE_YEARS.flatMap(y => {
+    const fleet = trainFleetForYear(y);
+    return [fleet.locomotive, fleet.coaches].filter(Boolean);
+  }))];
+
+  async function preloadTrainModels() {
+    let next = 0;
+    trainModelsPending = TRAIN_MODEL_PATHS.length;
+    const worker = async () => {
+      while (next < TRAIN_MODEL_PATHS.length) {
+        const path = TRAIN_MODEL_PATHS[next++];
+        try { await ensureTrainTemplate(path); }
+        catch (_) { /* Individual train asset failures are recorded by ensureTrainTemplate. */ }
+        finally { trainModelsPending--; }
+      }
+    };
+    await Promise.all(Array.from({ length: Math.min(3, TRAIN_MODEL_PATHS.length) }, worker));
+  }
   function collectTrainWheels(root) {
     const wheels = [];
     root.traverse(node => {
@@ -2638,9 +2667,13 @@ async function start() {
   // Per-model templates share their source GLB geometry, while each building receives its own
   // set of BatchedMesh instance IDs. modelItems/modelIds/modelState and the renderer matrices
   // are declared with the shared scene above.
-  const modelTemplateCache = new Map();
-  const modelBatches = new Set();
+  const modelTemplateCache = new Map();          // URL -> prepared geometry parts (no URL-specific batches)
+  const modelBatches = new Set();                 // globally shared material/layout batches
   const modelFallbackRoots = new Set();
+  const sharedMaterialCache = new Map();           // rendering signature -> canonical THREE.Material
+  const sharedTextureCache = new Map();            // image/sampler signature -> canonical THREE.Texture
+  const textureFingerprintCache = new WeakMap();  // source texture -> stable pixel fingerprint
+  let sharedMaterialCount = 0, sharedTextureCount = 0;
 
   // Window materials use a simple name contract in the source GLBs (case-insensitive, ".001" suffixes ignored):
   //   window_glass        = ordinary glazing, never lit
@@ -2747,6 +2780,8 @@ async function start() {
       setWindowGlassMaterialNight(entry, enabled);
   }
   function scanWindowMaterialsInScene(sourceScene, url) {
+    // Keep diagnostics faithful to the source GLB: canonicalisation happens afterwards and
+    // may replace a material with an equivalent one imported from another model.
     let meshCount = 0;
     const seen = new Map();
     sourceScene.traverse(node => {
@@ -2761,8 +2796,6 @@ async function start() {
           name, type: material.type || material.constructor?.name || 'Unknown',
           hasEmissive: !!material.emissive, windowKind: kind, matches: kind !== null
         });
-        // Register from the loaded GLTF scene itself, independently of template caching.
-        registerWindowMaterial(material);
       }
     });
     modelMaterialDiagnostics.set(url, {
@@ -2773,14 +2806,132 @@ async function start() {
       materials: [...seen.values()].sort((a, b) => a.name.localeCompare(b.name))
     });
   }
+
+  const stableJson = value => {
+    if (Array.isArray(value)) return `[${value.map(stableJson).join(',')}]`;
+    if (value && typeof value === 'object') {
+      return `{${Object.keys(value).sort().filter(k => value[k] !== undefined).map(k => `${JSON.stringify(k)}:${stableJson(value[k])}`).join(',')}}`;
+    }
+    return JSON.stringify(value);
+  };
+  function hashTexturePixels(texture) {
+    if (textureFingerprintCache.has(texture)) return textureFingerprintCache.get(texture);
+    const image = texture.image || texture.source?.data;
+    const width = Number(image?.width || image?.naturalWidth || image?.videoWidth || 0);
+    const height = Number(image?.height || image?.naturalHeight || image?.videoHeight || 0);
+    let bytes = null, fingerprint = null;
+    try {
+      if (image?.data && ArrayBuffer.isView(image.data)) {
+        bytes = new Uint8Array(image.data.buffer, image.data.byteOffset, image.data.byteLength);
+      } else if (image && width > 0 && height > 0) {
+        const canvas = document.createElement('canvas');
+        canvas.width = width; canvas.height = height;
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+        if (ctx) {
+          ctx.drawImage(image, 0, 0, width, height);
+          bytes = ctx.getImageData(0, 0, width, height).data;
+        }
+      }
+      if (bytes && width > 0 && height > 0) {
+        // Two independent 32-bit rolling hashes provide a compact content identity. Texture
+        // dimensions and all sampling/UV settings are appended below to prevent false matches.
+        let h1 = 2166136261, h2 = 0x9e3779b9;
+        for (let i = 0; i < bytes.length; i++) {
+          const b = bytes[i];
+          h1 = Math.imul(h1 ^ b, 16777619) >>> 0;
+          h2 = Math.imul(h2 ^ (b + i), 2246822519) >>> 0;
+        }
+        const v = texture;
+        const sampler = [v.mapping, v.channel, v.wrapS, v.wrapT, v.magFilter, v.minFilter,
+          v.anisotropy, v.format, v.type, v.colorSpace, v.flipY, v.premultiplyAlpha,
+          v.generateMipmaps, v.unpackAlignment, v.offset?.x, v.offset?.y,
+          v.repeat?.x, v.repeat?.y, v.center?.x, v.center?.y, v.rotation,
+          v.matrixAutoUpdate, ...(v.matrix?.elements || [])];
+        fingerprint = `${width}x${height}:${h1.toString(16)}:${h2.toString(16)}:${stableJson(sampler)}`;
+      }
+    } catch (err) {
+      // An unusual or unreadable texture is deliberately not shared. It remains correct,
+      // merely less optimised, rather than risking a visually incorrect material merge.
+      fingerprint = null;
+    }
+    textureFingerprintCache.set(texture, fingerprint);
+    return fingerprint;
+  }
+  function canonicaliseTexture(texture) {
+    if (!texture?.isTexture) return texture;
+    const fingerprint = hashTexturePixels(texture);
+    if (!fingerprint) return texture;
+    let canonical = sharedTextureCache.get(fingerprint);
+    if (!canonical) {
+      canonical = texture;
+      sharedTextureCache.set(fingerprint, canonical);
+      sharedTextureCount = sharedTextureCache.size;
+    }
+    return canonical;
+  }
+  function materialSignature(material) {
+    // Custom shader hooks can change rendering without appearing in Material.toJSON(). Keep
+    // those materials isolated; ordinary glTF PBR materials are safe to compare structurally.
+    if (material.isShaderMaterial ||
+        material.onBeforeCompile !== THREE.Material.prototype.onBeforeCompile ||
+        material.customProgramCacheKey !== THREE.Material.prototype.customProgramCacheKey)
+      return `unique:${material.uuid}`;
+    const data = material.toJSON();
+    delete data.uuid;
+    delete data.metadata;
+    delete data.name; // names are descriptive; the window role below is the only name-based behaviour
+    for (const key of Object.keys(material)) {
+      const value = material[key];
+      if (value?.isTexture) data[key] = hashTexturePixels(value) || `unique-texture:${value.uuid}`;
+    }
+    data.windowRole = windowMaterialKind(material) || '';
+    return stableJson(data);
+  }
+  function canonicaliseMaterial(material) {
+    if (!material) return material;
+    for (const key of Object.keys(material)) {
+      const value = material[key];
+      if (value?.isTexture) material[key] = canonicaliseTexture(value);
+    }
+    let signature;
+    try { signature = materialSignature(material); }
+    catch (_) { return material; } // Optimisation failures must never prevent a valid GLB rendering.
+    let canonical = sharedMaterialCache.get(signature);
+    if (!canonical) {
+      canonical = material;
+      sharedMaterialCache.set(signature, canonical);
+      sharedMaterialCount = sharedMaterialCache.size;
+    }
+    return canonical;
+  }
+  function canonicaliseMaterialsInScene(sourceScene) {
+    sourceScene.traverse(node => {
+      if (!node.isMesh || !node.material) return;
+      node.material = Array.isArray(node.material)
+        ? node.material.map(canonicaliseMaterial)
+        : canonicaliseMaterial(node.material);
+    });
+    // Register the actual shared materials, not discarded per-file duplicates, with the
+    // window-lighting system. Each canonical window material is then updated only once.
+    const registered = new Set();
+    sourceScene.traverse(node => {
+      if (!node.isMesh) return;
+      const materials = Array.isArray(node.material) ? node.material : [node.material];
+      for (const material of materials) {
+        if (!material || registered.has(material.uuid)) continue;
+        registered.add(material.uuid);
+        registerWindowMaterial(material);
+      }
+    });
+  }
   const paddedView = () => {
     const b = map.getBounds(), w = b.getEast() - b.getWest(), h = b.getNorth() - b.getSouth();
     return [b.getWest() - w * 0.5, b.getSouth() - h * 0.5, b.getEast() + w * 0.5, b.getNorth() + h * 0.5];
   };
   map.on('moveend', () => { ensureModels(); ensureRailwayModels(); ensureBorderModels(); ensureTrainTraffic(); });
 
-  // Geometry layout is part of the batch key: BatchedMesh requires all geometries in one
-  // batch to expose the same attributes. Each batch uses a single shared material.
+  // Geometry layout is part of the global batch key: BatchedMesh requires every geometry
+  // in one batch to expose the same attributes. Material UUIDs are now canonical across GLBs.
   const geometryLayoutKey = geometry => Object.entries(geometry.attributes).sort(([a], [b]) => a.localeCompare(b))
     .map(([name, attr]) => `${name}:${attr.itemSize}:${attr.normalized ? 1 : 0}:${attr.array.constructor.name}`).join('|');
   function makeModelPartGeometry(source, group) {
@@ -2788,8 +2939,6 @@ async function start() {
     // GLTFLoader can produce valid InterleavedBufferAttributes. BatchedMesh's
     // geometry packing expects ordinary BufferAttributes, so de-interleave each
     // attribute on this private clone (never mutate the cached/source GLB geometry).
-    // InterleavedBufferAttribute.clone() without a shared-data map returns a
-    // standalone BufferAttribute with the same component values and normalization.
     for (const [name, attr] of Object.entries(g.attributes)) {
       if (attr?.isInterleavedBufferAttribute) g.setAttribute(name, attr.clone());
     }
@@ -2815,15 +2964,11 @@ async function start() {
       const rootInverse = sourceScene.matrixWorld.clone().invert();
       const rootPosition = sourceScene.position.clone();
       const rootRotation = sourceScene.rotation.clone();
-      const byBatchKey = new Map(), entries = [], meshMatrices = [];
+      const entries = [], meshMatrices = [];
       let meshIndex = 0, fallbackReason = null, meshCount = 0;
       // Three.js r160 BatchedMesh does not support skinned or morph-target geometry.
       // Keep these uncommon GLBs on the ordinary Mesh path rather than dropping them.
       sourceScene.traverse(node => {
-        if (node.isMesh) {
-          const materials = Array.isArray(node.material) ? node.material : [node.material];
-          materials.forEach(registerWindowMaterial);
-        }
         if (node.isSkinnedMesh) fallbackReason ||= 'skinned mesh';
         if (node.isInstancedMesh) fallbackReason ||= 'instanced mesh';
         if (node.geometry?.getAttribute?.('batchId')) fallbackReason ||= 'reserved batchId vertex attribute';
@@ -2844,43 +2989,53 @@ async function start() {
           const partGeometry = makeModelPartGeometry(geometry, group);
           if (!partGeometry.index || !partGeometry.index.count) { partGeometry.dispose(); continue; }
           const layout = geometryLayoutKey(partGeometry);
-          const key = `${material.uuid}|${layout}`;
-          let batchGroup = byBatchKey.get(key);
-          if (!batchGroup) byBatchKey.set(key, batchGroup = { material, parts: [] });
-          batchGroup.parts.push({ meshIndex: thisMeshIndex, geometry: partGeometry, entry: null });
+          const batchKey = `${material.uuid}|${layout}`;
+          entries.push({ meshIndex: thisMeshIndex, meshMatrix: meshMatrices[thisMeshIndex], geometry: partGeometry,
+            material, layout, batchKey });
         }
       });
       meshCount = meshIndex;
-      const urlModelCount = Math.max(1, modelCandidates.filter(f => modelUrl(f) === url).length);
-      for (const group of byBatchKey.values()) {
-        // In Three.js r160, each addGeometry() call is itself an independently
-        // transformed/visible entry. The separate addInstance() API belongs to later
-        // revisions; keep this r160 batch capacity sized for each feature using this GLB.
-        const maxGeometryCount = Math.max(1, group.parts.length * urlModelCount);
-        const verticesPerModel = group.parts.reduce((n, part) => n + part.geometry.attributes.position.count, 0);
-        const indicesPerModel = group.parts.reduce((n, part) => n + part.geometry.index.count, 0);
-        const maxVertices = Math.max(1, verticesPerModel * urlModelCount);
-        const maxIndices = Math.max(1, indicesPerModel * urlModelCount);
-        const batch = new THREE.BatchedMesh(maxGeometryCount, maxVertices, maxIndices, group.material);
-        batch.perObjectFrustumCulled = true;
-        batch.sortObjects = false;
-        batch.userData.itemsByBatchId = new Map();
-        batch.userData.modelUrl = url;
-        modelRoot.add(batch);
-        modelBatches.add(batch);
-        for (const part of group.parts) {
-          // Retain the source geometry in the URL template: addGeometry copies it into the
-          // batch buffer for each building that references this GLB.
-          part.entry = { meshIndex: part.meshIndex, meshMatrix: meshMatrices[part.meshIndex], batch, geometry: part.geometry };
-          entries.push(part.entry);
-        }
-      }
-      entries.sort((a, b) => a.meshIndex - b.meshIndex);
       return { entries, meshCount, rootPosition, rootRotation, fallbackReason: null };
     })();
     modelTemplateCache.set(url, pending);
     try { return await pending; }
     catch (err) { modelTemplateCache.delete(url); throw err; }
+  }
+
+  // Allocate one BatchedMesh for every compatible material/vertex-layout combination in
+  // the current load wave. Capacities are calculated from the actual geometry being inserted,
+  // so the initial global batches neither guess nor reserve large unused buffers.
+  function allocateSharedModelBatches(templates, urlCounts) {
+    const groups = new Map();
+    for (const [url, template] of templates) {
+      if (template.fallbackReason || !template.entries.length) continue;
+      const copies = Math.max(1, urlCounts.get(url) || 1);
+      for (const entry of template.entries) {
+        let group = groups.get(entry.batchKey);
+        if (!group) groups.set(entry.batchKey, group = {
+          material: entry.material, geometryCount: 0, vertexCount: 0, indexCount: 0, entries: []
+        });
+        group.geometryCount += copies;
+        group.vertexCount += entry.geometry.attributes.position.count * copies;
+        group.indexCount += entry.geometry.index.count * copies;
+        group.entries.push(entry);
+      }
+    }
+    const bindings = new Map();
+    for (const [key, group] of groups) {
+      const batch = new THREE.BatchedMesh(
+        Math.max(1, group.geometryCount), Math.max(1, group.vertexCount), Math.max(1, group.indexCount), group.material
+      );
+      batch.perObjectFrustumCulled = true;
+      batch.sortObjects = false;
+      batch.userData.itemsByBatchId = new Map();
+      batch.userData.sharedKey = key;
+      batch.userData.sharedGeometryCount = group.geometryCount;
+      modelRoot.add(batch);
+      modelBatches.add(batch);
+      for (const entry of group.entries) bindings.set(entry, batch);
+    }
+    return bindings;
   }
 
   function modelBaseMatrix(item) {
@@ -3268,7 +3423,9 @@ async function start() {
       if (!anchor || !inBounds(anchor, view)) return false;
       const from = toYear(p.from_year) ?? -99999;
       const to = toYear(p.to_year) ?? 99999;
-      return from <= y && y <= to;
+      // During the opening preload, fetch every railway model in the project area,
+      // including models from historical periods other than the opening year.
+      return preloading || (from <= y && y <= to);
     });
     if (!wanted.length) return;
     wanted.sort((a, b) => {
@@ -3417,7 +3574,8 @@ async function start() {
       if (borderState.has(f)) return false;
       const p = f.properties || {}, anchor = borderAnchor(f);
       const from = p.from_year == null ? -99999 : Number(p.from_year), to = p.to_year == null ? 99999 : Number(p.to_year);
-      if (!(from <= y && y <= to) || !anchor) return false;
+      // Preload every border model in the project area, regardless of its date range.
+      if ((!preloading && !(from <= y && y <= to)) || !anchor) return false;
       const b = p.model_bbox;
       const overlaps = Array.isArray(b) && b.length === 4
         ? b[0] <= view[2] && b[2] >= view[0] && b[1] <= view[3] && b[3] >= view[1]
@@ -3482,7 +3640,10 @@ async function start() {
     updateBorderVisibility(); updateStatus(); map.triggerRepaint();
   }
 
-  // Fetch visible-in-time models lazily, but wait for the LiDAR heightfield before baking their matrices.
+  // Outside the opening preload, fetch newly needed building models lazily. During startup,
+  // preloading bypasses the date filter so every historical model in the project area is loaded.
+  // Models are prepared in two passes: first canonicalise materials and inspect all geometry,
+  // then allocate exact-capacity global batches shared across the entire load wave.
   async function ensureModels() {
     if (!modelCandidates.length || (!preloading && map.getZoom() < TIER.modelMinZoom - 0.5)) return;
     const y = year(), view = preloading ? AREA : paddedView(), cen = map.getCenter();
@@ -3491,17 +3652,14 @@ async function start() {
       const p = f.properties;
       const from = p.from_year == null ? MODERN_FROM : Number(p.from_year);
       const to = p.to_year == null ? 99999 : Number(p.to_year);
-      return from <= y && y <= to && inBounds(centroid(f.geometry), view);
+      return (preloading || (from <= y && y <= to)) && inBounds(centroid(f.geometry), view);
     });
     if (!wanted.length) return;
     const d2 = f => { const [x, yy] = centroid(f.geometry); return (x - cen.lng) ** 2 + (yy - cen.lat) ** 2; };
     wanted.sort((a, b) => d2(a) - d2(b));
-
-    // Reserve the features BEFORE awaiting terrain or loader setup. Timeline scrubbing and
-    // map moveend can both call ensureModels while those promises are pending; reserving here
-    // prevents the same feature from being queued twice and overflowing its BatchedMesh.
     wanted.forEach(f => modelState.set(f, 'loading'));
     modelsPending += wanted.length;
+
     try {
       await ensureTerrainReady();
       if (!hf) throw new Error('Terrain heightfield is unavailable');
@@ -3531,98 +3689,115 @@ async function start() {
       modelFailed += wanted.length; modelsPending -= wanted.length; updateStatus();
       return;
     }
-    const flush = () => {
-      for (const batch of modelBatches) { batch.computeBoundingBox(); batch.computeBoundingSphere(); }
-      updateModelVisibility(); syncBuildingFootprints(); updateStatus();
-    };
+
     const loadScene = url => {
       let promise = modelCache.get(url);
       if (!promise) modelCache.set(url, promise = loader.loadAsync(url).then(g => g.scene));
       return promise;
     };
-    let next = 0, sinceFlush = 0;
-    const worker = async () => {
-      while (next < wanted.length) {
-        const f = wanted[next++], p = f.properties, url = modelUrl(f);
-        let sourceScene = null, item = null;
+    const urlCounts = new Map();
+    for (const feature of wanted) {
+      const url = modelUrl(feature);
+      urlCounts.set(url, (urlCounts.get(url) || 0) + 1);
+    }
+    const urls = [...urlCounts.keys()];
+    const sourceScenes = new Map(), templates = new Map(), loadFailures = new Map();
+    let nextUrl = 0;
+    const prepareWorker = async () => {
+      while (nextUrl < urls.length) {
+        const url = urls[nextUrl++];
         try {
-          sourceScene = await loadScene(url);
-          scanWindowMaterialsInScene(sourceScene, url);
-          let template;
-          try {
-            template = await getModelTemplate(url, sourceScene);
-          } catch (templateError) {
-            // A model-specific geometry/material layout can fail while preparing its batch.
-            // Remove any empty batches created by that attempt, then render this GLB normally.
-            for (const batch of [...modelBatches]) {
-              if (batch.userData.modelUrl !== url) continue;
-              modelRoot.remove(batch);
-              modelBatches.delete(batch);
-              batch.dispose();
-            }
-            template = { entries: [], rootPosition: sourceScene.position.clone(), rootRotation: sourceScene.rotation.clone(),
-              fallbackReason: `BatchedMesh template creation failed: ${templateError.message || templateError}` };
-          }
-          const ll = centroid(f.geometry), [e, n] = frame.toLocal(ll[0], ll[1]);
-          const sampledHeight = hf.sampleMerc(mercX(ll[0]), mercY(ll[1]));
-          item = { id: p.id, lngLat: ll, e, n, z: Number.isFinite(sampledHeight) ? sampledHeight : 0,
-            dz: Number(p.model_dz) || 0,
-            scale: Number(p.model_scale) || 1,
-            rotationY: -(Number(p.model_rot) || 0) * Math.PI / 180,
-            rootPosition: template.rootPosition,
-            rootRotation: template.rootRotation,
-            from: p.from_year == null ? MODERN_FROM : Number(p.from_year),
-            to: p.to_year == null ? 99999 : Number(p.to_year),
-            visible: false, props: p, instances: [], fallbackObject: null, chimneyPoints: [], smokeParticleRanges: [],
-            lightPoints: [], lampLightGroup: null };
-
-          if (template.fallbackReason || !template.entries.length) {
-            addStandaloneModel(item, sourceScene, template.fallbackReason || 'GLB contains no batchable mesh geometry');
-          } else {
-            try {
-              for (const entry of template.entries) {
-                // In r160 addGeometry() creates a separately addressable BatchedMesh entry;
-                // its returned ID is used by setMatrixAt(), setVisibleAt(), and raycast batchId.
-                const batchId = entry.batch.addGeometry(entry.geometry);
-                const ref = { batch: entry.batch, batchId, meshMatrix: entry.meshMatrix };
-                item.instances.push(ref);
-                entry.batch.userData.itemsByBatchId.set(batchId, item);
-                entry.batch.setVisibleAt(batchId, false);
-              }
-              setModelMatrix(item);
-            } catch (batchError) {
-              discardPartialBatchEntries(item);
-              addStandaloneModel(item, sourceScene, `BatchedMesh rejected this GLB: ${batchError.message || batchError}`);
-            }
-          }
-          modelItems.push(item);
-          modelIds.push(p.id);
-          modelState.set(f, 'ok'); modelOk++;
-          const markerUrl = chimneyModelUrl(f);
-          if (markerUrl) loadChimneyMarkerPoints(markerUrl, loader).then(points => {
-            if (!points.length) return;
-            const buildingTransform = modelBaseMatrix(item);
-            item.chimneyPoints = points.map(point => point.clone().applyMatrix4(buildingTransform));
-            scheduleSmokeRebuild();
-          });
-          const lightsUrl = lightMarkerModelUrl(f);
-          if (lightsUrl) loadLightMarkerPoints(lightsUrl, loader).then(points => {
-            if (!points.length) return;
-            console.info(`Loaded ${points.length} lamp marker(s) for building ${item.id}`);
-            createLampLights(item, points);
-          });
+          const sourceScene = await loadScene(url);
+          if (!modelMaterialDiagnostics.has(url)) scanWindowMaterialsInScene(sourceScene, url);
+          canonicaliseMaterialsInScene(sourceScene);
+          const template = await getModelTemplate(url, sourceScene);
+          sourceScenes.set(url, sourceScene);
+          templates.set(url, template);
         } catch (err) {
-          modelState.set(f, 'failed'); modelFailed++;
-          const detail = { id: p.id, path: p.model, url, message: err?.message || String(err) };
-          modelFailureDetails.push(detail);
-          console.warn(`Model failed for ${p.id} (${p.model}; resolved ${url}); keeping the extruded box:`, err);
+          loadFailures.set(url, err);
+          console.warn(`Could not prepare building model ${url}:`, err);
         }
-        modelsPending--;
-        if (++sinceFlush % 25 === 0) flush();
       }
     };
-    await Promise.all(Array.from({ length: Math.min(MODEL_CONCURRENCY, wanted.length) }, worker));
-    for (const batch of modelBatches) { batch.computeBoundingBox(); batch.computeBoundingSphere(); }
+    await Promise.all(Array.from({ length: Math.min(MODEL_CONCURRENCY, urls.length) }, prepareWorker));
+
+    // One shared batch per canonical material + vertex layout for this complete load wave.
+    // Templates stay URL-specific only for their source geometry and per-mesh transforms.
+    const batchBindings = allocateSharedModelBatches(templates, urlCounts);
+    const flush = () => {
+      for (const batch of modelBatches) { batch.computeBoundingBox(); batch.computeBoundingSphere(); }
+      updateModelVisibility(); syncBuildingFootprints(); updateStatus();
+    };
+
+    for (let i = 0; i < wanted.length; i++) {
+      const feature = wanted[i], p = feature.properties, url = modelUrl(feature);
+      const sourceScene = sourceScenes.get(url), template = templates.get(url);
+      try {
+        const failure = loadFailures.get(url);
+        if (failure) throw failure;
+        if (!sourceScene || !template) throw new Error('Model scene or prepared template is unavailable');
+        const ll = centroid(feature.geometry), [e, n] = frame.toLocal(ll[0], ll[1]);
+        const sampledHeight = hf.sampleMerc(mercX(ll[0]), mercY(ll[1]));
+        const item = { id: p.id, lngLat: ll, e, n, z: Number.isFinite(sampledHeight) ? sampledHeight : 0,
+          dz: Number(p.model_dz) || 0,
+          scale: Number(p.model_scale) || 1,
+          rotationY: -(Number(p.model_rot) || 0) * Math.PI / 180,
+          rootPosition: template.rootPosition,
+          rootRotation: template.rootRotation,
+          from: p.from_year == null ? MODERN_FROM : Number(p.from_year),
+          to: p.to_year == null ? 99999 : Number(p.to_year),
+          visible: false, props: p, instances: [], fallbackObject: null, chimneyPoints: [], smokeParticleRanges: [],
+          lightPoints: [], lampLightGroup: null };
+
+        if (template.fallbackReason || !template.entries.length) {
+          addStandaloneModel(item, sourceScene, template.fallbackReason || 'GLB contains no batchable mesh geometry');
+        } else {
+          try {
+            for (const entry of template.entries) {
+              const batch = batchBindings.get(entry);
+              if (!batch) throw new Error(`No shared batch was allocated for material/layout ${entry.batchKey}`);
+              const batchId = batch.addGeometry(entry.geometry);
+              const ref = { batch, batchId, meshMatrix: entry.meshMatrix };
+              item.instances.push(ref);
+              batch.userData.itemsByBatchId.set(batchId, item);
+              batch.setVisibleAt(batchId, false);
+            }
+            setModelMatrix(item);
+          } catch (batchError) {
+            discardPartialBatchEntries(item);
+            addStandaloneModel(item, sourceScene, `Shared BatchedMesh rejected this GLB: ${batchError.message || batchError}`);
+          }
+        }
+        modelItems.push(item);
+        modelIds.push(p.id);
+        modelState.set(feature, 'ok'); modelOk++;
+        const markerUrl = chimneyModelUrl(feature);
+        if (markerUrl) loadChimneyMarkerPoints(markerUrl, loader).then(points => {
+          if (!points.length) return;
+          const buildingTransform = modelBaseMatrix(item);
+          item.chimneyPoints = points.map(point => point.clone().applyMatrix4(buildingTransform));
+          scheduleSmokeRebuild();
+        });
+        const lightsUrl = lightMarkerModelUrl(feature);
+        if (lightsUrl) loadLightMarkerPoints(lightsUrl, loader).then(points => {
+          if (!points.length) return;
+          console.info(`Loaded ${points.length} lamp marker(s) for building ${item.id}`);
+          createLampLights(item, points);
+        });
+      } catch (err) {
+        modelState.set(feature, 'failed'); modelFailed++;
+        const detail = { id: p.id, path: p.model, url, message: err?.message || String(err) };
+        modelFailureDetails.push(detail);
+        console.warn(`Model failed for ${p.id} (${p.model}; resolved ${url}); keeping the extruded box:`, err);
+      }
+      modelsPending--;
+      if (!preloading && (i + 1) % 25 === 0) {
+        for (const batch of modelBatches) { batch.computeBoundingBox(); batch.computeBoundingSphere(); }
+        updateModelVisibility(); syncBuildingFootprints(); updateStatus();
+      }
+      if (i && i % 40 === 0) await tick();
+    }
+    // Bounding volumes are calculated once after the whole batch wave has been inserted.
     flush();
   }
 
@@ -4405,7 +4580,8 @@ setInterval(() => {
   const ri = worldDrawn && sceneLayer.renderer ? sceneLayer.renderer.info : null;
   renderInfo = ri ? `${ri.render.calls} calls · ${Math.round(ri.render.triangles / 1000)}k tris · ${ri.memory.geometries} geo · ${ri.memory.textures} tex` : '';
   if (!$('infoContent').hidden) $('perf').textContent = `${frames} fps · ${QUALITY} quality · trees ${treeGroup.visible ? (stats.treeLod || '—') : 'off'} LOD · last year update ${lastApplyMs.toFixed(0)} ms` +
-    (renderInfo ? ` · ${renderInfo}` : '');
+    (renderInfo ? ` · ${renderInfo}` : '') +
+    ` · ${modelBatches.size} shared building batches · ${sharedMaterialCount} shared materials · ${sharedTextureCount} shared textures`;
   frames = 0;
 }, 1000);
 
@@ -4414,25 +4590,25 @@ setInterval(() => {
   async function preloadAssets() {
     preloading = true;
     try {
-      const jobs = [ensureModels(), ensureRailwayModels(), ensureBorderModels()];
-      const pending = () => modelsPending + railwayModelsPending + borderModelsPending;
+      const jobs = [ensureModels(), ensureRailwayModels(), ensureBorderModels(), preloadTrainModels()];
+      const pending = () => modelsPending + railwayModelsPending + borderModelsPending + trainModelsPending;
       const total = pending();
       if (!total) return;
-      const poll = setInterval(() => Loader.set('models', 1 - pending() / total, `Building buildings… ${total - pending()} / ${total}`), 120);
+      const poll = setInterval(() => Loader.set('models', 1 - pending() / total, `Loading 3D models… ${total - pending()} / ${total}`), 120);
       try {
         await Promise.all(jobs);
         for (let i = 0; i < 300 && pending() > 0; i++) await sleep(100);   // models already queued by an earlier call
       } finally { clearInterval(poll); }
     } finally { preloading = false; }
   }
-  async function finishLoading(sceneBuild) {
+  async function finishLoading(sceneBuild, modelPreload) {
     try {
       Loader.set('map', 0.5, 'Weathering terrain…');
       await Promise.race([new Promise(r => map.once('idle', r)), sleep(8000)]);
       Loader.set('map', 1, 'Flowing water, fluttering birds, and spreading trees…');
-      await sceneBuild;
+      // Scene generation and the full model preload are already running concurrently.
+      await Promise.all([sceneBuild, modelPreload]);
       Loader.set('scene', 1, 'Building buildings…');
-      await preloadAssets();
       Loader.set('models', 1, 'Almost there…');
       map.triggerRepaint();
       await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));   // let the first full frame draw
@@ -4458,10 +4634,13 @@ setInterval(() => {
       onYearChange(true);
       resetIdle();
       updateStatus();
-      // heavy 3D content is built after the first frame, in small steps, so the map appears straight away
+      // Heavy 3D content starts after the first frame. Build the scene and preload ALL
+      // building, railway and border models at the same time; each model remains date-filtered
+      // for display, but every historical period is ready before the loading screen closes.
       const sceneBuild = buildSceneContent().catch(err => { console.error('3D content error:', err); statusEl.textContent = `3D content error: ${err?.message || err}`; });
+      const modelPreload = preloadAssets();
       ensureTrainTraffic();
-      finishLoading(sceneBuild);
+      finishLoading(sceneBuild, modelPreload);
     } catch (err) {
       console.error('Viewer load error:', err);
       statusEl.textContent = `Viewer load error: ${err?.message || err}`;
@@ -4481,6 +4660,9 @@ setInterval(() => {
     get windowGlassMaterialCount() { return windowGlassMaterials.size; },
     // Shows which GLB files have actually loaded and what material names Three.js sees.
     get modelMaterialDiagnostics() { return [...modelMaterialDiagnostics.values()]; },
+    get sharedMaterialCount() { return sharedMaterialCount; },
+    get sharedTextureCount() { return sharedTextureCount; },
+    get sharedBuildingBatchCount() { return modelBatches.size; },
     get loadedModelUrls() { return [...modelCache.keys()]; },
     get modelAssetRevision() { return MODEL_ASSET_REVISION; },
     get urbanGroundFeatureCount() { return urbanGroundFeatures.length; },

@@ -1,8 +1,8 @@
 GEOJSON STATISTICS REPORT
 ========================================
 
-Total features in input:    1006
-Features inside map area:   900
+Total features in input:    1001
+Features inside map area:   895
 Features outside area:      106
 
 MAP AREA (WGS84 BOUNDS)
@@ -12,15 +12,15 @@ East:  -3.56434690
 North: 56.57167653
 
 Missing model paths:        0
-Model files found:           516
-Model files not found:       384
+Model files found:           559
+Model files not found:       336
 
 Missing notes:              0
-Valid notes:                900
+Valid notes:                895
 
 Missing from_year:          96
 
-Valid names:                652
+Valid names:                647
 
 ========================================
 FEATURES WITH MISSING MODELS
@@ -30,7 +30,6 @@ MODEL PATHS THAT DO NOT EXIST
 ========================================
 - Dunkeld Community Fire Station -> models/2.glb
 - Old Police House -> models/3.glb
-- Birnam Library -> models/20.glb
 - St Columba's -> models/21.glb
 - St. Mary's Church -> models/22.glb
 - Larachmhor -> models/24.glb
@@ -46,7 +45,6 @@ MODEL PATHS THAT DO NOT EXIST
 - (unnamed, ID: 34) -> models/34.glb
 - Oakbank -> models/35.glb
 - Birnam Inn -> models/38.glb
-- Merryburn Hotel -> models/41.glb
 - 6,7 Water Wynd -> models/49.glb
 - (unnamed, ID: 50) -> models/50.glb
 - The Manse -> models/53.glb
@@ -77,7 +75,6 @@ MODEL PATHS THAT DO NOT EXIST
 - Hillhead House -> models/97.glb
 - (unnamed, ID: 98) -> models/98.glb
 - (unnamed, ID: 108) -> models/108.glb
-- Birnam Arts -> models/109.glb
 - (unnamed, ID: 111) -> models/111.glb
 - (unnamed, ID: 112) -> models/112.glb
 - (unnamed, ID: 113) -> models/113.glb
@@ -92,7 +89,6 @@ MODEL PATHS THAT DO NOT EXIST
 - Spoutwell House -> models/123.glb
 - Cottage -> models/125.glb
 - Spoutswell Cottage -> models/126.glb
-- Atholl Garden Terrace -> models/127.glb
 - (unnamed, ID: 134) -> models/134.glb
 - 1 Water Wynd -> models/135.glb
 - The White Cottage -> models/136.glb
@@ -112,8 +108,6 @@ MODEL PATHS THAT DO NOT EXIST
 - Rosemount -> models/184.glb
 - Glenburn -> models/185.glb
 - Sunny Corner -> models/186.glb
-- 8 Station Road -> models/187.glb
-- 10 Station Road -> models/188.glb
 - Beltane -> models/189.glb
 - Puddleduck -> models/207.glb
 - Nurses House -> models/210.glb
@@ -143,21 +137,12 @@ MODEL PATHS THAT DO NOT EXIST
 - 18, 19 Stell Park -> models/291.glb
 - (unnamed, ID: 311) -> models/311.glb
 - Ard Darach -> models/314.glb
-- The Bungalow -> models/334.glb
-- Ivy Cottage -> models/335.glb
-- (unnamed, ID: 336) -> models/336.glb
 - The Old Bakery -> models/337.glb
 - Aran Bakery -> models/338.glb
 - (unnamed, ID: 339) -> models/339.glb
 - (unnamed, ID: 340) -> models/340.glb
-- St Abbas -> models/341.glb
 - Cherrytrees -> models/342.glb
-- Armoury House -> models/343.glb
 - Armoury House -> models/344.glb
-- Schoolhouse -> models/345.glb
-- Bheinne Mhor -> models/346.glb
-- (unnamed, ID: 348) -> models/348.glb
-- (unnamed, ID: 349) -> models/349.glb
 - (unnamed, ID: 350) -> models/350.glb
 - (unnamed, ID: 351) -> models/351.glb
 - (unnamed, ID: 352) -> models/352.glb
@@ -187,11 +172,6 @@ MODEL PATHS THAT DO NOT EXIST
 - (unnamed, ID: 379) -> models/379.glb
 - Ladyhill House -> models/380.glb
 - (unnamed, ID: 381) -> models/381.glb
-- (unnamed, ID: 382) -> models/382.glb
-- Conival -> models/386.glb
-- Schiehallion -> models/387.glb
-- Ballinoe,Rockfield -> models/388.glb
-- Byways -> models/389.glb
 - (unnamed, ID: 390) -> models/390.glb
 - The Old Coach House -> models/393.glb
 - Erigmore Swimming Pool -> models/401.glb
@@ -240,15 +220,9 @@ MODEL PATHS THAT DO NOT EXIST
 - Birchwood House -> models/455.glb
 - (unnamed, ID: 461) -> models/461.glb
 - (unnamed, ID: 492) -> models/492.glb
-- (unnamed, ID: 515) -> models/515.glb
-- (unnamed, ID: 516) -> models/516.glb
 - (unnamed, ID: 517) -> models/517.glb
-- (unnamed, ID: 518) -> models/518.glb
-- (unnamed, ID: 519) -> models/519.glb
 - (unnamed, ID: 520) -> models/520.glb
 - Sundial House -> models/521.glb
-- North Lodge -> models/522.glb
-- 8 Atholl Gardens -> models/523.glb
 - (unnamed, ID: 524) -> models/524.glb
 - Dunkeld Community Archive -> models/526.glb
 - The Ice House -> models/530.glb
@@ -266,11 +240,7 @@ MODEL PATHS THAT DO NOT EXIST
 - (unnamed, ID: 551) -> models/551.glb
 - Gunpowder Store -> models/553.glb
 - Torwood House -> models/555.glb
-- (unnamed, ID: 557) -> models/557.glb
 - District Nurse -> models/560.glb
-- Ferwaldon -> models/561.glb
-- Cnocairde -> models/562.glb
-- Dunkeld Telephone Exchange -> models/563.glb
 - Tayview House -> models/564.glb
 - Tayview Cottage -> models/565.glb
 - Mansewood -> models/566.glb
@@ -286,11 +256,8 @@ MODEL PATHS THAT DO NOT EXIST
 - 1-8Stell Park -> models/576.glb
 - The Tummel -> models/578.glb
 - Osprey House -> models/581.glb
-- (unnamed, ID: 582) -> models/582.glb
 - Inverbraan -> models/583.glb
 - Wash House -> models/584.glb
-- (unnamed, ID: 586) -> models/586.glb
-- Braan Cottage -> models/587.glb
 - (unnamed, ID: 589) -> models/589.glb
 - (unnamed, ID: 590) -> models/590.glb
 - (unnamed, ID: 593) -> models/593.glb
@@ -340,15 +307,12 @@ MODEL PATHS THAT DO NOT EXIST
 - (unnamed, ID: 671) -> models/671.glb
 - (unnamed, ID: 672) -> models/672.glb
 - (unnamed, ID: 673) -> models/673.glb
-- Macbeth Cottage -> models/691.glb
 - (unnamed, ID: 692) -> models/692.glb
 - Erigmore -> models/693.glb
 - (unnamed, ID: 696) -> models/696.glb
 - MUGA -> models/697.glb
 - (unnamed, ID: 766) -> models/766.glb
 - The Neuk -> models/770.glb
-- (unnamed, ID: 778) -> models/778.glb
-- (unnamed, ID: 779) -> models/779.glb
 - (unnamed, ID: 784) -> models/784.glb
 - Averil Cottage -> models/785.glb
 - (unnamed, ID: 786) -> models/786.glb
@@ -357,18 +321,9 @@ MODEL PATHS THAT DO NOT EXIST
 - The Old Bake House -> models/789.glb
 - Birchwood Cottage -> models/790.glb
 - 28 Willowbank -> models/832.glb
-- The Birnam Reader -> models/835.glb
-- (unnamed, ID: 836) -> models/836.glb
 - Parkview -> models/837.glb
 - Birnam CD & DVD Duplication -> models/838.glb
 - (unnamed, ID: 839) -> models/839.glb
-- (unnamed, ID: 840) -> models/840.glb
-- (unnamed, ID: 841) -> models/841.glb
-- (unnamed, ID: 842) -> models/842.glb
-- (unnamed, ID: 843) -> models/843.glb
-- (unnamed, ID: 844) -> models/844.glb
-- (unnamed, ID: 845) -> models/845.glb
-- 1 Station Road -> models/846.glb
 - 2 Station Road -> models/847.glb
 - Balgownie -> models/848.glb
 - Westwood -> models/849.glb
@@ -383,8 +338,6 @@ MODEL PATHS THAT DO NOT EXIST
 - (unnamed, ID: 942) -> models/942.glb
 - (unnamed, ID: 943) -> models/943.glb
 - (unnamed, ID: 944) -> models/944.glb
-- Taybank Beer Garden -> models/947.glb
-- Taybank Pizza -> models/948.glb
 - Workshop -> models/949.glb
 - Walnut Tree Cottage -> models/950.glb
 - (unnamed, ID: 951) -> models/951.glb
@@ -392,7 +345,6 @@ MODEL PATHS THAT DO NOT EXIST
 - Air Raid Shelter? -> models/955.glb
 - (unnamed, ID: 957) -> models/957.glb
 - Kincraig -> models/958.glb
-- Woodlark Cottage -> models/959.glb
 - (unnamed, ID: 960) -> models/960.glb
 - (unnamed, ID: 961) -> models/961.glb
 - (unnamed, ID: 964) -> models/964.glb
@@ -600,7 +552,6 @@ VALID FEATURE NAMES
 - Spoutwell House (ID: 123)
 - Cottage (ID: 125)
 - Spoutswell Cottage (ID: 126)
-- Atholl Garden Terrace (ID: 127)
 - Dean's House (ID: 129)
 - Rectory House (ID: 130)
 - Rectory House (ID: 131)
@@ -684,7 +635,6 @@ VALID FEATURE NAMES
 - 54, 55 Willowbank (ID: 248)
 - 52, 53 Willowbank (ID: 249)
 - 56, 57 Willowbank (ID: 250)
-- Garage (ID: 251)
 - Dunkeld and Birnam Golf Club (ID: 252)
 - Servite House (ID: 253)
 - Servite House (ID: 254)
@@ -1124,9 +1074,6 @@ VALID FEATURE NAMES
 - Greenhouse (ID: 938)
 - Greenhouse (ID: 939)
 - Garage (ID: 940)
-- Shed (ID: 946)
-- Taybank Beer Garden (ID: 947)
-- Taybank Pizza (ID: 948)
 - Workshop (ID: 949)
 - Walnut Tree Cottage (ID: 950)
 - Garage (ID: 952)
