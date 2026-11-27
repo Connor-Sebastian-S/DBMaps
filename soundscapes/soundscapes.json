@@ -1,0 +1,15 @@
+{
+  "soundscapes": [
+    {
+      "id": "bells",
+      "title": "Bells ringing",
+      "file": "sounds/bells.mp3",
+      "from_year": 1981,
+      "to_year": 2026,
+      "coordinates": [-3.5906634, 56.5650738],
+      "radius": 150,
+      "volume": 0.8,
+      "loop": true
+    }
+  ]
+}

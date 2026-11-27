@@ -1,0 +1,16 @@
+{
+  "comparisons": [
+    {
+      "id": "bridge_street_1930s",
+      "title": "Dunkeld Bridge",
+      "image": "images/bridge_street_1930s.jpg",
+      "year": 1935,
+      "coordinates": [-3.5853668, 56.5647854],
+      "heading": 0,
+      "pitch": 55,
+      "zoom": 17,
+      "caption": "Looking towards Dunkeld Bridge.",
+      "source": "Dunkeld Community Archive"
+    }
+  ]
+}

@@ -187,6 +187,38 @@ html[data-event] #yearSlider { opacity: .6; }
   #eventUI { left: 0; right: 0; bottom: 0; width: 100%; max-height: 62vh; border-radius: 14px 14px 0 0; padding-bottom: env(safe-area-inset-bottom, 0px); }
   #eventUI h2 { font-size: 21px; }
 }
+/* ---- curator-friendly photographic comparisons and location-aware soundscapes ---- */
+#comparisons { background: rgba(255,255,255,.94); border-radius: 7px; font: 13px system-ui, sans-serif; line-height: 1.4; overflow: hidden; }
+#side > #comparisons { flex: 0 0 auto; }
+#comparisons[hidden] { display: none; }
+#comparisons .comparison-list { display: flex; flex-direction: column; gap: 7px; }
+#comparisons .comparison-choice { display: flex; align-items: center; gap: 9px; width: 100%; min-height: 68px; padding: 6px; border: 1px solid #d5ddcf; border-radius: 7px; background: #fff; color: #1d231b; text-align: left; font: 600 14px/1.3 system-ui, sans-serif; cursor: pointer; }
+#comparisons .comparison-choice:hover, #comparisons .comparison-choice.selected { background: #eef3e9; border-color: #77936a; }
+#comparisons .comparison-choice img { flex: 0 0 88px; width: 88px; height: 58px; object-fit: cover; border-radius: 4px; background: #ddd; }
+#comparisons .comparison-choice small { display: block; margin-top: 3px; color: #666; font: 12px system-ui, sans-serif; }
+#comparisons .comparison-empty { color: #666; padding: 8px 0; }
+.sound-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 9px; }
+#soundControls[hidden] { display: none !important; }
+.sound-controls button { min-height: 44px; padding: 5px 12px; border: 1px solid #b9c4b3; border-radius: 7px; background: #f5f7f2; color: #263421; font: 600 15px system-ui, sans-serif; cursor: pointer; }
+.sound-controls button[aria-pressed="true"] { background: #44683a; border-color: #44683a; color: white; }
+.sound-controls button:disabled { opacity: .55; cursor: default; }
+.sound-controls span { flex: 1; min-width: 110px; color: #555; font-size: 12px; }
+#comparisonViewer { position: fixed; z-index: 5; right: 14px; bottom: 14px; width: min(420px, calc(100vw - 390px)); max-height: 58vh; box-sizing: border-box; padding: 12px; overflow-y: auto; background: rgba(255,255,255,.97); border-radius: 11px; box-shadow: 0 4px 22px rgba(0,0,0,.38); color: #1d231b; font: 14px/1.4 system-ui, sans-serif; }
+#comparisonViewer[hidden] { display: none; }
+#comparisonViewer .comparison-viewer-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+#comparisonViewer h2 { margin: 1px 0 0; font-size: 19px; line-height: 1.2; }
+#comparisonViewer .comparison-viewer-year { color: #526c43; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+#comparisonViewerClose { flex: 0 0 42px; width: 42px; height: 42px; padding: 0; border: 1px solid #cbd4c4; border-radius: 8px; background: #fff; color: #243020; font: 26px/1 system-ui, sans-serif; cursor: pointer; }
+#comparisonViewerImage { display: block; width: 100%; max-height: 34vh; object-fit: contain; border-radius: 6px; background: #222; }
+#comparisonViewerCaption { margin-top: 7px; white-space: pre-line; }
+#comparisonViewerSource { margin-top: 4px; color: #666; font-size: 12px; }
+#comparisonViewer .comparison-viewer-hint { margin-top: 8px; padding-top: 7px; border-top: 1px solid #e2e6de; color: #666; font-size: 11px; }
+@media (max-width: 700px) {
+  #comparisonViewer { left: 8px; right: 8px; bottom: 8px; width: auto; max-height: 42vh; padding: 10px; }
+  #comparisonViewerImage { max-height: 23vh; }
+  #comparisonViewer h2 { font-size: 17px; }
+}
+html[data-tour] #comparisonViewer { display: none !important; }
 </style>
 </head>
 <body>
@@ -216,6 +248,14 @@ html[data-event] #yearSlider { opacity: .6; }
   </div>
 </div>
 <div id="side">
+  <div id="comparisons" hidden>
+    <button id="comparisonsToggle" class="panel-toggle" type="button" aria-expanded="false" aria-controls="comparisonsContent">
+      <span>Historical photographs</span><span class="chevron" aria-hidden="true">⌄</span>
+    </button>
+    <div id="comparisonsContent" class="panel-content" hidden>
+      <div id="comparisonList" class="comparison-list"></div>
+    </div>
+  </div>
   <div id="panel">
     <button id="infoToggle" class="panel-toggle" type="button" aria-expanded="true" aria-controls="infoContent">
       <span>Viewer controls</span><span class="chevron" aria-hidden="true">⌄</span>
@@ -255,6 +295,10 @@ html[data-event] #yearSlider { opacity: .6; }
         <span id="seasonResolved"></span>
       </label>
       <label class="row"><input id="seasonCycle" type="checkbox"> Auto-cycle season</label>
+      <div class="sound-controls" id="soundControls">
+        <button id="soundToggle" type="button" aria-pressed="false" disabled>Enable soundscapes</button>
+        <span id="soundStatus" aria-live="polite">Loading soundscapes…</span>
+      </div>
       <label class="row curator-only">Quality
         <select id="quality">
           <option value="auto">Automatic</option>
@@ -274,6 +318,16 @@ html[data-event] #yearSlider { opacity: .6; }
     <div id="eventsContent" class="panel-content" hidden></div>
   </div>
 </div>
+<section id="comparisonViewer" aria-label="Historical photograph comparison" hidden>
+  <div class="comparison-viewer-heading">
+    <div><div id="comparisonViewerYear" class="comparison-viewer-year"></div><h2 id="comparisonViewerTitle"></h2></div>
+    <button id="comparisonViewerClose" type="button" aria-label="Close photograph">×</button>
+  </div>
+  <img id="comparisonViewerImage" class="comparison-viewer-image" alt="Historical photograph">
+  <div id="comparisonViewerCaption" class="comparison-viewer-caption"></div>
+  <div id="comparisonViewerSource" class="comparison-viewer-source"></div>
+  <div class="comparison-viewer-hint">The 3D view is positioned to match the photograph's recorded viewpoint.</div>
+</section>
 
 <script>
 // Loading screen. While it is up, the map, timeline and side panels are `inert` (no pointer, keyboard or focus
@@ -3978,6 +4032,7 @@ async function start() {
     ensureTrainTraffic();
     updateHistoricMaps();
     renderEvents();
+    scheduleSoundscapeUpdate();
     // Model candidates are scanned only when a building visibility boundary is crossed.
     // Camera movement has its own moveend hook, so ordinary years do not rescan all models.
     if (buildingsChanged) ensureModels();
@@ -4818,6 +4873,255 @@ async function start() {
   }
   bindDisclosure($('infoToggle'), $('infoContent'));
   bindDisclosure(evToggle, evContent);
+
+  // ============================================================ photographic comparisons
+  // Content is maintained by adding entries to comparisons/images.json and placing
+  // the referenced photographs in comparisons/images/. Missing files are optional.
+  const COMPARISONS_DIR = './comparisons/';
+  const comparisonPanel = $('comparisons');
+  const comparisonList = $('comparisonList');
+  const comparisonViewer = $('comparisonViewer');
+  let comparisonEntries = [], activeComparisonId = null;
+  // Keep the entry point visible even while loading or when the manifest needs attention.
+  comparisonPanel.hidden = false;
+  comparisonList.textContent = 'Loading historical photographs…';
+  bindDisclosure($('comparisonsToggle'), $('comparisonsContent'));
+  function contentCoordinates(record) {
+    const raw = record && (record.coordinates ?? record.coordinate);
+    let lon, lat;
+    if (Array.isArray(raw) && raw.length >= 2) [lon, lat] = raw;
+    else if (raw && typeof raw === 'object') { lon = raw.lon ?? raw.lng ?? raw.longitude; lat = raw.lat ?? raw.latitude; }
+    else if (record && record.lon != null && record.lat != null) { lon = record.lon; lat = record.lat; }
+    else return null;
+    lon = Number(lon); lat = Number(lat);
+    return Number.isFinite(lon) && Number.isFinite(lat) && Math.abs(lon) <= 180 && Math.abs(lat) <= 90 ? [lon, lat] : null;
+  }
+  function contentAssetUrl(folder, path) {
+    if (typeof path !== 'string' || !path.trim()) return null;
+    const clean = path.trim().replace(/\\/g, '/');
+    if (/^(https?:)?\/\//i.test(clean)) return clean;
+    if (/^[a-z][a-z0-9+.-]*:/i.test(clean)) return null;
+    if (clean.startsWith('/')) return new URL(clean, location.origin).href;
+    const parts = clean.split('/');
+    if (parts.some(part => !part || part === '.' || part === '..')) return null;
+    return new URL(parts.join('/'), new URL(folder, BASE)).href;
+  }
+  function renderComparisonList() {
+    comparisonList.replaceChildren();
+    if (!comparisonEntries.length) {
+      const empty = document.createElement('div'); empty.className = 'comparison-empty';
+      empty.textContent = 'No historical photographs have been added yet.'; comparisonList.append(empty); return;
+    }
+    for (const item of comparisonEntries) {
+      const button = document.createElement('button');
+      button.type = 'button'; button.className = 'comparison-choice' + (item.id === activeComparisonId ? ' selected' : '');
+      const img = document.createElement('img'); img.src = item.url; img.alt = '';
+      img.addEventListener('error', () => { img.style.visibility = 'hidden'; }, { once: true });
+      const label = document.createElement('span'); label.textContent = item.title;
+      const small = document.createElement('small');
+      small.textContent = [item.year != null ? String(item.year) : '', item.location || ''].filter(Boolean).join(' · ');
+      label.append(small); button.append(img, label);
+      button.addEventListener('click', () => selectComparison(item));
+      comparisonList.append(button);
+    }
+  }
+  function closeComparisonPhoto() {
+    comparisonViewer.hidden = true;
+    activeComparisonId = null;
+    renderComparisonList();
+  }
+  function selectComparison(item) {
+    activeComparisonId = item.id;
+    renderComparisonList();
+    $('comparisonViewerTitle').textContent = item.title;
+    $('comparisonViewerYear').textContent = item.year != null ? String(item.year) : (item.location || 'Historical photograph');
+    $('comparisonViewerImage').src = item.url;
+    $('comparisonViewerImage').alt = item.title;
+    $('comparisonViewerCaption').textContent = item.caption || '';
+    $('comparisonViewerSource').textContent = item.source ? `Source: ${item.source}` : '';
+    comparisonViewer.hidden = false;
+    // Selecting a dated photograph also sets the reconstruction to that year,
+    // making the photograph and the 3D scene a genuine then-and-now comparison.
+    if (Number.isFinite(item.year)) {
+      const targetYear = Math.max(Number(slider.min), Math.min(Number(slider.max), Math.round(item.year)));
+      if (targetYear !== timelineIndex()) { slider.value = String(targetYear); onYearChange(false); }
+    }
+    const option = (value, fallback) => value == null || value === '' || !Number.isFinite(Number(value)) ? fallback : Number(value);
+    map.flyTo({
+      center: item.coordinates,
+      zoom: option(item.zoom, 16.5),
+      pitch: option(item.pitch, 55),
+      // Heading is a compass bearing measured clockwise from north.
+      bearing: option(item.heading ?? item.bearing, 0),
+      duration: Math.max(0, option(item.fly_ms, 2800)),
+      essential: true
+    });
+  }
+  $('comparisonViewerClose').addEventListener('click', closeComparisonPhoto);
+  $('comparisonViewerImage').addEventListener('error', () => {
+    $('comparisonViewerCaption').textContent = 'This photograph could not be loaded. Check its path in comparisons/images.json.';
+  });
+  async function loadComparisons() {
+    comparisonPanel.hidden = false;
+    comparisonList.textContent = 'Loading historical photographs…';
+    const manifestUrl = new URL('images.json', new URL(COMPARISONS_DIR, BASE)).href;
+    try {
+      const response = await fetch(manifestUrl, { cache: 'no-cache' });
+      if (!response.ok) throw new Error(`HTTP ${response.status} loading ${manifestUrl}`);
+      const data = await response.json();
+      const rows = Array.isArray(data.comparisons) ? data.comparisons
+        : (Array.isArray(data.images) ? data.images : null);
+      if (!rows) throw new Error('Expected an array named "comparisons" in images.json.');
+      comparisonEntries = rows.map((row, index) => {
+        const coordinates = contentCoordinates(row);
+        const url = contentAssetUrl(COMPARISONS_DIR, row && row.image);
+        if (!coordinates || !url) {
+          console.warn(`Skipping comparison image ${row && row.id || index + 1}: it needs a valid image path and coordinates.`);
+          return null;
+        }
+        const yearValue = row.year == null || row.year === '' ? null : Number(row.year);
+        return { id: String(row.id ?? `comparison_${index + 1}`), title: String(row.title || row.id || `Photograph ${index + 1}`),
+          image: row.image, url, year: Number.isFinite(yearValue) ? yearValue : null, coordinates,
+          heading: row.heading ?? row.bearing, zoom: row.zoom, pitch: row.pitch, fly_ms: row.fly_ms,
+          caption: String(row.caption || ''), source: String(row.source || ''), location: String(row.location || '') };
+      }).filter(Boolean);
+      renderComparisonList();
+      if (!comparisonEntries.length) {
+        comparisonList.textContent = rows.length
+          ? 'No usable photographs found. Check that each entry has an image path and valid coordinates.'
+          : 'No photographs have been added to comparisons/images.json yet.';
+      }
+      console.info(`Historical photographs: loaded ${comparisonEntries.length} of ${rows.length} entries from ${manifestUrl}`);
+    } catch (err) {
+      comparisonEntries = [];
+      comparisonList.replaceChildren();
+      const message = document.createElement('div');
+      message.className = 'comparison-empty';
+      message.textContent = `Could not load comparisons/images.json: ${err && err.message ? err.message : String(err)}. Check that the file is in the project-root comparisons folder.`;
+      comparisonList.append(message);
+      console.warn('Could not load comparisons/images.json:', err);
+    }
+  }
+
+  // ============================================================ location- and year-aware soundscapes
+  // Content is maintained in soundscapes/soundscapes.json; MP3 paths are relative
+  // to soundscapes/, normally in its sounds/ subfolder. Audio is opt-in because
+  // browsers require an initial visitor interaction before playback.
+  const SOUNDSCAPES_DIR = './soundscapes/';
+  const soundControls = $('soundControls'), soundToggle = $('soundToggle'), soundStatus = $('soundStatus');
+  let soundscapeEntries = [], soundscapesEnabled = false, soundscapeUpdateQueued = false;
+  const clamp01 = value => Math.max(0, Math.min(1, value));
+  function distanceMetres(aLon, aLat, bLon, bLat) {
+    const rad = d => d * Math.PI / 180, R = 6371000;
+    const dLat = rad(bLat - aLat), dLon = rad(bLon - aLon);
+    const h = Math.sin(dLat / 2) ** 2 + Math.cos(rad(aLat)) * Math.cos(rad(bLat)) * Math.sin(dLon / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(Math.max(0, Math.min(1, h))));
+  }
+  function stopSoundscapes(reset = true) {
+    for (const item of soundscapeEntries) {
+      item.audio.pause(); item.audio.volume = 0;
+      if (reset) {
+        try { item.audio.currentTime = 0; } catch (_) {}
+        item.entered = false; item.completed = false; item.blocked = false;
+      }
+    }
+  }
+  function updateSoundscapes() {
+    if (!soundscapeEntries.length) return;
+    const centre = map.getCenter(), selectedYear = year(), candidates = [];
+    let nearby = 0;
+    for (const item of soundscapeEntries) {
+      const inDate = selectedYear >= item.from_year && selectedYear <= item.to_year;
+      const distance = distanceMetres(centre.lng, centre.lat, item.coordinates[0], item.coordinates[1]);
+      const inside = soundscapesEnabled && inDate && distance <= item.radius;
+      if (!inside) {
+        if (item.entered) { item.audio.pause(); try { item.audio.currentTime = 0; } catch (_) {} }
+        item.audio.volume = 0; item.entered = false; item.completed = false;
+        continue;
+      }
+      nearby++;
+      const proximity = clamp01(1 - distance / item.radius);
+      const attenuation = proximity * proximity * (3 - 2 * proximity);
+      candidates.push({ item, gain: item.volume * attenuation });
+      if (!item.entered && !item.blocked && !item.completed) {
+        item.entered = true;
+        const playing = item.audio.play();
+        if (playing && typeof playing.catch === 'function') playing.catch(err => {
+          item.blocked = true; item.entered = false;
+          console.warn(`Soundscape playback failed (${item.title}):`, err);
+          soundStatus.textContent = 'Audio was blocked. Tap the sound button to try again.';
+        });
+      }
+    }
+    // Keep several overlapping environmental recordings from becoming excessively loud.
+    const totalGain = candidates.reduce((sum, candidate) => sum + candidate.gain, 0);
+    const mixScale = totalGain > 0.85 ? 0.85 / totalGain : 1;
+    for (const candidate of candidates) candidate.item.audio.volume = clamp01(candidate.gain * mixScale);
+    if (soundscapesEnabled) soundStatus.textContent = nearby
+      ? `${nearby} nearby soundscape${nearby === 1 ? '' : 's'}`
+      : 'Enabled · move closer to hear a soundscape';
+  }
+  function scheduleSoundscapeUpdate() {
+    if (soundscapeUpdateQueued) return;
+    soundscapeUpdateQueued = true;
+    requestAnimationFrame(() => { soundscapeUpdateQueued = false; updateSoundscapes(); });
+  }
+  async function loadSoundscapes() {
+    soundToggle.disabled = true;
+    try {
+      const response = await fetch(BASE + SOUNDSCAPES_DIR + 'soundscapes.json', { cache: 'no-cache' });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      const rows = Array.isArray(data.soundscapes) ? data.soundscapes : [];
+      soundscapeEntries = rows.map((row, index) => {
+        const coordinates = contentCoordinates(row);
+        const url = contentAssetUrl(SOUNDSCAPES_DIR, row && row.file);
+        const radius = Number(row && row.radius);
+        if (!coordinates || !url || !Number.isFinite(radius) || radius <= 0) {
+          console.warn(`Skipping soundscape ${row && row.id || index + 1}: it needs a valid file, coordinates and positive radius.`); return null;
+        }
+        const from = row.from_year == null || row.from_year === '' ? -Infinity : Number(row.from_year);
+        const to = row.to_year == null || row.to_year === '' ? Infinity : Number(row.to_year);
+        if (!Number.isFinite(from) && from !== -Infinity || !Number.isFinite(to) && to !== Infinity || from > to) {
+          console.warn(`Skipping soundscape ${row.id || index + 1}: invalid year range.`); return null;
+        }
+        const audio = new Audio(url); audio.preload = 'none'; audio.loop = row.loop !== false; audio.volume = 0;
+        const requestedVolume = row.volume == null ? 0.8 : Number(row.volume);
+        const item = { id: String(row.id ?? `soundscape_${index + 1}`), title: String(row.title || row.id || `Soundscape ${index + 1}`),
+          url, coordinates, radius, from_year: from, to_year: to,
+          volume: Number.isFinite(requestedVolume) ? clamp01(requestedVolume) : 0.8, loop: row.loop !== false,
+          audio, entered: false, completed: false, blocked: false };
+        audio.addEventListener('ended', () => { if (!item.loop) item.completed = true; });
+        audio.addEventListener('error', () => { console.warn(`Could not load soundscape audio: ${item.url}`); });
+        return item;
+      }).filter(Boolean);
+      if (!soundscapeEntries.length) {
+        soundControls.hidden = true;
+        return;
+      }
+      soundToggle.disabled = false;
+      soundStatus.textContent = `${soundscapeEntries.length} available · tap to enable nearby audio`;
+    } catch (err) {
+      soundControls.hidden = true;
+      if (err && !String(err.message).includes('404')) console.warn('Could not load soundscapes/soundscapes.json:', err);
+    }
+  }
+  soundToggle.addEventListener('click', () => {
+    soundscapesEnabled = !soundscapesEnabled;
+    soundToggle.setAttribute('aria-pressed', String(soundscapesEnabled));
+    soundToggle.textContent = soundscapesEnabled ? 'Soundscapes: On' : 'Enable soundscapes';
+    if (soundscapesEnabled) {
+      for (const item of soundscapeEntries) { item.blocked = false; item.entered = false; item.completed = false; }
+      updateSoundscapes(); // called directly in the tap gesture to satisfy browser audio policies
+    } else {
+      stopSoundscapes(true);
+      soundStatus.textContent = 'Soundscapes are off';
+    }
+  });
+  map.on('move', scheduleSoundscapeUpdate);
+  loadComparisons();
+  loadSoundscapes();
+
   // ============================================================ default view + idle reset
   let HOME = null, idleTimer = null, popup = null, lastIdleReset = 0;
 
@@ -4859,6 +5163,7 @@ async function start() {
     if (CURATOR || TOUR_MODE) return;                            // never reset under a curator who is editing, or a web visitor mid-tour
     if (popup) { popup.remove(); popup = null; }
     closeEventView();                                           // never leave an event reconstruction panel open at the default view/date
+    closeComparisonPhoto();
     stopTimeline(); stopAttract();
     if (HOME) map.flyTo({ ...HOME, duration: 4000, essential: true });
     if (IDLE_RESETS_YEAR) { slider.value = String(DEFAULT_YEAR); updateTimelineLabel(); onYearChange(true); }
