@@ -340,7 +340,7 @@ document.documentElement.dataset.mode = window.VIEWER_MODE;
      GLTFLoader is only fetched if there are building models to load. -->
 
 <script type="module">
-  // Viewer build: v21 two-material warm window lighting.
+  // Viewer build: v22 automatic event surface placement + v21 warm window lighting.
 import * as THREE from 'three';
 import { areaBounds, padBounds, inBounds, centroid, generateTrees, localiseTrees, packTreeChunk,
          buildTreeMeshes, buildWater, makeWaterTest, makeCorridors, transportClass,
@@ -4210,6 +4210,38 @@ async function start() {
     const n = Number(value);
     return Number.isFinite(n) ? n : fallback;
   }
+  // A phase may optionally provide coordinates: [longitude, latitude]. This follows
+  // GeoJSON's coordinate order. `coordinate` and explicit lon/lat are accepted as
+  // convenient aliases for hand-authored phase files.
+  function eventPhaseCoordinates(phase) {
+    if (!phase || typeof phase !== 'object') return null;
+    const raw = phase.coordinates ?? phase.coordinate;
+    let lon, lat;
+    if (Array.isArray(raw) && raw.length >= 2) [lon, lat] = raw;
+    else if (raw && typeof raw === 'object') {
+      lon = raw.lon ?? raw.lng ?? raw.longitude;
+      lat = raw.lat ?? raw.latitude;
+    } else if (phase.lon != null && phase.lat != null) {
+      lon = phase.lon; lat = phase.lat;
+    } else return null;
+    lon = Number(lon); lat = Number(lat);
+    if (!Number.isFinite(lon) || !Number.isFinite(lat) || Math.abs(lon) > 180 || Math.abs(lat) > 90) return null;
+    return [lon, lat];
+  }
+  function flyToEventPhase(phase) {
+    const center = eventPhaseCoordinates(phase);
+    if (!center) return; // No phase coordinate: leave the camera exactly where it is.
+    const option = (value, fallback) => value == null || value === '' || !Number.isFinite(Number(value))
+      ? fallback : Number(value);
+    map.flyTo({
+      center,
+      zoom: option(phase.zoom, map.getZoom()),
+      pitch: option(phase.pitch, map.getPitch()),
+      bearing: option(phase.bearing, map.getBearing()),
+      duration: Math.max(0, option(phase.fly_ms, 2400)),
+      essential: true
+    });
+  }
   function eventSceneState(folder) {
     let state = eventSceneCache.get(folder);
     if (!state) {
@@ -4259,23 +4291,89 @@ async function start() {
     for (let i = 0; i < str.length; i++) seed = Math.imul(seed ^ str.charCodeAt(i), 16777619);
     return mulberry32(seed >>> 0);
   }
+  // Event objects are dropped vertically onto the first loaded 3D surface at their
+  // GeoJSON Point. Building batches, standalone building GLBs, railway meshes and
+  // border meshes all live in the same east/north/up local-scene coordinate system.
+  // The sampled LiDAR heightfield remains the fallback where no 3D surface is present.
+  const eventPlacementRaycaster = new THREE.Raycaster();
+  const eventPlacementDown = new THREE.Vector3(0, 0, -1);
+  function eventSurfaceAt(east, north, fallbackHeight) {
+    const terrainHeight = Number.isFinite(fallbackHeight) ? fallbackHeight : 0;
+    const candidates = [], acceptsHit = new Map();
+    const addCandidate = (object, accepts) => {
+      if (!object) return;
+      candidates.push(object);
+      acceptsHit.set(object, accepts);
+    };
+
+    // Use the current historical date, but do not depend on zoom-driven parent visibility:
+    // event views animate the camera, and a surface should not change just because that
+    // animation has not yet reached the close-up zoom threshold.
+    if (buildingModelsVisible) {
+      for (const batch of modelBatches) addCandidate(batch, hit => {
+        const item = batch.userData.itemsByBatchId?.get(hit.batchId);
+        return !!item?.visible;
+      });
+      for (const holder of modelFallbackRoots) addCandidate(holder, () => !!holder.userData.item?.visible);
+    }
+    if (railwayModelsOn) for (const item of railwayItems)
+      if (item.group?.visible) addCandidate(item.group, () => !!item.group.visible);
+    if (borderModelsOn) for (const item of borderItems)
+      if (item.group?.visible) addCandidate(item.group, () => !!item.group.visible);
+
+    if (!candidates.length) return { height: terrainHeight, hit: false };
+
+    // Update only the three structure roots used for collision tests, rather than
+    // walking the whole scene (which also contains the large tree and water meshes).
+    // The scene's Z axis is vertical (GLB +Y is rotated into +Z at import).
+    if (buildingModelsVisible) modelRoot.updateMatrixWorld(true);
+    if (railwayModelsOn) railwayRoot.updateMatrixWorld(true);
+    if (borderModelsOn) borderRoot.updateMatrixWorld(true);
+    const originZ = terrainHeight + 1200;
+    eventPlacementRaycaster.set(new THREE.Vector3(east, north, originZ), eventPlacementDown);
+    const hits = eventPlacementRaycaster.intersectObjects(candidates, true);
+    for (const hit of hits) {
+      let candidate = null;
+      for (let node = hit.object; node; node = node.parent) {
+        if (acceptsHit.has(node)) { candidate = node; break; }
+      }
+      if (!candidate) continue;
+
+      // Skip hidden sub-meshes and date-inactive building instances. The containing
+      // layer roots may be hidden temporarily by zoom/animation, so only inspect the
+      // path between the hit mesh and the selected candidate root.
+      let visible = true;
+      for (let node = hit.object; node && node !== candidate; node = node.parent)
+        if (!node.visible) { visible = false; break; }
+      if (!visible || !acceptsHit.get(candidate)(hit)) continue;
+
+      // A model may dip slightly below the LiDAR surface because of its foundation.
+      // Such a hit is not a usable support surface; retain the terrain fallback instead.
+      if (!Number.isFinite(hit.point?.z) || hit.point.z < terrainHeight - 0.25) continue;
+      return { height: hit.point.z, hit: true };
+    }
+    return { height: terrainHeight, hit: false };
+  }
+
   function eventSmokePosition(item) {
     const p = item.props || {};
     const targetId = p.target_building_id ?? p.building_id ?? p.target;
     const target = targetId != null ? modelItems.find(b => String(b.id) === String(targetId)) : null;
-    // The GeoJSON Point is the actual emitter location. A target building is used only
-    // to obtain its ground datum and estimated roof height, not to override that placement.
     const [east, north] = frame.toLocal(item.lon, item.lat);
-    const sampled = hf.sampleMerc(mercX(item.lon), mercY(item.lat));
-    const ground = target ? target.z + target.dz : (Number.isFinite(sampled) ? sampled : 0);
+    const sampled = hf?.sampleMerc(mercX(item.lon), mercY(item.lat));
+    const terrain = Number.isFinite(sampled) ? sampled : 0;
+    const fallbackGround = target ? target.z + target.dz : terrain;
+    const surface = eventSurfaceAt(east, north, fallbackGround);
     const anchor = String(p.anchor || (target ? 'roof' : 'ground')).toLowerCase();
     const explicitHeight = Number(p.anchor_height ?? p.height ?? p.height_offset ?? p.dz);
     let height = Number.isFinite(explicitHeight) ? explicitHeight : 0;
-    if (!Number.isFinite(explicitHeight) && anchor === 'roof') {
+    // If a 3D roof was actually hit, its surface is already the correct roof datum.
+    // Keep the old estimated-height fallback only when no model surface exists there.
+    if (!surface.hit && !Number.isFinite(explicitHeight) && anchor === 'roof') {
       const buildingHeight = Number(target && (target.props.h ?? target.props.height));
       height = Number.isFinite(buildingHeight) && buildingHeight > 0 ? buildingHeight : 5.5;
     }
-    return new THREE.Vector3(east, north, ground + height);
+    return new THREE.Vector3(east, north, surface.height + height);
   }
   function replaceEventSmokeMesh(state, group, oldMesh, records, material, mode) {
     if (oldMesh) {
@@ -4515,13 +4613,17 @@ async function start() {
       const heading = Number.isFinite(headingValue) ? headingValue : 0;
       const dzValue = Number(item.props.dz ?? item.props.height_offset ?? item.props.model_dz);
       const dz = Number.isFinite(dzValue) ? dzValue : 0;
+      const surface = eventSurfaceAt(east, north, ground);
+      // GeoJSON elevation/elevation_m fields are intentionally ignored. The model's
+      // origin is placed at the first 3D surface hit, or at LiDAR terrain if none is hit.
+      // dz remains available for a small, explicit per-object fine adjustment.
       // GLB convention: +X east, +Y up, -Z north. Positive heading is clockwise from north.
       const modelRotation = new THREE.Matrix4().makeRotationY(-heading * Math.PI / 180);
       const modelScale = new THREE.Matrix4().makeScale(scale, scale, scale);
       const holder = new THREE.Group();
       holder.name = `event-object-${item.id}`;
       holder.matrixAutoUpdate = false;
-      holder.matrix.copy(new THREE.Matrix4().makeTranslation(east, north, ground + dz).multiply(rotX).multiply(modelRotation).multiply(modelScale));
+      holder.matrix.copy(new THREE.Matrix4().makeTranslation(east, north, surface.height + dz).multiply(rotX).multiply(modelRotation).multiply(modelScale));
       holder.add(clone);
       const phase = activeEventPhases[activeEventPhaseIndex] || null;
       const number = eventPhaseNumber(phase, activeEventPhaseIndex);
@@ -4563,6 +4665,7 @@ async function start() {
     activeEventPhaseIndex = Math.max(0, Math.min(activeEventPhases.length - 1, Number(index) || 0));
     renderEventPhase();
     syncEventPhaseScene();
+    flyToEventPhase(activeEventPhases[activeEventPhaseIndex]);
     window.dispatchEvent(new CustomEvent('dbmaps:event-phase-change', { detail: {
       event: activeEvent, phase: activeEventPhases[activeEventPhaseIndex], index: activeEventPhaseIndex,
       number: eventPhaseNumber(activeEventPhases[activeEventPhaseIndex], activeEventPhaseIndex)
@@ -4632,6 +4735,9 @@ async function start() {
       if (message && !message.textContent) message.textContent = 'This event folder has no usable phases.json yet. Add phases to enable phase navigation.';
     }
     syncEventPhaseScene();
+    // Apply a camera destination on the initially selected phase as well as on
+    // subsequent phase changes. A missing coordinate leaves the event-level view intact.
+    flyToEventPhase(activeEventPhases[activeEventPhaseIndex]);
   }
   function closeEventView() {
     eventLoadToken++;
@@ -4752,6 +4858,7 @@ async function start() {
   function goHome() {
     if (CURATOR || TOUR_MODE) return;                            // never reset under a curator who is editing, or a web visitor mid-tour
     if (popup) { popup.remove(); popup = null; }
+    closeEventView();                                           // never leave an event reconstruction panel open at the default view/date
     stopTimeline(); stopAttract();
     if (HOME) map.flyTo({ ...HOME, duration: 4000, essential: true });
     if (IDLE_RESETS_YEAR) { slider.value = String(DEFAULT_YEAR); updateTimelineLabel(); onYearChange(true); }

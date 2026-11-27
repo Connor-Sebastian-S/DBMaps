@@ -1,0 +1,7862 @@
+{
+  "type": "FeatureCollection",
+  "name": "positions",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "1",
+        "kind": "model",
+        "effect": null,
+        "name": "Birnam Oak",
+        "model": "models/props/birnam_oak.glb",
+        "heading_deg": 0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.57566,
+          56.56122
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2",
+        "kind": "model",
+        "effect": null,
+        "name": "Table of pontage (toll board)",
+        "model": "models/props/toll_charges_board.glb",
+        "heading_deg": 180,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585160418,
+          56.562866843
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "3",
+        "kind": "model",
+        "effect": null,
+        "name": "Table of pontage (toll board)",
+        "model": "models/props/toll_charges_board.glb",
+        "heading_deg": 180,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585160418,
+          56.562866843
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4",
+        "kind": "model",
+        "effect": null,
+        "name": "Toll keeper",
+        "model": "models/characters/toll_keeper.glb",
+        "heading_deg": 270,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585070554,
+          56.562949763
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "5",
+        "kind": "model",
+        "effect": null,
+        "name": "Toll keeper",
+        "model": "models/characters/toll_keeper.glb",
+        "heading_deg": 270,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585070554,
+          56.562949763
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "6",
+        "kind": "model",
+        "effect": null,
+        "name": "Wooden toll gates",
+        "model": "models/props/toll_gate_wooden.glb",
+        "heading_deg": 0.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "1",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585196285,
+          56.562934441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "7",
+        "kind": "model",
+        "effect": null,
+        "name": "Man holding lodge door shut",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 90,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "1",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585064033,
+          56.562935907
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8",
+        "kind": "model",
+        "effect": null,
+        "name": "Man holding lodge door shut",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 90,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "1",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585064033,
+          56.562926893
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "9",
+        "kind": "model",
+        "effect": null,
+        "name": "Man lifting gate from hinges",
+        "model": "models/townspeople/townsman_pulling_gate.glb",
+        "heading_deg": 359.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "1",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585234897,
+          56.562923085
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "10",
+        "kind": "model",
+        "effect": null,
+        "name": "Man lifting gate from hinges",
+        "model": "models/townspeople/townsman_pulling_gate.glb",
+        "heading_deg": 5.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "1",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585216423,
+          56.562923226
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "11",
+        "kind": "model",
+        "effect": null,
+        "name": "Man lifting gate from hinges",
+        "model": "models/townspeople/townsman_pulling_gate.glb",
+        "heading_deg": 354.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "1",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585197265,
+          56.562922332
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "12",
+        "kind": "model",
+        "effect": null,
+        "name": "Man lifting gate from hinges",
+        "model": "models/townspeople/townsman_pulling_gate.glb",
+        "heading_deg": 7.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "1",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585174889,
+          56.562923451
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "13",
+        "kind": "model",
+        "effect": null,
+        "name": "Man lifting gate from hinges",
+        "model": "models/townspeople/townsman_pulling_gate.glb",
+        "heading_deg": 353.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "1",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585156743,
+          56.562923334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "14",
+        "kind": "model",
+        "effect": null,
+        "name": "Man lifting gate from hinges",
+        "model": "models/townspeople/townsman_pulling_gate.glb",
+        "heading_deg": 178.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "1",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585233105,
+          56.562947039
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "15",
+        "kind": "model",
+        "effect": null,
+        "name": "Man lifting gate from hinges",
+        "model": "models/townspeople/townsman_pulling_gate.glb",
+        "heading_deg": 178.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "1",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58521784,
+          56.562946992
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "16",
+        "kind": "model",
+        "effect": null,
+        "name": "Man lifting gate from hinges",
+        "model": "models/townspeople/townsman_pulling_gate.glb",
+        "heading_deg": 180.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "1",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585198268,
+          56.56294677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "17",
+        "kind": "model",
+        "effect": null,
+        "name": "Man lifting gate from hinges",
+        "model": "models/townspeople/townsman_pulling_gate.glb",
+        "heading_deg": 173.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "1",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585177621,
+          56.562946685
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "18",
+        "kind": "model",
+        "effect": null,
+        "name": "Man lifting gate from hinges",
+        "model": "models/townspeople/townsman_pulling_gate.glb",
+        "heading_deg": 174.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "1",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585157101,
+          56.562946446
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "19",
+        "kind": "model",
+        "effect": null,
+        "name": "Alexander \"Dundonnachie\" Robertson",
+        "model": "models/characters/dundonnachie_begging_penny.glb",
+        "heading_deg": 53.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "1",
+        "phase_to": "1",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585206066,
+          56.562866843
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "20",
+        "kind": "model",
+        "effect": null,
+        "name": "Iron toll gates",
+        "model": "models/props/toll_gate_iron_sunburst.glb",
+        "heading_deg": 0.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585196285,
+          56.562934441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "21",
+        "kind": "model",
+        "effect": null,
+        "name": "Iron toll gates (replacement)",
+        "model": "models/props/toll_gate_iron_sunburst.glb",
+        "heading_deg": 0.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585196285,
+          56.562934441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "22",
+        "kind": "model",
+        "effect": null,
+        "name": "Alexander \"Dundonnachie\" Robertson",
+        "model": "models/characters/dundonnachie_speaking.glb",
+        "heading_deg": 215,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575720781,
+          56.56117201
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "23",
+        "kind": "model",
+        "effect": null,
+        "name": "Meeting poster board",
+        "model": "models/props/meeting_notice_board.glb",
+        "heading_deg": 70.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575874476,
+          56.561176843
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "24",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 68.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575794215,
+          56.561145006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "25",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 13.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575823218,
+          56.561049179
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "26",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with saw",
+        "model": "models/townspeople/townsman_saw.glb",
+        "heading_deg": 81.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575987836,
+          56.561130519
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "27",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 125.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575855941,
+          56.561204939
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "28",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 91.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.57596342,
+          56.561212172
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "29",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 107.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575924448,
+          56.561235326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "30",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 337.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575661472,
+          56.561024418
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "31",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with saw",
+        "model": "models/townspeople/townsman_saw.glb",
+        "heading_deg": 121.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575821933,
+          56.561208774
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "32",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 332.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575572126,
+          56.561050699
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "33",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 88.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.576072224,
+          56.56117619
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "34",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 116.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.576000678,
+          56.561235921
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "35",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 42.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575929101,
+          56.561045477
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "36",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 1.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575675785,
+          56.561071631
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "37",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 349.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575686057,
+          56.56109805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "38",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 331.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575572263,
+          56.561072377
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "39",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 79.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575992922,
+          56.561148343
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "40",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 87.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575902593,
+          56.561151469
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "41",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 308.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.57553808,
+          56.561066538
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "42",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 358.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575734072,
+          56.561079782
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "43",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 301.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575651844,
+          56.561137923
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "44",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 81.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.576052225,
+          56.561185785
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "45",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 81.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575956388,
+          56.561175941
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "46",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 323.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575574039,
+          56.561108828
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "47",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 309.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575614273,
+          56.561131233
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "48",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 314.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575602811,
+          56.561069602
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "49",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 105.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575906642,
+          56.561202893
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "50",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 353.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575736315,
+          56.561102546
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "51",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 67.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575937228,
+          56.561117585
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "52",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 76.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575998699,
+          56.561165527
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "53",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 91.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575842585,
+          56.561185622
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "54",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 84.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.576007033,
+          56.561187528
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "55",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 62.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575985753,
+          56.561086668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "56",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 81.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575973695,
+          56.561114752
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "57",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 133.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575865501,
+          56.561223346
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "58",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_shouting.glb",
+        "heading_deg": 48.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575919006,
+          56.56107255
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "59",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_shouting.glb",
+        "heading_deg": 352.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575593158,
+          56.560989842
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "60",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_shouting.glb",
+        "heading_deg": 345.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575695999,
+          56.561030034
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "61",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 18.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575825238,
+          56.561032438
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "62",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 310.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575521481,
+          56.561013282
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "63",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 21.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.57578066,
+          56.561036511
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "64",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 108.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.576067736,
+          56.561245165
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "65",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 329.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.57560836,
+          56.561028137
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "66",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 75.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.575928774,
+          56.561099072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "67",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 355.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585158954,
+          56.562511552
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "68",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with saw",
+        "model": "models/townspeople/townsman_saw.glb",
+        "heading_deg": 359.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585215335,
+          56.562700147
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "69",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with saw",
+        "model": "models/townspeople/townsman_saw.glb",
+        "heading_deg": 359.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585205416,
+          56.562617893
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "70",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 351.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585169227,
+          56.562386575
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "71",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 359.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585204994,
+          56.562547524
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "72",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 353.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58514989,
+          56.562407328
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "73",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 351.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585147537,
+          56.562539335
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "74",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 5.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585210687,
+          56.562513907
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "75",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 353.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585218702,
+          56.562639011
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "76",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 6.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585153254,
+          56.562345599
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "77",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 352.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585191205,
+          56.562409893
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "78",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 9.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585143537,
+          56.562427815
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "79",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 356.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585187887,
+          56.562502763
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "80",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 350.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585140547,
+          56.562450611
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "81",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 350.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58517987,
+          56.562667018
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "82",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 9.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585187316,
+          56.562372056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "83",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 7.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585185704,
+          56.562588074
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "84",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 9.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585187212,
+          56.5627386
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "85",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 351.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585193315,
+          56.562712602
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "86",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 343.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585184616,
+          56.562850826
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "87",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 335.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585173366,
+          56.562893842
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "88",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with saw",
+        "model": "models/townspeople/townsman_saw.glb",
+        "heading_deg": 12.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585232157,
+          56.562842645
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "89",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 353.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585175944,
+          56.562826361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "90",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 356.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585202024,
+          56.562803619
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "91",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 347.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585196598,
+          56.562876624
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "92",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with saw",
+        "model": "models/townspeople/townsman_saw.glb",
+        "heading_deg": 356.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585225063,
+          56.562779168
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "93",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 24.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585232326,
+          56.562862121
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "94",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 356.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585176318,
+          56.562785553
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "95",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 341.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585156276,
+          56.562880875
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "96",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 14.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585230795,
+          56.562808574
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "97",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 14.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585227708,
+          56.562897389
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "98",
+        "kind": "model",
+        "effect": null,
+        "name": "Police constable",
+        "model": "models/police/police_constable_standing.glb",
+        "heading_deg": 183.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 7.07
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585238764,
+          56.562992431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "99",
+        "kind": "model",
+        "effect": null,
+        "name": "Police constable",
+        "model": "models/police/police_constable_standing.glb",
+        "heading_deg": 189.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 7.09
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58521757,
+          56.562994384
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "100",
+        "kind": "model",
+        "effect": null,
+        "name": "Police constable",
+        "model": "models/police/police_constable_standing.glb",
+        "heading_deg": 172.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 7.08
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585194746,
+          56.562992683
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "101",
+        "kind": "model",
+        "effect": null,
+        "name": "Police constable",
+        "model": "models/police/police_constable_standing.glb",
+        "heading_deg": 170.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "2",
+        "phase_to": "2",
+        "elevation_m": 7.09
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585173552,
+          56.56299433
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "102",
+        "kind": "model",
+        "effect": null,
+        "name": "Shoemaker auctioning gate spars",
+        "model": "models/props/shoemaker_auction_on_gate.glb",
+        "heading_deg": 0.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585196285,
+          56.562934441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "103",
+        "kind": "model",
+        "effect": null,
+        "name": "Alexander \"Dundonnachie\" Robertson",
+        "model": "models/characters/dundonnachie_axe_raised.glb",
+        "heading_deg": 0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585196285,
+          56.562884869
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "104",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 10.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585217146,
+          56.562879436
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "105",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 6.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585221328,
+          56.562850407
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "106",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 353.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585176963,
+          56.562835239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "107",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 355.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58519569,
+          56.562900148
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "108",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 347.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585184274,
+          56.562864926
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "109",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 330.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585167788,
+          56.562887028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "110",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 22.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585229968,
+          56.562899147
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "111",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with saw",
+        "model": "models/townspeople/townsman_saw.glb",
+        "heading_deg": 343.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585156195,
+          56.562848687
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "112",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 352.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585208347,
+          56.562834597
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "113",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 325.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585158832,
+          56.562902704
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "114",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 355.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585214669,
+          56.562778821
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "115",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 346.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58519947,
+          56.562748532
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "116",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 8.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585194611,
+          56.562790438
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "117",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 7.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585210311,
+          56.562685443
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "118",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 359.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585185601,
+          56.562815109
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "119",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 345.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585155556,
+          56.56276278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "120",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 358.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585164208,
+          56.562799106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "121",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 356.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585183072,
+          56.562719462
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "122",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 350.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585223314,
+          56.562716056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "123",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 8.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585222743,
+          56.5627966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "124",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 351.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5851476,
+          56.562733977
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "125",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 350.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585187054,
+          56.562674044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "126",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 0.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585151032,
+          56.562702637
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "127",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 10.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585209443,
+          56.56270224
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "128",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 357.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585220003,
+          56.562759873
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "129",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 344.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585143829,
+          56.562686091
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "130",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 356.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585223345,
+          56.56282044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "131",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 14.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585207607,
+          56.562732807
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "132",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 343.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585179986,
+          56.562775342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "133",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 350.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585158612,
+          56.562672844
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "134",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 5.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585172903,
+          56.562740484
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "135",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_shouting.glb",
+        "heading_deg": 337.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585149624,
+          56.562781083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "136",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 358.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585156693,
+          56.562818676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "137",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 354.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585178065,
+          56.56269441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "138",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 10.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585192107,
+          56.562849295
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "139",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_shouting.glb",
+        "heading_deg": 31.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585235214,
+          56.562866412
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "140",
+        "kind": "model",
+        "effect": null,
+        "name": "Police constable",
+        "model": "models/police/police_constable_standing.glb",
+        "heading_deg": 180,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 7.06
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585238764,
+          56.562990776
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "141",
+        "kind": "model",
+        "effect": null,
+        "name": "Police constable",
+        "model": "models/police/police_constable_standing.glb",
+        "heading_deg": 180,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 7.09
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58521757,
+          56.562995149
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "142",
+        "kind": "model",
+        "effect": null,
+        "name": "Police constable",
+        "model": "models/police/police_constable_standing.glb",
+        "heading_deg": 180,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 7.07
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585194746,
+          56.562991447
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "143",
+        "kind": "model",
+        "effect": null,
+        "name": "Police constable",
+        "model": "models/police/police_constable_standing.glb",
+        "heading_deg": 180,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 7.08
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585173552,
+          56.562992566
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "144",
+        "kind": "model",
+        "effect": null,
+        "name": "Special constable",
+        "model": "models/police/special_constable_standing.glb",
+        "heading_deg": 182.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 7.23
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585241056,
+          56.563018224
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "145",
+        "kind": "model",
+        "effect": null,
+        "name": "Special constable",
+        "model": "models/police/special_constable_standing.glb",
+        "heading_deg": 186.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 7.25
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585228013,
+          56.563021579
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "146",
+        "kind": "model",
+        "effect": null,
+        "name": "Special constable",
+        "model": "models/police/special_constable_standing.glb",
+        "heading_deg": 179.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 7.25
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585214971,
+          56.563020901
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "147",
+        "kind": "model",
+        "effect": null,
+        "name": "Special constable",
+        "model": "models/police/special_constable_standing.glb",
+        "heading_deg": 188.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 7.23
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585201929,
+          56.563018774
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "148",
+        "kind": "model",
+        "effect": null,
+        "name": "Special constable",
+        "model": "models/police/special_constable_standing.glb",
+        "heading_deg": 181.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 7.23
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585188886,
+          56.563018551
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "149",
+        "kind": "model",
+        "effect": null,
+        "name": "Special constable",
+        "model": "models/police/special_constable_standing.glb",
+        "heading_deg": 171.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "3",
+        "phase_to": "3",
+        "elevation_m": 7.26
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585175844,
+          56.563022137
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "150",
+        "kind": "model",
+        "effect": null,
+        "name": "Smashed toll gates",
+        "model": "models/props/toll_gate_wreckage.glb",
+        "heading_deg": 0.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585196285,
+          56.562934441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "151",
+        "kind": "model",
+        "effect": null,
+        "name": "Wreckage",
+        "model": "models/props/toll_gate_wreckage.glb",
+        "heading_deg": 70,
+        "scale": 0.6,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585183242,
+          56.56285783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "152",
+        "kind": "model",
+        "effect": null,
+        "name": "Wreckage",
+        "model": "models/props/toll_gate_wreckage.glb",
+        "heading_deg": 20,
+        "scale": 0.6,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 7.16
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585220346,
+          56.563006546
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "153",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with saw",
+        "model": "models/townspeople/townsman_saw.glb",
+        "heading_deg": 1.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585203185,
+          56.562866897
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "154",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 335.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585165552,
+          56.56287842
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "155",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with saw",
+        "model": "models/townspeople/townsman_saw.glb",
+        "heading_deg": 208.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585185371,
+          56.562953087
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "156",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 314.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585179372,
+          56.562919598
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "157",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 344.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585181478,
+          56.562890668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "158",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with saw",
+        "model": "models/townspeople/townsman_saw.glb",
+        "heading_deg": 142.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585220786,
+          56.562959932
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "159",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 67.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58522404,
+          56.56293081
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "160",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 21.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58521369,
+          56.562905581
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "161",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 31.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585236339,
+          56.562917427
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "162",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 293.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585156618,
+          56.562934048
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "163",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with saw",
+        "model": "models/townspeople/townsman_saw.glb",
+        "heading_deg": 355.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58521199,
+          56.562880565
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "164",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 320.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585161398,
+          56.562900723
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "165",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 161.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585207226,
+          56.562944965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "166",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 16.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585232042,
+          56.562867343
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "167",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester tearing at gates",
+        "model": "models/townspeople/townsman_pulling_gate.glb",
+        "heading_deg": 230.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585156737,
+          56.562962737
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "168",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester tearing at gates",
+        "model": "models/townspeople/townsman_pulling_gate.glb",
+        "heading_deg": 95.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58523521,
+          56.562944033
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "169",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester tearing at gates",
+        "model": "models/townspeople/townsman_pulling_gate.glb",
+        "heading_deg": 40.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585237552,
+          56.562892408
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "170",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester tearing at gates",
+        "model": "models/townspeople/townsman_pulling_gate.glb",
+        "heading_deg": 344.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585187131,
+          56.562905137
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "171",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 335.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585161754,
+          56.562861749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "172",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 352.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585180797,
+          56.562708656
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "173",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 343.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585165839,
+          56.562807788
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "174",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 355.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585208012,
+          56.562753625
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "175",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 8.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585164808,
+          56.562736712
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "176",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 357.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585190374,
+          56.562783703
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "177",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 352.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585219599,
+          56.562710782
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "178",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 344.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585167499,
+          56.562753442
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "179",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 353.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585184129,
+          56.562818522
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "180",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 350.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585206884,
+          56.562733641
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "181",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 8.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585215938,
+          56.562833959
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "182",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with axe",
+        "model": "models/townspeople/townsman_axe_raised.glb",
+        "heading_deg": 352.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585200338,
+          56.562846247
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "183",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 357.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585164628,
+          56.562790436
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "184",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 341.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585152497,
+          56.562767486
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "185",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 353.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585169856,
+          56.562831225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "186",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 17.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585225997,
+          56.562774509
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "187",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 12.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585225606,
+          56.562819967
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "188",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 12.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5852041,
+          56.562806922
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "189",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 352.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585220825,
+          56.562795828
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "190",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 345.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585178364,
+          56.56277003
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "191",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with saw",
+        "model": "models/townspeople/townsman_saw.glb",
+        "heading_deg": 1.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585170912,
+          56.562847742
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "192",
+        "kind": "model",
+        "effect": null,
+        "name": "Protester with hammer",
+        "model": "models/townspeople/townsman_hammer.glb",
+        "heading_deg": 4.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585226724,
+          56.562848307
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "193",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 359.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585172953,
+          56.562603718
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "194",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 6.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585149016,
+          56.562658262
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "195",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 7.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58519544,
+          56.562578952
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "196",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 11.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585202748,
+          56.562662192
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "197",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 358.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585144712,
+          56.562592277
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "198",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 359.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585173229,
+          56.562674957
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "199",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 3.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585184897,
+          56.562622764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "200",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 357.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585202527,
+          56.56267977
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "201",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 357.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585157601,
+          56.562629187
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "202",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 350.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585189637,
+          56.562560109
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "203",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 347.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585155787,
+          56.562698731
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "204",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 356.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585218027,
+          56.562642028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "205",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 3.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585179429,
+          56.562724016
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "206",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_shouting.glb",
+        "heading_deg": 350.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58515319,
+          56.562720806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "207",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_shouting.glb",
+        "heading_deg": 4.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585227591,
+          56.562742844
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "208",
+        "kind": "model",
+        "effect": null,
+        "name": "Police constable (overwhelmed)",
+        "model": "models/police/police_constable_baton_raised.glb",
+        "heading_deg": 175.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 7.13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585233007,
+          56.563002124
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "209",
+        "kind": "model",
+        "effect": null,
+        "name": "Police constable (overwhelmed)",
+        "model": "models/police/police_constable_baton_raised.glb",
+        "heading_deg": 165.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 7.13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585206922,
+          56.563000891
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "210",
+        "kind": "model",
+        "effect": null,
+        "name": "Police constable (overwhelmed)",
+        "model": "models/police/police_constable_baton_raised.glb",
+        "heading_deg": 168.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 7.13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585180837,
+          56.563000796
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "211",
+        "kind": "model",
+        "effect": null,
+        "name": "Special constable",
+        "model": "models/police/special_constable_standing.glb",
+        "heading_deg": 200.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 7.45
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585178873,
+          56.563055902
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "212",
+        "kind": "model",
+        "effect": null,
+        "name": "Special constable (overwhelmed)",
+        "model": "models/police/special_constable_baton_raised.glb",
+        "heading_deg": 185.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 7.36
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585213906,
+          56.563040008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "213",
+        "kind": "model",
+        "effect": null,
+        "name": "Special constable",
+        "model": "models/police/special_constable_standing.glb",
+        "heading_deg": 187.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 7.51
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585247809,
+          56.563065278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "214",
+        "kind": "model",
+        "effect": null,
+        "name": "Special constable",
+        "model": "models/police/special_constable_standing.glb",
+        "heading_deg": 168.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 7.28
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585193957,
+          56.563027144
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "215",
+        "kind": "model",
+        "effect": null,
+        "name": "Special constable (overwhelmed)",
+        "model": "models/police/special_constable_baton_raised.glb",
+        "heading_deg": 196.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 7.7
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585201406,
+          56.563100079
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "216",
+        "kind": "model",
+        "effect": null,
+        "name": "Special constable",
+        "model": "models/police/special_constable_standing.glb",
+        "heading_deg": 153.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 7.25
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585235772,
+          56.563021233
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "217",
+        "kind": "model",
+        "effect": null,
+        "name": "Special constable (overwhelmed)",
+        "model": "models/police/special_constable_baton_raised.glb",
+        "heading_deg": 178.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 7.6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585180305,
+          56.563082161
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "218",
+        "kind": "model",
+        "effect": null,
+        "name": "Special constable (overwhelmed)",
+        "model": "models/police/special_constable_baton_raised.glb",
+        "heading_deg": 168.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 7.64
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58522372,
+          56.563088608
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "219",
+        "kind": "model",
+        "effect": null,
+        "name": "Special constable",
+        "model": "models/police/special_constable_standing.glb",
+        "heading_deg": 192.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "4",
+        "phase_to": "4",
+        "elevation_m": 7.05
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585208831,
+          56.562987789
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "220",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch officer",
+        "model": "models/military/black_watch_officer.glb",
+        "heading_deg": 0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585188133,
+          56.562893882
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "221",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_order_arms.glb",
+        "heading_deg": 0.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585226478,
+          56.562862337
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "222",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_order_arms.glb",
+        "heading_deg": 358.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585206089,
+          56.562862337
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "223",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_order_arms.glb",
+        "heading_deg": 0.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585185669,
+          56.562862337
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "224",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_order_arms.glb",
+        "heading_deg": 357.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585226293,
+          56.562848366
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "225",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_order_arms.glb",
+        "heading_deg": 359.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585205985,
+          56.562848366
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "226",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_order_arms.glb",
+        "heading_deg": 0.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585185853,
+          56.562848366
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "227",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_order_arms.glb",
+        "heading_deg": 357.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585166875,
+          56.562848366
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "228",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 358.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585227155,
+          56.562834396
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "229",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 358.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585207287,
+          56.562834396
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "230",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 357.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585186086,
+          56.562834396
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "231",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 1.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585165903,
+          56.562834396
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "232",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 358.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585228177,
+          56.562820426
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "233",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 359.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585206945,
+          56.562820426
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "234",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 359.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58518643,
+          56.562820426
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "235",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 1.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585165701,
+          56.562820426
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "236",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 2.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58522748,
+          56.562806456
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "237",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 358.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585206367,
+          56.562806456
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "238",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 359.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585186756,
+          56.562806456
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "239",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 358.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58516575,
+          56.562806456
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "240",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 2.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585227977,
+          56.562792485
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "241",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 1.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585206058,
+          56.562792485
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "242",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 358.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585187275,
+          56.562792485
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "243",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 357.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585166871,
+          56.562792485
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "244",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 0.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585226504,
+          56.562778515
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "245",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 357.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585207795,
+          56.562778515
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "246",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 2.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585187069,
+          56.562778515
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "247",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch private",
+        "model": "models/military/black_watch_shoulder_arms.glb",
+        "heading_deg": 357.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585166695,
+          56.562778515
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "248",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch sergeant",
+        "model": "models/military/black_watch_sergeant.glb",
+        "heading_deg": 0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585238672,
+          56.562853324
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "249",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch sergeant",
+        "model": "models/military/black_watch_sergeant.glb",
+        "heading_deg": 0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585153897,
+          56.562853324
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "250",
+        "kind": "model",
+        "effect": null,
+        "name": "Black Watch sergeant",
+        "model": "models/military/black_watch_sergeant.glb",
+        "heading_deg": 0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 0.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585196285,
+          56.562668556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "251",
+        "kind": "model",
+        "effect": null,
+        "name": "Piper",
+        "model": "models/bandsmen/piper_marching.glb",
+        "heading_deg": 357.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.38
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585265137,
+          56.563515784
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "252",
+        "kind": "model",
+        "effect": null,
+        "name": "Piper",
+        "model": "models/bandsmen/piper_marching.glb",
+        "heading_deg": 357.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.38
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585235792,
+          56.563515784
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "253",
+        "kind": "model",
+        "effect": null,
+        "name": "Piper",
+        "model": "models/bandsmen/piper_marching.glb",
+        "heading_deg": 357.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.34
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585263839,
+          56.563500462
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "254",
+        "kind": "model",
+        "effect": null,
+        "name": "Brass band musician",
+        "model": "models/bandsmen/bandsman_horn.glb",
+        "heading_deg": 357.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.34
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585234493,
+          56.563500462
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "255",
+        "kind": "model",
+        "effect": null,
+        "name": "Brass band musician",
+        "model": "models/bandsmen/bandsman_horn.glb",
+        "heading_deg": 357.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58526254,
+          56.56348514
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "256",
+        "kind": "model",
+        "effect": null,
+        "name": "Brass band musician",
+        "model": "models/bandsmen/bandsman_horn.glb",
+        "heading_deg": 357.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585233195,
+          56.56348514
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "257",
+        "kind": "model",
+        "effect": null,
+        "name": "Bass drummer",
+        "model": "models/bandsmen/bandsman_bass_drum.glb",
+        "heading_deg": 357.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.26
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585246569,
+          56.563469817
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "258",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 351.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.19
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585232257,
+          56.563449414
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "259",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 352.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 8.66
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585221878,
+          56.563300965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "260",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 359.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 7.49
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585208821,
+          56.563062599
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "261",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 356.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.03
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585207376,
+          56.563399225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "262",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 357.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 7.57
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58519739,
+          56.563076149
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "263",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 359.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 7.98
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585204101,
+          56.563153132
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "264",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 357.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 8.86
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585267392,
+          56.563353032
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "265",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 358.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 8.06
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585201062,
+          56.563169763
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "266",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 0.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 7.47
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585236751,
+          56.563058063
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "267",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 350.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 8.28
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585227934,
+          56.563214348
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "268",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 350.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 8.15
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585196694,
+          56.563187287
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "269",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 354.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.15
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585229307,
+          56.56343507
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "270",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 350.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.07
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585234708,
+          56.563410554
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "271",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 0.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 7.69
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585187163,
+          56.563097467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "272",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 0.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 8.77
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58526242,
+          56.563328381
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "273",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 350.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 8.68
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585250544,
+          56.563304733
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "274",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 0.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 7.88
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585206393,
+          56.563134054
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "275",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 354.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 8.35
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585193199,
+          56.563229907
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "276",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 357.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 8.14
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585247351,
+          56.563184303
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "277",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 354.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 7.73
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585244537,
+          56.563105719
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "278",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 357.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.12
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585263675,
+          56.563425661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "279",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 357.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 7.82
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585237635,
+          56.563123028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "280",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 352.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 8.71
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585207795,
+          56.563314263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "281",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 355.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.21
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585272096,
+          56.563453674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "282",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 3.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 8.47
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585212269,
+          56.563255682
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "283",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 352.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 8.98
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585254946,
+          56.563384953
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "284",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 349.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 8.93
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58522062,
+          56.56337032
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "285",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 351.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 8.39
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58525279,
+          56.563237126
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "286",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 0.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 8.82
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585207675,
+          56.563341822
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "287",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 356.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 7.56
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585226662,
+          56.563074257
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "288",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 357.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.07
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585272442,
+          56.563409523
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "289",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 172.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.63
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585275626,
+          56.563622418
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "290",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 175.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.87
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585281743,
+          56.563811702
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "291",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 170.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.81
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585259177,
+          56.563743246
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "292",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 177.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.9
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58530592,
+          56.563895078
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "293",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 173.9,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.86
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58527006,
+          56.564016679
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "294",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 181.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.68
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58525285,
+          56.563650882
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "295",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 179.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.62
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585244229,
+          56.563620294
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "296",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 175.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.89
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585291969,
+          56.56396903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "297",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 184.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.9
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585294323,
+          56.56394147
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "298",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 184.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.74
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585235428,
+          56.56368838
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "299",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 178.1,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.84
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585280481,
+          56.564036823
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "300",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 169.5,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.9
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585316322,
+          56.563933214
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "301",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 182.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.88
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585321555,
+          56.563976039
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "302",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 171.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.74
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585263517,
+          56.56368758
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "303",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 171.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.83
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585284806,
+          56.563757909
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "304",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_cheering.glb",
+        "heading_deg": 172.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.58
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585255085,
+          56.56359728
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "305",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 181.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.89
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585253113,
+          56.563853931
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "306",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 175.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.55
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585226827,
+          56.563583747
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "307",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_walking.glb",
+        "heading_deg": 176.2,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.88
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585294783,
+          56.563988377
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "308",
+        "kind": "model",
+        "effect": null,
+        "name": "Townsman",
+        "model": "models/townspeople/townsman_standing.glb",
+        "heading_deg": 170.4,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.85
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58528351,
+          56.563780508
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "309",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_shouting.glb",
+        "heading_deg": 171.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.87
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585240761,
+          56.563810116
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "310",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_shouting.glb",
+        "heading_deg": 181.7,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.71
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585284592,
+          56.563667304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "311",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_shouting.glb",
+        "heading_deg": 172.6,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.89
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58531321,
+          56.563840829
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "312",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 181.3,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.77
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5852996,
+          56.56370971
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "313",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 181.0,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.84
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.585238435,
+          56.563777534
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "314",
+        "kind": "model",
+        "effect": null,
+        "name": "Townswoman",
+        "model": "models/townspeople/townswoman_standing.glb",
+        "heading_deg": 178.8,
+        "scale": 1.0,
+        "intensity": null,
+        "target_building_id": null,
+        "anchor": null,
+        "phase_from": "5",
+        "phase_to": "5",
+        "elevation_m": 9.67
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5852778,
+          56.563646167
+        ]
+      }
+    }
+  ]
+}

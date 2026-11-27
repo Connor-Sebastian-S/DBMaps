@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "initial_phase": "1",
+  "phases": [
+    {
+      "id": "1",
+      "title": "The First Gates Come Down",
+      "time_label": "8–10 February 1868",
+      "description": "Alexander \"Dundonnachie\" Robertson walks back and forth across the bridge without paying. On the night of the 10th a dozen men appear on the Birnam side: two hold the toll lodge door shut so the keeper cannot get out, while the rest lift the wooden gates off their hinges and throw them into the Tay. Robertson is reported standing by the gates with his bonnet in his hand, begging a penny for the poor Duke."
+    },
+    {
+      "id": "2",
+      "title": "The Meeting at the Birnam Oak",
+      "time_label": "16 June 1868",
+      "description": "Iron gates have replaced the wooden ones. A public meeting is held under the old Birnam Oak, where Robertson makes a rousing speech. The crowd arm themselves with hammers, saws and axes and march to the gates. The police stand by and the crowd eventually disperses, after which special constables are sworn in (55 on 24 June).",
+    "coordinates": [3.5766, 56.5609],
+    "zoom": 17
+  },
+    {
+      "id": "3",
+      "title": "The Axe and the Bridge Act",
+      "time_label": "7 July 1868",
+      "description": "Robertson appears at the gates with an axe in one hand and a copy of the Bridge Act in the other. After reading from the Act he attacks the gates, but the axe-head flies off after about a dozen strokes. A local shoemaker climbs on top of the gates and auctions the broken spars as souvenirs. Police and special constables look on.",
+      "coolrdinates": [-3.5852093, 56.5628880],
+      "zoom": 17
+    },
+    {
+      "id": "4",
+      "title": "The Gates Smashed",
+      "time_label": "Night attacks, up to 11 July 1868",
+      "description": "Large crowds assemble and smash the gates to pieces. The replacement gate goes up the next day and does not last. By 2am on the 11th all gates, signs and most of the collector's office have been removed from the bridge. The police and special constables are overwhelmed and badly knocked about."
+    },
+    {
+      "id": "5",
+      "title": "The Black Watch Arrive",
+      "time_label": "Summer 1868, after the attacks",
+      "description": "A detachment of the 42nd Royal Highlanders (the Black Watch) is summoned from Perth. They arrive to find the people of Dunkeld and Birnam marching back and forth across the bridge behind their pipers and brass band. The troops do nothing, the locals stay friendly and law-abiding, and the toll gates are not attacked again."
+    }
+  ]
+}
