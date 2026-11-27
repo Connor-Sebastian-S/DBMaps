@@ -10,6 +10,37 @@
       "radius": 150,
       "volume": 0.8,
       "loop": true
+    },
+    {
+      "id": "forest_ambience",
+      "title": "Forest ambience",
+      "trigger": "forests",
+      "folder": "sounds/forests",
+      "files": [
+        "SoCBird1.mp3",
+        "SoCBird3.mp3",
+        "SoCBird4.mp3",
+        "SoCBird5.mp3",
+        "SoCBird6.mp3",
+        "SoCBird9.mp3",
+        "SoCBird10.mp3",
+        "SoCBird11.mp3",
+        "SoCBird12.mp3",
+        "SoCBird13.mp3",
+        "SoCBird14.mp3",
+        "SoCBird15.mp3",
+        "SoCBird16.mp3",
+        "SoCBird17.mp3",
+        "SoCBird18.mp3",
+        "SoCFlyBy1.mp3",
+        "SoCFlyBy2.mp3",
+        "SoCFlyBy3.mp3"
+      ],
+      "from_year": null,
+      "to_year": null,
+      "radius": 50,
+      "volume": 0.35,
+      "loop": true
     }
   ]
 }
