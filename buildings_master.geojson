@@ -52849,6 +52849,55 @@
                     ]
                 ]
             }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "1914",
+                "name": "St. Jerome's Chapel",
+                "btype": "chapel",
+                "h": 6,
+                "h_src": "default",
+                "min_h": 0,
+                "from_year": null,
+                "to_year": null,
+                "date_src": null,
+                "src": null,
+                "manual": true,
+                "model": "models/1814.glb",
+                "model_rot": null,
+                "model_scale": null,
+                "model_dz": null,
+                "notes": "./notes/1914.txt",
+                "0.9": null
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -3.5765863376290956,
+                            56.564127029655495
+                        ],
+                        [
+                            -3.5765031941063095,
+                            56.56430291012657
+                        ],
+                        [
+                            -3.576910865572933,
+                            56.5643768092402
+                        ],
+                        [
+                            -3.577109337208,
+                            56.56413146362701
+                        ],
+                        [
+                            -3.5765863376290956,
+                            56.564127029655495
+                        ]
+                    ]
+                ]
+            }
         }
     ]
 }
