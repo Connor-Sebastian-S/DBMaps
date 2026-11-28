@@ -17,6 +17,7 @@
 <link rel="preload" as="fetch" crossorigin href="base.geojson">
 <link rel="preload" as="fetch" crossorigin href="buildings_master.geojson">
 <link rel="preload" as="fetch" crossorigin href="roads.geojson">
+<link rel="preload" as="fetch" crossorigin href="road_bridge_models.geojson">
 <link rel="preload" as="fetch" crossorigin href="roads_areas.geojson">
 <link rel="preload" as="fetch" crossorigin href="forest4.geojson">
 <link rel="stylesheet" href="./vendor/maplibre-gl/maplibre-gl.css">
@@ -278,6 +279,7 @@ html[data-tour] #comparisonViewer { display: none !important; }
         <label><input id="urbanGroundVis" type="checkbox" checked> Urban ground areas</label>
         <label><input id="borderVis" type="checkbox" checked> Walls, hedges, bushes & fences</label>
         <label><input id="railModelsVis" type="checkbox" checked> 3D railway meshes</label>
+        <label><input id="roadBridgeModelsVis" type="checkbox" checked> 3D road bridges</label>
         <label><input id="trainTrafficVis" type="checkbox" checked> Historical trains</label>
         <label><input id="waterVis" type="checkbox" checked> Flowing water</label>
         <label><input id="mistVis" type="checkbox" checked> Mountain mist</label>
@@ -1070,12 +1072,13 @@ async function start() {
     getJson('roads.geojson', { type: 'FeatureCollection', features: [] }),
     getJson('roads_areas.geojson', { type: 'FeatureCollection', features: [] }),
     getJson('railway_models.geojson', { type: 'FeatureCollection', features: [] }),
+    getJson('road_bridge_models.geojson', { type: 'FeatureCollection', features: [] }),
     getJson('borders.geojson', { type: 'FeatureCollection', features: [] }),
     getJson('border_models.geojson', { type: 'FeatureCollection', features: [] }),
     loadBitmap(TEXTURE_DIR + WATER_FILE),
   ].map(Loader.track('data')));
   const roadImages = ROAD_TEXTURE_KINDS.map(kind => drawRoadPattern(kind, season0));   // drawn while the downloads are in flight
-  const [demMeta, baseRaw, masterRaw, mapsCfgRaw, forestsRaw, eventsCfgRaw, roadsRaw, roadAreasRaw, railwayModelsRaw, bordersRaw, borderModelsRaw, waterBitmap] = await dataPromise;
+  const [demMeta, baseRaw, masterRaw, mapsCfgRaw, forestsRaw, eventsCfgRaw, roadsRaw, roadAreasRaw, railwayModelsRaw, roadBridgeModelsRaw, bordersRaw, borderModelsRaw, waterBitmap] = await dataPromise;
 
   const demTiles = demMeta ? [BASE + LOCAL_DEM] : [GLOBAL_DEM];
   const demMax = Math.min(demMeta ? demMeta.maxzoom : 15, TERRAIN_MAXZOOM);
@@ -1192,11 +1195,17 @@ async function start() {
   const roadAreas = asFc(roadAreasRaw, overlapsArea);
   const railFeatureBySource = new Map();
   const railFeatureById = new Map();
+  const roadFeatureBySource = new Map();
+  const roadFeatureById = new Map();
   for (const feature of roads.features) {
     const p = feature.properties || {};
-    if (String(p.kind || '').toLowerCase() !== 'rail') continue;
-    if (p.src != null) railFeatureBySource.set(String(p.src), feature);
-    if (p.id != null) railFeatureById.set(String(p.id), feature);
+    if (String(p.kind || '').toLowerCase() === 'rail') {
+      if (p.src != null) railFeatureBySource.set(String(p.src), feature);
+      if (p.id != null) railFeatureById.set(String(p.id), feature);
+    } else {
+      if (p.src != null) roadFeatureBySource.set(String(p.src), feature);
+      if (p.id != null) roadFeatureById.set(String(p.id), feature);
+    }
   }
 
   // Generated railway manifest: each Point is the local origin of one per-feature GLB.
@@ -1211,6 +1220,26 @@ async function start() {
       Number.isFinite(lon) && Number.isFinite(lat) && inBounds([lon, lat], AREA);
   });
   railwayModels.features = railwayModels.features.map(f => {
+    const p = f.properties || {};
+    const coords = f.geometry?.type === 'Point' ? f.geometry.coordinates : [];
+    return { ...f, properties: { ...p,
+      model_lon: Number(p.model_lon != null ? p.model_lon : coords[0]),
+      model_lat: Number(p.model_lat != null ? p.model_lat : coords[1]),
+      from_year: toYear(p.from_year), to_year: toYear(p.to_year),
+    }};
+  });
+
+  // Generated road-bridge manifest. Each Point marks the midpoint of its own GLB.
+  const roadBridgeModels = asFc(roadBridgeModelsRaw, f => {
+    const p = f.properties || {};
+    const coords = f.geometry?.type === 'Point' ? f.geometry.coordinates : null;
+    const lonValue = p.model_lon != null ? p.model_lon : coords?.[0];
+    const latValue = p.model_lat != null ? p.model_lat : coords?.[1];
+    const lon = Number(lonValue), lat = Number(latValue);
+    return typeof p.model === 'string' && p.model.trim() !== '' &&
+      Number.isFinite(lon) && Number.isFinite(lat) && inBounds([lon, lat], AREA);
+  });
+  roadBridgeModels.features = roadBridgeModels.features.map(f => {
     const p = f.properties || {};
     const coords = f.geometry?.type === 'Point' ? f.geometry.coordinates : [];
     return { ...f, properties: { ...p,
@@ -1352,6 +1381,18 @@ async function start() {
   };
   const railwayCandidates = railwayModels.features.filter(f => railwayModelUrl(f) !== null);
   const RAILWAY_MODEL_MIN_ZOOM = 14.5;
+  const ROAD_BRIDGE_ASSET_REVISION = 'low-poly-road-bridges-major-minor-v1-20261128';
+  const roadBridgeModelUrl = feature => {
+    const value = feature?.properties?.model;
+    if (typeof value !== 'string' || !value.trim()) return null;
+    try {
+      const url = new URL(value.trim().replace(/\\/g, '/'), BASE);
+      url.searchParams.set('assetrev', ROAD_BRIDGE_ASSET_REVISION);
+      return url.href;
+    } catch (_) { return null; }
+  };
+  const roadBridgeCandidates = roadBridgeModels.features.filter(f => roadBridgeModelUrl(f) !== null);
+  const ROAD_BRIDGE_MODEL_MIN_ZOOM = 14.5;
   const BORDER_ASSET_REVISION = 'low-poly-borders-v1-terrain-conform-20261120';
   const borderModelUrl = feature => {
     const value = feature?.properties?.model;
@@ -1698,6 +1739,7 @@ async function start() {
   const boatGroup = new THREE.Group(), birdGroup = new THREE.Group(), smokeGroup = new THREE.Group();
   const lampLightRoot = new THREE.Group();
   const railwayRoot = new THREE.Group();
+  const roadBridgeRoot = new THREE.Group();
   const borderRoot = new THREE.Group();
   const eventRoot = new THREE.Group();              // lazily loaded, phase-driven historical event objects
   const trainGroup = new THREE.Group();
@@ -1706,6 +1748,7 @@ async function start() {
   smokeGroup.name = 'chimney-smoke';
   lampLightRoot.name = 'artificial-lamp-lights';
   railwayRoot.name = '3d-railway-models';
+  roadBridgeRoot.name = '3d-road-bridges';
   borderRoot.name = '3d-border-models';
   eventRoot.name = 'historical-event-objects';
   eventRoot.visible = false;
@@ -1749,7 +1792,7 @@ async function start() {
 
   const modelRoot = new THREE.Group();                // all GLB buildings: one draw pass with the rest of the 3D content
   modelRoot.matrixWorldAutoUpdate = false;            // static root; each BatchedMesh instance matrix is baked once
-  localScene.add(waterGroup, treeGroup, boatGroup, birdGroup, mistGroup, smokeGroup, lampLightRoot, railwayRoot, borderRoot, eventRoot, trainGroup, modelRoot, tourPinGroup);
+  localScene.add(waterGroup, treeGroup, boatGroup, birdGroup, mistGroup, smokeGroup, lampLightRoot, railwayRoot, roadBridgeRoot, borderRoot, eventRoot, trainGroup, modelRoot, tourPinGroup);
 
   let hf = null;                                    // Heightfield (set once loaded)
   let heightAt = () => 0;                           // (east, north) in metres -> ground height
@@ -1782,6 +1825,7 @@ async function start() {
       boatsOn = $('boatVis').checked, birdsOn = $('birdVis').checked;
   let smokeOn = $('smokeVis').checked;
   let railwayModelsOn = $('railModelsVis').checked;
+  let roadBridgeModelsOn = $('roadBridgeModelsVis').checked;
   let borderModelsOn = $('borderVis').checked;
   let trainTrafficOn = $('trainTrafficVis').checked;
   const activeTrains = []; // moving and parked consists remain in this list until removed intentionally
@@ -1803,6 +1847,10 @@ async function start() {
   const railwayState = new Map();
   const railwayFailures = [];
   let railwayModelsShown = 0, railwayModelsPending = 0;
+  const roadBridgeItems = [];
+  const roadBridgeState = new Map();
+  const roadBridgeFailures = [];
+  let roadBridgeModelsShown = 0, roadBridgeModelsPending = 0;
   const borderItems = [];
   const borderState = new Map();
   const borderFailures = [];
@@ -1846,6 +1894,7 @@ async function start() {
       mistGroup.visible = mistOn;
       modelRoot.visible = buildingModelsVisible && modelsShown > 0 && zoom >= TIER.modelMinZoom;
       railwayRoot.visible = railwayModelsOn && railwayModelsShown > 0 && zoom >= RAILWAY_MODEL_MIN_ZOOM;
+      roadBridgeRoot.visible = roadBridgeModelsOn && roadBridgeModelsShown > 0 && zoom >= ROAD_BRIDGE_MODEL_MIN_ZOOM;
       borderRoot.visible = borderModelsOn && borderModelsShown > 0 && zoom >= BORDER_MODEL_MIN_ZOOM;
       trainGroup.visible = trainTrafficOn && activeTrains.length > 0 && zoom >= TRAIN_MIN_ZOOM;
       tourPinGroup.visible = tourPinGroup.children.length > 0;
@@ -1856,7 +1905,7 @@ async function start() {
       eventFireSmokeMaterial.uniforms.uSizeScale.value = smokeSizeScale;
       eventMusketSmokeMaterial.uniforms.uSizeScale.value = smokeSizeScale;
       const treeDraw = treeGroup.visible && activeTreeLod >= 0 && treeLodGroups[activeTreeLod].children.length > 0;
-      const drawWorld = treeDraw || [waterGroup, boatGroup, birdGroup, mistGroup, smokeGroup, lampLightRoot, railwayRoot, borderRoot, eventRoot, trainGroup, modelRoot, tourPinGroup].some(g => g.visible && g.children.length);
+      const drawWorld = treeDraw || [waterGroup, boatGroup, birdGroup, mistGroup, smokeGroup, lampLightRoot, railwayRoot, roadBridgeRoot, borderRoot, eventRoot, trainGroup, modelRoot, tourPinGroup].some(g => g.visible && g.children.length);
       if (!drawWorld) { worldDrawn = false; return; }
 
       const r = this.renderer;
@@ -2275,6 +2324,7 @@ async function start() {
     syncAnim();
     syncBuildingFootprints();
     ensureRailwayModels();
+    ensureRoadBridgeModels();
     ensureBorderModels();
     ensureTrainTraffic();
   });
@@ -3055,7 +3105,7 @@ async function start() {
     const b = map.getBounds(), w = b.getEast() - b.getWest(), h = b.getNorth() - b.getSouth();
     return [b.getWest() - w * 0.5, b.getSouth() - h * 0.5, b.getEast() + w * 0.5, b.getNorth() + h * 0.5];
   };
-  map.on('moveend', () => { ensureModels(); ensureRailwayModels(); ensureBorderModels(); ensureTrainTraffic(); });
+  map.on('moveend', () => { ensureModels(); ensureRailwayModels(); ensureRoadBridgeModels(); ensureBorderModels(); ensureTrainTraffic(); });
 
   // Geometry layout is part of the global batch key: BatchedMesh requires every geometry
   // in one batch to expose the same attributes. Material UUIDs are now canonical across GLBs.
@@ -3657,6 +3707,129 @@ async function start() {
     map.triggerRepaint();
   }
 
+  // Road bridge GLBs use the same metre-based axes and terrain-profile placement as railway bridges.
+  function updateRoadBridgeVisibility(y = year()) {
+    let shown = 0, changed = false;
+    for (const item of roadBridgeItems) {
+      const visible = item.from <= y && y <= item.to;
+      if (item.group.visible !== visible) {
+        item.group.visible = visible;
+        changed = true;
+      }
+      if (visible) shown++;
+    }
+    roadBridgeModelsShown = shown;
+    if (changed) map.triggerRepaint();
+  }
+
+  async function ensureRoadBridgeModels() {
+    if (!roadBridgeModelsOn || !roadBridgeCandidates.length ||
+        (!preloading && map.getZoom() < ROAD_BRIDGE_MODEL_MIN_ZOOM - 0.4)) return;
+    const y = year(), view = preloading ? AREA : paddedView(), centre = map.getCenter();
+    const wanted = roadBridgeCandidates.filter(f => {
+      if (roadBridgeState.has(f)) return false;
+      const p = f.properties || {}, anchor = railwayAnchor(f);
+      if (!anchor || !inBounds(anchor, view)) return false;
+      const from = toYear(p.from_year) ?? -99999;
+      const to = toYear(p.to_year) ?? 99999;
+      return preloading || (from <= y && y <= to);
+    });
+    if (!wanted.length) return;
+    wanted.sort((a, b) => {
+      const aa = railwayAnchor(a), bb = railwayAnchor(b);
+      return (aa[0] - centre.lng) ** 2 + (aa[1] - centre.lat) ** 2
+        - ((bb[0] - centre.lng) ** 2 + (bb[1] - centre.lat) ** 2);
+    });
+    wanted.forEach(f => roadBridgeState.set(f, 'loading'));
+    roadBridgeModelsPending += wanted.length;
+
+    try {
+      await ensureTerrainReady();
+      if (!hf) throw new Error('Terrain heightfield is unavailable');
+    } catch (err) {
+      wanted.forEach(f => roadBridgeState.set(f, 'failed'));
+      roadBridgeModelsPending -= wanted.length;
+      for (const f of wanted) roadBridgeFailures.push({ id: f.properties?.id, message: err?.message || String(err) });
+      console.warn('Terrain unavailable while placing road bridges:', err);
+      updateStatus();
+      return;
+    }
+
+    let loader;
+    try {
+      gltfLoaderPromise ||= (async () => {
+        const [{ GLTFLoader }, { DRACOLoader }, { MeshoptDecoder }] = await Promise.all([
+          import('three/addons/loaders/GLTFLoader.js'),
+          import('three/addons/loaders/DRACOLoader.js'),
+          import('three/addons/libs/meshopt_decoder.module.js'),
+        ]);
+        return new GLTFLoader().setDRACOLoader(new DRACOLoader().setDecoderPath(DRACO_PATH)).setMeshoptDecoder(MeshoptDecoder);
+      })();
+      loader = await gltfLoaderPromise;
+    } catch (err) {
+      wanted.forEach(f => roadBridgeState.set(f, 'failed'));
+      roadBridgeModelsPending -= wanted.length;
+      for (const f of wanted) roadBridgeFailures.push({ id: f.properties?.id, message: err?.message || String(err) });
+      console.warn('GLTFLoader unavailable for road bridges:', err);
+      updateStatus();
+      return;
+    }
+
+    let next = 0;
+    const worker = async () => {
+      while (next < wanted.length) {
+        const f = wanted[next++], p = f.properties || {}, url = roadBridgeModelUrl(f);
+        try {
+          const gltf = await loader.loadAsync(url);
+          const sourceScene = gltf.scene;
+          const anchor = railwayAnchor(f);
+          if (!anchor) throw new Error('Road bridge manifest has no valid model anchor');
+          const [e, n] = frame.toLocal(anchor[0], anchor[1]);
+          const sampledHeight = hf.sampleMerc(mercX(anchor[0]), mercY(anchor[1]));
+          const terrainGround = Number.isFinite(sampledHeight) ? sampledHeight : 0;
+          const bridgeSource = isBridgeValue(p.bridge)
+            ? (p.src != null ? roadFeatureBySource.get(String(p.src)) : null)
+                || (p.id != null ? roadFeatureById.get(String(p.id)) : null)
+            : null;
+          const bridgeProfile = bridgeSource ? makeBridgeElevationProfile(bridgeSource, e, n) : null;
+          const ground = bridgeProfile ? bridgeProfile.anchorHeight : terrainGround;
+          conformRailwaySceneToTerrain(sourceScene, e, n, ground, bridgeProfile);
+          const dz = Number.isFinite(Number(p.model_dz)) ? Number(p.model_dz) : 0;
+          const scaleValue = Number(p.model_scale);
+          const scale = Number.isFinite(scaleValue) && scaleValue !== 0 ? scaleValue : 1;
+          const rotationY = -(Number(p.model_rot) || 0) * Math.PI / 180;
+          const modelTransform = new THREE.Matrix4().compose(
+            new THREE.Vector3(0, 0, 0),
+            new THREE.Quaternion().setFromEuler(new THREE.Euler(0, rotationY, 0)),
+            new THREE.Vector3(scale, scale, scale)
+          );
+          const placement = new THREE.Matrix4().makeTranslation(e, n, ground + dz).multiply(rotX).multiply(modelTransform);
+          const holder = new THREE.Group();
+          holder.name = `road-bridge-${p.id ?? 'unknown'}`;
+          holder.matrixAutoUpdate = false;
+          holder.matrix.copy(placement);
+          holder.add(sourceScene);
+          const from = toYear(p.from_year) ?? -99999;
+          const to = toYear(p.to_year) ?? 99999;
+          holder.visible = from <= year() && year() <= to;
+          roadBridgeRoot.add(holder);
+          roadBridgeItems.push({ id: p.id, name: p.name, from, to, group: holder, props: p, url });
+          roadBridgeState.set(f, 'ok');
+        } catch (err) {
+          roadBridgeState.set(f, 'failed');
+          const detail = { id: p.id, path: p.model, url, message: err?.message || String(err) };
+          roadBridgeFailures.push(detail);
+          console.warn(`Road bridge mesh failed for ${p.id} (${p.model}; resolved ${url}):`, err);
+        }
+        roadBridgeModelsPending--;
+      }
+    };
+    await Promise.all(Array.from({ length: Math.min(3, wanted.length) }, worker));
+    updateRoadBridgeVisibility();
+    updateStatus();
+    map.triggerRepaint();
+  }
+
   // Border models are generated from borders.geojson into one GLB per line feature.
   // Each vertex is shifted to the LiDAR terrain, so hedges, walls, bushes and fences
   // follow local slopes instead of floating over hollows or cutting through ridges.
@@ -4023,6 +4196,8 @@ async function start() {
     applyFilters(force);
     updateRailwayVisibility();
     ensureRailwayModels();
+    updateRoadBridgeVisibility();
+    ensureRoadBridgeModels();
     updateBorderVisibility();
     ensureBorderModels();
     for (let i = activeTrains.length - 1; i >= 0; i--) {
@@ -4150,6 +4325,12 @@ async function start() {
     railwayModelsOn = e.target.checked;
     updateRailwayVisibility();
     ensureRailwayModels();
+    map.triggerRepaint();
+  });
+  $('roadBridgeModelsVis').addEventListener('change', e => {
+    roadBridgeModelsOn = e.target.checked;
+    updateRoadBridgeVisibility();
+    ensureRoadBridgeModels();
     map.triggerRepaint();
   });
   $('borderVis').addEventListener('change', e => {
@@ -4373,6 +4554,8 @@ async function start() {
     }
     if (railwayModelsOn) for (const item of railwayItems)
       if (item.group?.visible) addCandidate(item.group, () => !!item.group.visible);
+    if (roadBridgeModelsOn) for (const item of roadBridgeItems)
+      if (item.group?.visible) addCandidate(item.group, () => !!item.group.visible);
     if (borderModelsOn) for (const item of borderItems)
       if (item.group?.visible) addCandidate(item.group, () => !!item.group.visible);
 
@@ -4383,6 +4566,7 @@ async function start() {
     // The scene's Z axis is vertical (GLB +Y is rotated into +Z at import).
     if (buildingModelsVisible) modelRoot.updateMatrixWorld(true);
     if (railwayModelsOn) railwayRoot.updateMatrixWorld(true);
+    if (roadBridgeModelsOn) roadBridgeRoot.updateMatrixWorld(true);
     if (borderModelsOn) borderRoot.updateMatrixWorld(true);
     const originZ = terrainHeight + 1200;
     eventPlacementRaycaster.set(new THREE.Vector3(east, north, originZ), eventPlacementDown);
@@ -5627,7 +5811,9 @@ async function start() {
         const hit = pickModel(e.point);
         if (hit) { showPopup(e.lngLat, await popupHtml('Building', hit.props)); return; }
       }
-      if (haveMatrix) {                                             // 2. railway + border meshes
+      if (haveMatrix) {                                             // 2. road bridge, railway + border meshes
+        const roadBridge = pickItems(e.point, roadBridgeItems);
+        if (roadBridge) { showPopup(e.lngLat, await popupHtml('Road bridge', roadBridge.props)); return; }
         const rail = pickItems(e.point, railwayItems);
         if (rail) { showPopup(e.lngLat, await popupHtml('Railway', rail.props)); return; }
         const border = pickItems(e.point, borderItems);
@@ -5679,6 +5865,7 @@ async function start() {
         : 'No forest polygons loaded. ') +
       `${roadAreas.features.length} buffered road/rail polygons from ${roads.features.length} centrelines. ` +
       (railwayCandidates.length ? `${railwayCandidates.length} railway mesh features (${railwayItems.length} loaded${railwayModelsPending ? `, ${railwayModelsPending} loading` : ''}${railwayFailures.length ? `, ${railwayFailures.length} failed` : ''}). ` : 'No railway mesh features in railway_models.geojson. ') +
+      (roadBridgeCandidates.length ? `${roadBridgeCandidates.length} road bridge meshes (${roadBridgeItems.length} loaded${roadBridgeModelsPending ? `, ${roadBridgeModelsPending} loading` : ''}${roadBridgeFailures.length ? `, ${roadBridgeFailures.length} failed` : ''}). ` : 'No road bridge mesh features in road_bridge_models.geojson. ') +
       `${trainRailSegments.length} rail route segments; ${movingTrainCount()} moving, ${dwellingTrainCount()} at a station and ${parkedTrainCount()} parked train(s). ` +
       (eventList.length ? `${eventList.length} events. ` : '') +
       (histMaps.length ? `${histMaps.length} historic map(s).` : 'No maps.json.') +
@@ -5713,8 +5900,8 @@ setInterval(() => {
   async function preloadAssets() {
     preloading = true;
     try {
-      const jobs = [ensureModels(), ensureRailwayModels(), ensureBorderModels(), preloadTrainModels()];
-      const pending = () => modelsPending + railwayModelsPending + borderModelsPending + trainModelsPending;
+      const jobs = [ensureModels(), ensureRailwayModels(), ensureRoadBridgeModels(), ensureBorderModels(), preloadTrainModels()];
+      const pending = () => modelsPending + railwayModelsPending + roadBridgeModelsPending + borderModelsPending + trainModelsPending;
       const total = pending();
       if (!total) return;
       const poll = setInterval(() => Loader.set('models', 1 - pending() / total, `Loading 3D models… ${total - pending()} / ${total}`), 120);
@@ -5770,7 +5957,7 @@ setInterval(() => {
     }
   });
 
-  window.__viewer = { map, stats, Uni, treeGroup, waterGroup, mistGroup, boatGroup, birdGroup, smokeGroup, lampLightRoot, railwayRoot, borderRoot, eventRoot, trainGroup, ambientLight, sunLight,
+  window.__viewer = { map, stats, Uni, treeGroup, waterGroup, mistGroup, boatGroup, birdGroup, smokeGroup, lampLightRoot, railwayRoot, roadBridgeRoot, borderRoot, eventRoot, trainGroup, ambientLight, sunLight,
     get nightMode() { return $('nightMode').checked; },
     get ambientIntensity() { return ambientLight.intensity; },
     get landscapeNightOpacity() { return $('nightMode').checked ? NIGHT_LANDSCAPE_OPACITY : 0; },
@@ -5807,6 +5994,13 @@ setInterval(() => {
     get railwayModelsShown() { return railwayModelsShown; },
     get railwayModelsPending() { return railwayModelsPending; },
     get railwayModelsVisible() { return railwayRoot.visible; },
+    get roadBridgeModelFiles() { return roadBridgeItems.map(x => ({ id: x.id, name: x.name, road_class: x.props?.road_class, url: x.url, from: x.from, to: x.to, visible: x.group.visible })); },
+    get roadBridgeModelCount() { return roadBridgeItems.length; },
+    get roadBridgeModelCandidates() { return roadBridgeCandidates.length; },
+    get roadBridgeModelFailures() { return roadBridgeFailures.slice(); },
+    get roadBridgeModelsShown() { return roadBridgeModelsShown; },
+    get roadBridgeModelsPending() { return roadBridgeModelsPending; },
+    get roadBridgeModelsVisible() { return roadBridgeRoot.visible; },
     get trainTrafficEnabled() { return trainTrafficOn; },
     get trainRouteSegmentCount() { return trainRailSegments.length; },
     get trainActiveCount() { return activeTrains.length; },

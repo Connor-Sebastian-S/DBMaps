@@ -1,9 +1,9 @@
 GEOJSON STATISTICS REPORT
 ========================================
 
-Total features in input:    1001
-Features inside map area:   895
-Features outside area:      106
+Total features in input:    932
+Features inside map area:   833
+Features outside area:      99
 
 MAP AREA (WGS84 BOUNDS)
 West:  -3.59687610
@@ -12,15 +12,15 @@ East:  -3.56434690
 North: 56.57167653
 
 Missing model paths:        0
-Model files found:           559
-Model files not found:       336
+Model files found:           502
+Model files not found:       331
 
 Missing notes:              0
-Valid notes:                895
+Valid notes:                833
 
-Missing from_year:          96
+Missing from_year:          69
 
-Valid names:                647
+Valid names:                595
 
 ========================================
 FEATURES WITH MISSING MODELS
@@ -89,7 +89,6 @@ MODEL PATHS THAT DO NOT EXIST
 - Spoutwell House -> models/123.glb
 - Cottage -> models/125.glb
 - Spoutswell Cottage -> models/126.glb
-- (unnamed, ID: 134) -> models/134.glb
 - 1 Water Wynd -> models/135.glb
 - The White Cottage -> models/136.glb
 - Lonsdale -> models/137.glb
@@ -236,7 +235,6 @@ MODEL PATHS THAT DO NOT EXIST
 - (unnamed, ID: 543) -> models/543.glb
 - (unnamed, ID: 547) -> models/547.glb
 - Greystones -> models/548.glb
-- (unnamed, ID: 549) -> models/549.glb
 - (unnamed, ID: 551) -> models/551.glb
 - Gunpowder Store -> models/553.glb
 - Torwood House -> models/555.glb
@@ -302,7 +300,6 @@ MODEL PATHS THAT DO NOT EXIST
 - (unnamed, ID: 659) -> models/659.glb
 - (unnamed, ID: 660) -> models/660.glb
 - (unnamed, ID: 661) -> models/661.glb
-- (unnamed, ID: 668) -> models/668.glb
 - (unnamed, ID: 670) -> models/670.glb
 - (unnamed, ID: 671) -> models/671.glb
 - (unnamed, ID: 672) -> models/672.glb
@@ -327,9 +324,7 @@ MODEL PATHS THAT DO NOT EXIST
 - 2 Station Road -> models/847.glb
 - Balgownie -> models/848.glb
 - Westwood -> models/849.glb
-- (unnamed, ID: 857) -> models/857.glb
 - (unnamed, ID: 859) -> models/859.glb
-- Garage -> models/860.glb
 - Bob's Mechanical Repairs -> models/861.glb
 - Woodside -> models/862.glb
 - The Craft Diner -> models/864.glb
@@ -373,36 +368,20 @@ FEATURES WITH MISSING FROM_YEAR
 - Larachmhor
 - (unnamed, ID: 32)
 - (unnamed, ID: 34)
-- 6,7 Water Wynd
 - (unnamed, ID: 60)
 - (unnamed, ID: 68)
-- (unnamed, ID: 70)
 - (unnamed, ID: 112)
 - (unnamed, ID: 113)
 - (unnamed, ID: 116)
 - Spoutwell House
 - (unnamed, ID: 124)
 - Spoutswell Cottage
-- Garage
-- 2  - Atholl Park
-- (unnamed, ID: 134)
 - The White Cottage
 - Lonsdale
-- Garage
-- Thimmlefield - Atholl Park
-- Greenwalk - Atholl Park
-- The Haining - Atholl Park
-- 4 - Atholl Park
-- 5 - Atholl Park
-- Deanholm - Atholl Park
-- Garage
 - (unnamed, ID: 151)
 - (unnamed, ID: 155)
-- (unnamed, ID: 160)
 - 8 Station Road
 - 10 Station Road
-- Garage
-- Shed
 - Ivy Cottage
 - Armoury House
 - (unnamed, ID: 384)
@@ -413,8 +392,6 @@ FEATURES WITH MISSING FROM_YEAR
 - (unnamed, ID: 461)
 - (unnamed, ID: 524)
 - The Ice House
-- Shed
-- (unnamed, ID: 534)
 - (unnamed, ID: 537)
 - (unnamed, ID: 539)
 - (unnamed, ID: 541)
@@ -435,25 +412,18 @@ FEATURES WITH MISSING FROM_YEAR
 - (unnamed, ID: 615)
 - Haughend
 - (unnamed, ID: 617)
-- Garage
 - (unnamed, ID: 624)
 - Gallowhill Lodge
 - Old Abattoir
 - (unnamed, ID: 640)
 - (unnamed, ID: 641)
 - (unnamed, ID: 644)
-- (unnamed, ID: 650)
-- Garage
-- (unnamed, ID: 668)
 - (unnamed, ID: 670)
 - (unnamed, ID: 671)
 - (unnamed, ID: 672)
 - (unnamed, ID: 673)
-- Garage
-- Garage
 - (unnamed, ID: 692)
 - (unnamed, ID: 696)
-- Garage
 - (unnamed, ID: 778)
 - (unnamed, ID: 779)
 - The Birnam Reader
@@ -462,10 +432,8 @@ FEATURES WITH MISSING FROM_YEAR
 - Birnam CD & DVD Duplication
 - Balgownie
 - Westwood
-- (unnamed, ID: 857)
 - (unnamed, ID: 944)
 - (unnamed, ID: 957)
-- Niel Gow Statue
 
 VALID FEATURE NAMES
 ========================================
@@ -527,7 +495,6 @@ VALID FEATURE NAMES
 - Stables Cottage (ID: 77)
 - Eastferry House (ID: 78)
 - Eastwood House (ID: 80)
-- Garage (ID: 81)
 - Woodbrae (ID: 82)
 - Craigwood (ID: 83)
 - Sabhal Beag (ID: 85)
@@ -536,7 +503,6 @@ VALID FEATURE NAMES
 - Frochan (ID: 88)
 - St Jerome's (ID: 89)
 - Morvern (ID: 90)
-- Garage (ID: 91)
 - Dun Vorist (ID: 92)
 - Deerfield (ID: 93)
 - Yew Cottage (ID: 94)
@@ -546,7 +512,6 @@ VALID FEATURE NAMES
 - Birnam Arts (ID: 109)
 - Glasalt (ID: 118)
 - Herons (ID: 119)
-- Garage (ID: 120)
 - Craig Royston (ID: 121)
 - Brackenbank (ID: 122)
 - Spoutwell House (ID: 123)
@@ -555,12 +520,10 @@ VALID FEATURE NAMES
 - Dean's House (ID: 129)
 - Rectory House (ID: 130)
 - Rectory House (ID: 131)
-- Garage (ID: 132)
 - 2  - Atholl Park (ID: 133)
 - 1 Water Wynd (ID: 135)
 - The White Cottage (ID: 136)
 - Lonsdale (ID: 137)
-- Garage (ID: 138)
 - Thimmlefield - Atholl Park (ID: 139)
 - Greenwalk - Atholl Park (ID: 140)
 - 5 Atholl Gardens (ID: 142)
@@ -568,12 +531,10 @@ VALID FEATURE NAMES
 - 4 - Atholl Park (ID: 145)
 - 5 - Atholl Park (ID: 146)
 - Deanholm - Atholl Park (ID: 147)
-- Garage (ID: 148)
 - Highfield (ID: 149)
 - 1 Atholl Gardens (ID: 150)
 - 3 Atholl Gardens (ID: 152)
 - 2 Atholl Gardens (ID: 153)
-- Garage (ID: 154)
 - Highland Offroad (ID: 156)
 - 15 Atholl Gardens (ID: 157)
 - 10 Atholl Gardens (ID: 158)
@@ -588,7 +549,6 @@ VALID FEATURE NAMES
 - The Shieling (ID: 170)
 - 4 Atholl Gardens (ID: 171)
 - Craigie Barns (ID: 172)
-- Garage (ID: 174)
 - Strathview (ID: 175)
 - 11 Atholl Gardens (ID: 177)
 - Bruce Gardens Apartments (ID: 178)
@@ -611,27 +571,20 @@ VALID FEATURE NAMES
 - 1,2 Kirkfield Place (ID: 208)
 - 3,4 Kirkfield Place (ID: 209)
 - Nurses House (ID: 210)
-- Garage (ID: 211)
-- Garage (ID: 212)
 - Toll House (ID: 213)
 - Glenfalloch (ID: 214)
 - Merle House (ID: 215)
 - Waterside (ID: 216)
 - Kariba (ID: 217)
-- Garage (ID: 218)
 - 5,6 Kirkfield Place (ID: 219)
-- Garage (ID: 220)
 - Rossie (ID: 221)
 - Invertay (ID: 222)
 - Girlguiding Dunkeld And Birnam (ID: 223)
 - 7,8 Kirkfield Place (ID: 224)
-- Garage (ID: 225)
 - Craigvinean Surgery (ID: 226)
 - Dunkeld and Birnam Community Co-Working Space (ID: 227)
 - Gowrie Cottage (ID: 228)
-- Garage (ID: 229)
 - Lagbeag (ID: 230)
-- Shed (ID: 231)
 - 54, 55 Willowbank (ID: 248)
 - 52, 53 Willowbank (ID: 249)
 - 56, 57 Willowbank (ID: 250)
@@ -710,10 +663,7 @@ VALID FEATURE NAMES
 - 1 Stell Park (ID: 326)
 - 3 Stell Park (ID: 327)
 - 1 Stell Park (ID: 328)
-- Garage (ID: 329)
 - 3 Stell Park (ID: 330)
-- Garage (ID: 331)
-- Garage (ID: 332)
 - The Bungalow (ID: 334)
 - Ivy Cottage (ID: 335)
 - The Old Bakery (ID: 337)
@@ -724,16 +674,13 @@ VALID FEATURE NAMES
 - Armoury House (ID: 344)
 - Schoolhouse (ID: 345)
 - Bheinne Mhor (ID: 346)
-- Garage (ID: 347)
 - Rectory (ID: 354)
 - Dunbraantay Laundry (ID: 356)
-- Garage (ID: 371)
 - Ladyhill House (ID: 380)
 - Conival (ID: 386)
 - Schiehallion (ID: 387)
 - Ballinoe,Rockfield (ID: 388)
 - Byways (ID: 389)
-- Garage (ID: 391)
 - The Old Coach House (ID: 393)
 - Chalet (ID: 394)
 - Chalet (ID: 395)
@@ -827,24 +774,15 @@ VALID FEATURE NAMES
 - North Lodge (ID: 522)
 - 8 Atholl Gardens (ID: 523)
 - Dunkeld Community Archive (ID: 526)
-- Shed (ID: 527)
-- Shed (ID: 528)
-- Shed (ID: 529)
 - The Ice House (ID: 530)
-- Shed (ID: 531)
 - 3 Brae Street (ID: 533)
 - Dunkeld and Birnam Bowling Club (ID: 538)
-- Shed (ID: 540)
 - Royal British Legion (ID: 544)
 - Gate Lodge (North) (ID: 545)
-- Shed (ID: 546)
 - Greystones (ID: 548)
-- Garage (ID: 550)
-- Shed (ID: 552)
 - Gunpowder Store (ID: 553)
 - Torwood House (ID: 555)
 - Guthrie Villa (ID: 556)
-- Garage (ID: 559)
 - District Nurse (ID: 560)
 - Ferwaldon (ID: 561)
 - Cnocairde (ID: 562)
@@ -867,41 +805,29 @@ VALID FEATURE NAMES
 - Wash House (ID: 584)
 - Braan Cottage (ID: 587)
 - Greenhouse (ID: 591)
-- Garage (ID: 592)
 - Rushven (ID: 595)
-- Garage (ID: 596)
 - Greenkeepers Cottage (ID: 602)
 - Fungarth Farmhouse (ID: 604)
 - Flint Cottage (ID: 607)
 - Haughend (ID: 616)
 - Elizabeth Allison Interiors (ID: 620)
-- Garage (ID: 621)
 - Royal Dunkeld Hotel Annex (ID: 623)
 - Gallowhill Lodge (ID: 625)
 - Old Abattoir (ID: 634)
-- Shed (ID: 635)
 - Royal Dunkeld Hotel (ID: 636)
 - 6 Brae Street (ID: 637)
 - 7 Brae Street (ID: 638)
 - Greenhouse (ID: 643)
 - The Ell House (ID: 647)
-- Garage (ID: 651)
 - 2 Water Wynd (ID: 655)
 - 3 Water Wynd (ID: 656)
 - 4 Water Wynd (ID: 657)
 - NULL5 Water Wynd (ID: 658)
 - Dunkeld Fish Bar (ID: 663)
 - 15 The Cross (ID: 666)
-- Shed (ID: 667)
 - Atholl Memorial Fountain (ID: 669)
-- Garage (ID: 682)
-- Garage (ID: 683)
-- Garage (ID: 685)
-- Garage (ID: 686)
-- Garage (ID: 687)
 - Macbeth Cottage (ID: 691)
 - Erigmore (ID: 693)
-- Garage (ID: 694)
 - Chalet (ID: 695)
 - MUGA (ID: 697)
 - Caravan (ID: 698)
@@ -941,11 +867,8 @@ VALID FEATURE NAMES
 - Caravan (ID: 760)
 - Caravan (ID: 761)
 - Caravan (ID: 762)
-- Garage (ID: 767)
 - 48a Stell Park (ID: 768)
-- Garage (ID: 769)
 - The Neuk (ID: 770)
-- Garage (ID: 771)
 - The Birnam Oak Cafe (ID: 773)
 - Birnam Cottage (ID: 782)
 - Burn Lodge (ID: 783)
@@ -1001,10 +924,8 @@ VALID FEATURE NAMES
 - 2 Station Road (ID: 847)
 - Balgownie (ID: 848)
 - Westwood (ID: 849)
-- Garage (ID: 860)
 - Bob's Mechanical Repairs (ID: 861)
 - Woodside (ID: 862)
-- Shed (ID: 863)
 - The Craft Diner (ID: 864)
 - Greenhouse (ID: 865)
 - Greenhouse (ID: 866)
@@ -1070,16 +991,11 @@ VALID FEATURE NAMES
 - Chalet (ID: 934)
 - Chalet (ID: 935)
 - Chalet (ID: 936)
-- Shed (ID: 937)
 - Greenhouse (ID: 938)
 - Greenhouse (ID: 939)
-- Garage (ID: 940)
 - Workshop (ID: 949)
 - Walnut Tree Cottage (ID: 950)
-- Garage (ID: 952)
-- Garage (ID: 953)
 - Air Raid Shelter? (ID: 955)
-- Shed (ID: 956)
 - Kincraig (ID: 958)
 - Woodlark Cottage (ID: 959)
 - Dunkeld & Birnam, Signal Box (ID: 974)
